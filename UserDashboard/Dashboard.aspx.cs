@@ -47,7 +47,7 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
         else
         {
 
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
     protected void lnkgender_Command(object sender, CommandEventArgs e)
