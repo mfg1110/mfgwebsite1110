@@ -197,4 +197,22 @@ public partial class Messenger : System.Web.UI.Page
      
        
     }
+    protected void txtsearch_TextChanged(object sender, EventArgs e)
+    {
+        DataSet dsusername = Registrationobj.getregistrationbyid(Convert.ToInt32(regid));
+        string Username = dsusername.Tables[0].Rows[0]["fname"].ToString() + " " + dsusername.Tables[0].Rows[0]["lname"].ToString();
+        ds = Registrationobj.getchatuserbysearch(Username,txtsearch.Text);
+        //rptdata.DataSource = ds;
+        //rptdata.DataBind();
+
+
+        rptusers.DataSource = ds;
+        rptusers.DataBind();
+
+        if (ds.Tables[0].Rows.Count == 0)
+        {
+            Control FooterTemplate = rptusers.Controls[rptusers.Controls.Count - 1].Controls[0];
+            FooterTemplate.FindControl("trEmpty").Visible = true;
+        }
+    }
 }

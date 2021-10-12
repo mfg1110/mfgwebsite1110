@@ -38,6 +38,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             id = Convert.ToInt32(idCookie.Value);
             if (!IsPostBack)
             {
+                bindzoradic();
                // Bindddl();
                 binddropdownlist();
                 // txtname.Text = nameCookie.Value;
@@ -58,6 +59,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             //txtpostedby.Text = Session["Fname"].ToString();
             if (!IsPostBack)
             {
+                bindzoradic();
                 binddropdownlist();
                // Bindddl();
                 //  txtname.Text = Session["Fname"].ToString();
@@ -124,6 +126,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             txtdob.Text = Convert.ToDateTime(ds.Tables[0].Rows[i]["Date_of_Birth"]).ToString("yyyy-MM-dd");
             txtpob.Text = ds.Tables[0].Rows[i]["Place_of_Birth"].ToString();
             txtreligion.Text = ds.Tables[0].Rows[i]["Religion"].ToString();
+           
             ddlzoradicsign.SelectedValue = ds.Tables[0].Rows[i]["Zodiac_Sign"].ToString();
             txtweight.Text = ds.Tables[0].Rows[i]["Weight"].ToString();
             ddlbloodgroup.SelectedValue = ds.Tables[0].Rows[i]["Blood_group"].ToString();
@@ -275,6 +278,17 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
         ddlreligion.DataValueField = "Caste_ID";
         ddlreligion.DataBind();
         ddlreligion.Items.Insert(0, new ListItem("--Select--", "0"));
+
+    }
+
+    public void bindzoradic()
+    {
+        DataSet dszoradic = Registrationobj.getstar_details();
+        ddlzoradicsign.DataSource = dszoradic.Tables[0];
+        ddlzoradicsign.DataTextField = "Starname";
+        ddlzoradicsign.DataValueField = "Star_id";
+        ddlzoradicsign.DataBind();
+        ddlzoradicsign.Items.Insert(0, new ListItem("--Select--", "0"));
 
     }
     protected void Wizard1_PreRender(object sender, EventArgs e)

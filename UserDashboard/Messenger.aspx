@@ -116,8 +116,8 @@
         }
 
         .user_img {
-            height: 70px;
-            width: 70px;
+            height: 36px;
+            /*width: 70px;*/
             border: 1.5px solid #f5f6fa;
         }
 
@@ -332,7 +332,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="panel panel-red no-margin">
                     <div class="panel-heading">
-                        <h4> <asp:TextBox ID="txtsearch" runat="server" placeholder="Search..." CssClass="form-control"></asp:TextBox>
+                        <h4> <asp:TextBox ID="txtsearch" runat="server" placeholder="Search..." AutoPostBack="true" CssClass="form-control" OnTextChanged="txtsearch_TextChanged"></asp:TextBox>
 </h4>
                     </div>
                     <div class="panel-body">
@@ -357,18 +357,26 @@
                 <div class="card">
                         <div class="card-header msg_head">
                             <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="../image/user.png" class="rounded-circle user_img" />
+                                <ul class="todo-list">
+                        
+                                            <li class="list">
+                                                <img src="../image/user.png" class="rounded-circle user_img" />
+
+                                                         <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
+                                            </li>
+                                        
+                                        
+                        </ul>
+                                <%--<div class="img_cont">
+                                  
                                     <span class="online_icon"></span>
                                       
                                 </div>
                                 <div class="user_info">
-                                  <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
+                                 
 
-                                </div>
-                                <div>
-
-                                </div>
+                                </div>--%>
+                              
                             </div>
                             <hr />
                             <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>

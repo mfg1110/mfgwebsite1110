@@ -475,18 +475,7 @@
                                                                         Zodiac Sign 
                                        
                                             <asp:DropDownList ID="ddlzoradicsign" runat="server" class="form-control valid">
-                                                <asp:ListItem Value="Aries">Aries</asp:ListItem>
-                                                <asp:ListItem Value="Aquarius">Aquarius</asp:ListItem>
-                                                <asp:ListItem Value="Pisces">Pisces</asp:ListItem>
-                                                <asp:ListItem Value="Taurus">Taurus</asp:ListItem>
-                                                <asp:ListItem Value="Gemini">Gemini</asp:ListItem>
-                                                <asp:ListItem Value="Cancer">Cancer</asp:ListItem>
-                                                <asp:ListItem Value="leo">leo</asp:ListItem>
-                                                <asp:ListItem Value="Virgo">Virgo</asp:ListItem>
-                                                <asp:ListItem Value="Libra">Libra</asp:ListItem>
-                                                <asp:ListItem Value="Scorpio">Scorpio</asp:ListItem>
-                                                <asp:ListItem Value="Sagittarius">Sagittarius</asp:ListItem>
-                                                <asp:ListItem Value="Capricorn">Capricorn</asp:ListItem>
+                                                
 
                                             </asp:DropDownList>
 
