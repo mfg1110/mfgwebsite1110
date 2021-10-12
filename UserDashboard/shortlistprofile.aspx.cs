@@ -45,7 +45,7 @@ public partial class UserDashboard_shortlistprofile : System.Web.UI.Page
         else
         {
 
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
     public void loaddata()
@@ -57,11 +57,11 @@ public partial class UserDashboard_shortlistprofile : System.Web.UI.Page
 
         rptourdata.DataSource = ds;
         rptourdata.DataBind();
-        if (ds.Tables[0].Rows.Count == 0)
-        {
-            Control FooterTemplate = rptourdata.Controls[rptourdata.Controls.Count - 1].Controls[0];
-            FooterTemplate.FindControl("trEmpty").Visible = true;
-        }
+        //if (ds.Tables[0].Rows.Count == 0)
+        //{
+        //    Control FooterTemplate = rptourdata.Controls[rptourdata.Controls.Count - 1].Controls[0];
+        //    FooterTemplate.FindControl("trEmpty").Visible = true;
+        //}
     }
 
     public string ProcessDataItem(object myDataItemValue)
