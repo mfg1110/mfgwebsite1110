@@ -1,0 +1,198 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserDashboardMasterPage.master.cs" Inherits="Masterpage_UserDashboardMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sunrise Admin Panel">
+    <meta name="keywords" content="Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Themeforest, Bootstrap">
+    <meta name="author" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>Dashboard</title>
+    <link href="../App_Themes/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../App_Themes/css/animate.css" rel="stylesheet" media="screen">
+    <link href="../App_Themes/css/main.css" rel="stylesheet" media="screen">
+    <link href="../App_Themes/fonts/icomoon/icomoon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../App_Themes/css/circliful/circliful.css">
+    <link rel="stylesheet" href="../App_Themes/css/flags/flag-icon-custom.css">
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="purple">
+    <form id="form1" runat="server">
+    <div>
+          <div class="sunrise-loading"></div>
+    <div class="vertical-nav">
+        <button class="collapse-menu"><i class="icon-dehaze"></i></button>
+        <div class="logo">
+          <%--  <a href="index.html">
+            <img src="img/logo.png" alt="Sunrise">
+
+            </a>--%>
+
+        </div>
+        <div class="user-info">
+            <div class="user-img">
+                <img src="../image/user.png" alt="User Info">
+               <%-- <span class="likes-info">26</span>--%>
+
+            </div>
+            <h5 class="user-name-o"> <asp:Label ID="lblusername" runat="server" Text="Username"></asp:Label></h5>
+             <asp:Label ID="txtid" runat="server" Visible="false"></asp:Label>
+                              <asp:Label ID="txtbiodataid" runat="server" Visible="false"></asp:Label>  
+          <%--  <p class="profile-complete">Profile Complete - 78%</p>--%>
+        </div>
+        <ul class="menu clearfix">
+            <li class="active selected"><a href="../UserDashboard/Dashboard.aspx"><i class="icon-graphic_eq"></i><span class="menu-item">Dashboards</span> <span class="down-arrow"></span></a>
+               <%-- <ul>
+                    <li><a href="index.html" class="current">Overview</a></li>
+                    <li><a href="social-analytics.html">Social Analytics <span class="label label-danger">&nbsp;</span></a></li>
+                    <li><a href="product-analytics.html">Product Analytics</a></li>
+                    <li><a href="events.html">Events <span class="label label-success">&nbsp;</span></a></li>
+                </ul>--%>
+            </li>
+            <li id="lipostbiodata" runat="server"><a href="../UserDashboard/Profile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Post Biodata</span> </a>  </li>
+             <li id="liupdatebiodata" runat="server"><a  href="../UserDashboard/Profile.aspx?Biodata_id=<%=txtbiodataid.Text%>"><i class="icon-devices_other"></i><span class="menu-item">Update Biodata</span> </a>  </li>
+              <li id="lipostpatnerpreferences" runat="server"><a href="../UserDashboard/Patnerprefrences.aspx"><i class="icon-devices_other"></i><span class="menu-item">Post Patner Prefrences</span> </a>  </li>
+             <li id="liupdatepatnerprefrences" runat="server"><a href="../UserDashboard/Patnerprefrences.aspx?regid=<%=txtid.Text%>"><i class="icon-devices_other"></i><span class="menu-item">Edit Patner Prefrences</span> </a>  </li>
+              <%-- <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">Likes</span> </a>  </li>
+             <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">Waiting List</span> </a>  </li>--%>
+              <li><a href="../UserDashboard/Messenger.aspx"><i class="icon-devices_other"></i><span class="menu-item">Member Chat</span> </a>  </li>
+
+             <li><a href="../UserDashboard/Changepassword.aspx"><i class="icon-devices_other"></i><span class="menu-item">Change Password</span> </a>  </li>
+             <li><a href="../UserDashboard/latestprofile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Latest Profile</span> </a>  </li>
+
+           <li><a href="../UserDashboard/shortlistprofile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Shortlisted Profile</span> </a>  </li>
+           
+           
+           
+        </ul>
+    </div>
+    <div class="dashboard-wrapper dashboard-wrapper-lg">
+        <header>
+            <ul class="pull-left" id="left-nav">
+                <li class="dropdown pull-left">
+                    <a href="../Default.aspx" id="drop6" role="button" style="color:white;font-size:larger">
+                    
+                       Go To Website
+                      
+                </a>
+                    
+                </li>
+            </ul>
+            <div class="pull-right">
+                <ul id="mini-nav" class="clearfix">
+               <%--     <li class="list-box dropdown hidden-xs"><a id="reviews" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe2"></i></a><span class="noti-label yellow-bg animated"></span>
+                        <ul class="dropdown-menu animated fadeInUp reviews">
+                            <li>
+                                <div class="user-pic clearfix">
+                                    <img src="img/user6.png" alt="User Image"></div>
+                                <div class="review-details clearfix">
+                                    <h4>Social Analytics <i class="icon-settings"></i></h4>
+                                    <h5 class="clearfix"><span class="left-info"><i class="icon-photo"></i>389 views</span></h5>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-pic clearfix">
+                                    <img src="img/user18.png" alt="User Image"></div>
+                                <div class="review-details clearfix">
+                                    <h4>Product Analytics <i class="icon-settings"></i></h4>
+                                    <h5 class="clearfix"><span class="left-info"><i class="icon-photo"></i>871 views</span></h5>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-pic clearfix">
+                                    <img src="img/user1.png" alt="User Image"></div>
+                                <div class="review-details clearfix">
+                                    <h4>Layouts <i class="icon-settings"></i></h4>
+                                    <h5 class="clearfix"><span class="left-info"><i class="icon-photo"></i>775 views</span></h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-box dropdown hidden-xs"><a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-notifications_active"></i></a><span class="info-label blue-bg animated rubberBand">4</span><ul class="dropdown-menu fadeInUp animated imp-notify">
+                        <li class="dropdown-header">You have 3 notifications</li>
+                        <li class="clearfix">
+                            <div class="icon">
+                                <img src="img/user10.png" alt="Sunrise Admin"></div>
+                            <div class="details"><strong class="text-danger">Rogie King</strong> <span>Firefox is a free, open-source web browser from Mozilla.</span></div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="icon">
+                                <img src="img/user19.png" alt="Sunrise Admin"></div>
+                            <div class="details"><strong class="text-success">Dan Cederholm</strong> <span>IE is a free web browser from Microsoft.</span></div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="icon">
+                                <img src="img/user13.png" alt="Sunrise Admin"></div>
+                            <div class="details"><strong class="text-info">Justin Mezzell</strong> <span>Safari is known for its sleek design and ease of use.</span></div>
+                        </li>
+                        <li class="dropdown-footer">See all the notifications<i class="icon-arrow_forward"></i></li>
+                    </ul>
+                    </li>
+                    <li class="list-box dropdown hidden-xs"><a id="drop10" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-circle-check"></i></a><span class="info-label red-bg animated rubberBand">7</span><ul class="dropdown-menu animated flipInY progress-stats">
+                        <li class="dropdown-header">You have 7 pending tasks</li>
+                        <li>
+                            <div class="progress-info"><strong class="text-danger">Critical</strong> <span>New Dashboard Design</span> <span class="pull-right text-danger">20%</span></div>
+                            <div class="progress progress-md no-margin">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete (success)</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="progress-info"><strong class="text-info">Primary</strong> <span>UI Changes in V2</span> <span class="pull-right">90%</span></div>
+                            <div class="progress progress-sm no-margin">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"><span class="sr-only">90% Complete</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="progress-info"><strong class="text-warning">Urgent</strong> <span>Bug Fix #123</span> <span class="pull-right">60%</span></div>
+                            <div class="progress progress-xs no-margin">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="progress-info"><span>Bug Fix #111</span> <span class="pull-right text-success">Complete</span></div>
+                            <div class="progress progress-xs no-margin">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">100% Complete (warning)</span></div>
+                            </div>
+                        </li>
+                        <li class="dropdown-footer">See all the notifications</li>
+                    </ul>
+                    </li>--%>
+                    <li class="list-box dropdown hidden-xs"><a href="../Default.aspx"><i class="icon-exit_to_app"></i></a></li>
+                    <li class="list-box hidden-lg hidden-md">
+                        <button type="button" id="toggleMenu" class="toggle-menu"><i class="icon-menu"></i></button>
+                    </li>
+                </ul>
+            </div>
+          <%--  <div class="custom-search hidden-sm hidden-xs">
+                <input type="text" class="search-query" placeholder="Search here ...">
+                <i class="icon-search4"></i></div>--%>
+        </header>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+         <footer>Copyright Sunrise Admin <span>2016</span>.</footer>
+    </div>
+    </form>
+
+     <script src="../App_Themes/js/jquery.js"></script>
+    <script src="../App_Themes/js/bootstrap.min.js"></script>
+    <script src="../App_Themes/js/jquery-ui.js"></script>
+    <script src="../App_Themes/js/sparkline.js"></script>
+    <script src="../App_Themes/js/scrollup/jquery.scrollUp.js"></script>
+    <script src="../App_Themes/js/circliful/circliful.min.js"></script>
+    <script src="../App_Themes/js/circliful/circliful.custom.js"></script>
+    <script src="../App_Themes/js/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="../App_Themes/js/jvectormap/world-mill-en.js"></script>
+    <script src="../App_Themes/js/jvectormap/gdp-data.js"></script>
+    <script src="../App_Themes/js/jvectormap/custom/world-map-markers.js"></script>
+    <script src="../App_Themes/js/custom.js"></script>
+    <script src="../App_Themes/js/custom-overview.js"></script>
+</body>
+</html>
