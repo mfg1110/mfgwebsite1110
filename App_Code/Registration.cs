@@ -663,7 +663,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='True' and Search_ID like '%" + Search_ID + "%'", con);
+            SqlCommand cmd = new SqlCommand("select * from Biodata bd,Star_tb st where bd.Visibility_Flag='True' and bd.Zodiac_Sign=st.Starname and bd.Search_ID like '%" + Search_ID + "%'", con);
           
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -723,7 +723,28 @@ namespace Registration
 
         }
 
+        [WebMethod]
+        public DataSet getregistrationbyname(int id,string name)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Ranasamaj_Registration where id=@id and fname like '%" + name + "%' and lname like '%" + name + "%'", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
         [WebMethod]
         public DataSet getbiodatabyregid(int id)
         {
