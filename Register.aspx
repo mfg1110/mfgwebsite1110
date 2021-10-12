@@ -58,9 +58,9 @@
 
                             </div>
                             <div class="form-group">
-                                <div class="custom-control custom-checkbox">
+                                <div> <asp:CheckBox ID="chkRememberMe"  runat="server" /> 
                                  <%--   <input type="checkbox" class="custom-control-input" id="customControlAutosizing">--%>
-                                    <label class="custom-control-label" for="customControlAutosizing">I agree with all <a href="terms.html">Terms &amp; Conditions</a></label>
+                                    <label  for="customControlAutosizing">I agree with all <a href="terms.html">Terms &amp; Conditions</a></label>
                                 </div>
                             </div>
                           

@@ -22,10 +22,10 @@
                                      <asp:TextBox ID="txtpassword" class="form-control" runat="server" TextMode="Password" placeholder="Password" required=""></asp:TextBox>
                                 </div>
                                 <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
+                                    <div>
                                        
                                      
-                                          <asp:CheckBox ID="chkRememberMe"  runat="server" />    <label class="custom-control-label" for="customControlAutosizing">Remember Me</label>
+                                          <asp:CheckBox ID="chkRememberMe"  runat="server" />    <label for="customControlAutosizing">Remember Me</label>
                                            
                                             
                                     </div>

@@ -42,22 +42,20 @@ public partial class UserDashboard_Changepassword : System.Web.UI.Page
 
 
         }
+        else if (Request.QueryString["regidreset"] != null)
+        {
+            regid = Convert.ToInt32(Request.QueryString["regidreset"].ToString());
+            DataSet dsemail = Registrationobj.getregistrationbyid(regid);
+            txtemail.Text = dsemail.Tables[0].Rows[0]["UserID"].ToString();
+            email.Visible = true;
+            oldpwd.Visible = false;
+            txtemail.Visible = true;
+            txtoldpwd.Visible = false;
+        }
+
         else
         {
-            if (Request.QueryString["regidreset"] != null)
-            {
-                regid = Convert.ToInt32(Request.QueryString["regidreset"].ToString());
-                DataSet dsemail = Registrationobj.getregistrationbyid(regid);
-                txtemail.Text = dsemail.Tables[0].Rows[0]["UserID"].ToString();
-                email.Visible = true;
-                oldpwd.Visible = false;
-                txtemail.Visible = true;
-                txtoldpwd.Visible = false;
-            }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
+            Response.Redirect("Login.aspx");
         }
 
     }
