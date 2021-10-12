@@ -11,6 +11,7 @@ public partial class UserDashboard_shortlistprofile : System.Web.UI.Page
 {
     Registration.Registration Registrationobj = new Registration.Registration();
     DataSet ds;
+    public static int Biodata_id, regid, stepid, step, indexid;
     HtmlMeta title = new HtmlMeta();
     HtmlMeta image = new HtmlMeta();
     HtmlMeta image1 = new HtmlMeta();
@@ -23,38 +24,44 @@ public partial class UserDashboard_shortlistprofile : System.Web.UI.Page
         if (nameCookie != null)
         {
 
+            regid = Convert.ToInt32(idCookie.Value);
 
-            //lbluname.Text = "ttkhj";
+            if (!IsPostBack)
+            {
+                loaddata();
+
+            }
         }
-        else if (Session["UserID"] != null)
+        else if (Session["id"] != null)
         {
+            regid = Convert.ToInt32(Session["id"].ToString());
+            if (!IsPostBack)
+            {
+                loaddata();
+
+            }
 
         }
         else
         {
 
-        }
-        if (!IsPostBack)
-        {
-            //try
-            //{
-            loaddata();
-            //}
-            //catch(Exception ex)
-            //{
-            //    Response.Redirect("login.aspx");
-            //}
+            Response.Redirect("Login.aspx");
         }
     }
     public void loaddata()
     {
-        ds = Registrationobj.getbiodatadetail();
+        ds = Registrationobj.Getshortlistbyregid(Convert.ToInt32(regid));
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
 
 
         rptourdata.DataSource = ds;
         rptourdata.DataBind();
+        if (ds.Tables[0].Rows.Count == 0)
+        {
+            Control FooterTemplate = rptourdata.Controls[rptourdata.Controls.Count - 1].Controls[0];
+            FooterTemplate.FindControl("trEmpty").Visible = true;
+        }
     }
 
     public string ProcessDataItem(object myDataItemValue)
