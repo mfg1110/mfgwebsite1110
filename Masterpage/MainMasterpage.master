@@ -1,0 +1,168 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMasterpage.master.cs" Inherits="Masterpage_MainMasterpage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Askbootstrap" />
+    <meta name="author" content="Askbootstrap" />
+    <title>Gujrati Matrimony</title>
+
+    <link rel="icon" type="image/png" href="https://askbootstrap.com/item/osahan-land-bootstrap-4-light-theme/" />
+
+    <link href="../App_Themes/Fronttheme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="../App_Themes/Fronttheme/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <link href="../App_Themes/Fronttheme/vendor/select2/css/select2-bootstrap.css" rel="stylesheet" />
+    <link href="../App_Themes/Fronttheme/vendor/select2/css/select2.min.css" rel="stylesheet" />
+
+    <link href="../App_Themes/Fronttheme/css/osahan.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand text-success logo" href="../main.aspx" style="font-size: 1.55rem;"><i class="mdi mdi-heart"></i><strong>Matrimony</strong> For Gujarati</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 margin-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="../main.aspx" aria-haspopup="true" aria-expanded="false">HOME
+                            </a>
+                            <%--<div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="index1.html">Home With Search</a>
+                                <a class="dropdown-item" href="index2.html">Home With Map</a>
+                                <a class="dropdown-item" href="index3.html">Home With Property Info</a>
+                            </div>--%>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="../Aboutus.aspx" aria-haspopup="true" aria-expanded="false">About Us
+                            </a>
+                            <%-- <div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="properties-grid.html">Properties Grid</a>
+                                <a class="dropdown-item" href="properties-list.html">Properties List</a>
+                                <a class="dropdown-item" href="property-single-slider.html">Property Single Slider</a>
+                                <a class="dropdown-item" href="property-single-gallery.html">Property Single Gallery</a>
+                            </div>--%>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="../Contactus.aspx" aria-haspopup="true" aria-expanded="false">Contact Us
+                            </a>
+                            <%-- <div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="agency-list.html">Agency List</a>
+                                <a class="dropdown-item" href="agency-profile.html">Agency Profile</a>
+                                <a class="dropdown-item" href="agents.html">Agents</a>
+                                <a class="dropdown-item" href="agent-profile.html">Agent Profile</a>
+                            </div>--%>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">How To Use
+                            </a>
+                            <%--  <div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="blog.html">Blog</a>
+                                <a class="dropdown-item" href="blog-single.html">Blog Single</a>
+                            </div>--%>
+                        </li>
+
+                    </ul>
+                    <div class="my-2 my-lg-0">
+                        <ul class="list-inline main-nav-right">
+                             <li id="lidashboard" class="list-inline-item" runat="server" visible="false">
+                                <a class="btn btn-success btn-sm" href="../UserDashboard/Dashboard.aspx">Dashboard</a>
+                            </li>
+                             <li id="lilogout" class="list-inline-item" runat="server" visible="false">
+                                <a class="btn btn-success btn-sm" href="../logout.aspx"><i class="mdi mdi-logout"></i></a>
+                            </li>
+                            <li id="lisignin" class="list-inline-item" runat="server">  
+                                <a class="btn btn-outline-success btn-sm" href="../Login.aspx">Sign In</a>
+                            </li>
+                            <li id="lisignup" class="list-inline-item" runat="server">
+                                <a class="btn btn-success btn-sm" href="../Register.aspx">Sign Up</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <section class="section-padding footer bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-3">
+                            <h4 class="mb-5"><a class="text-success logo" href="index.html"><i class="mdi mdi-heart"></i><strong>Matrimony</strong> For Gujarati</a></h4>
+                          <%--  <p>86 Petersham town, New South wales<br>
+                                Waedll Steet, Australia PA 6550</p>--%>
+                            <p class="mb-0"><a class="text-dark" href="#"></a></p>
+                            <p class="mb-0"><a class="text-success" href="#"><span class="__cf_email__" data-cfemail="b0d9d1dddfc3d1d8d1def0d7ddd1d9dc9ed3dfdd">[support@matrimonyforgujarati.com]</span></a></p>
+                            <p class="mb-0"><a class="text-info" href="https://www.matrimonyforgujarati.com">www.matrimonyforgujarati.com</a></p>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <h6 class="mb-4">COMPANY</h6>
+                            <ul>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Properties</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <ul>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <h6 class="mb-4">LEARN MORE</h6>
+                            <ul>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <ul>
+                                </ul>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <h6 class="mb-4">NEWSLETTER</h6>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Email Address..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button"><i class="mdi mdi-arrow-right"></i></button>
+                                </div>
+                            </div>
+                            <h6 class="mb-4 mt-5">GET IN TOUCH</h6>
+                            <div class="footer-social">
+                                <a href="#"><i class="mdi mdi-facebook"></i></a>
+                                <a href="#"><i class="mdi mdi-twitter"></i></a>
+                                <a href="#"><i class="mdi mdi-instagram"></i></a>
+                                <a href="#"><i class="mdi mdi-google"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../App_Themes/Fronttheme/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="../App_Themes/Fronttheme/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+    <script src="../App_Themes/Fronttheme/js/jqBootstrapValidation.js" type="text/javascript"></script>
+    <script src="../App_Themes/Fronttheme/js/contact_me.js" type="text/javascript"></script>
+    <script src="../App_Themes/Fronttheme/vendor/select2/js/select2.min.js" type="text/javascript"></script>
+    <script src="../App_Themes/Fronttheme/js/custom.js" type="text/javascript"></script>
+    <script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b81b84c8ef01f00c83ec1f47-|49" defer=""></script>
+    <script defer src="../../static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"69a5d370fdf20f28","version":"2021.9.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}'></script>
+</body>
+</html>
