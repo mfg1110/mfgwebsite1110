@@ -171,20 +171,17 @@ public partial class Register : System.Web.UI.Page
 
                 // string theVerificationCode = Registrationobj.GetVerificationCodeFromDatabase(Userid.ToString());
                 mm.Subject = "Account Activation";
-                //string body = "Hello " + txtfname.Text.Trim() +" "+ txtlname.Text.Trim() + ",";
-                //body += "<br /><br />Please click the following link to activate your account";
-                //body += "<br /><a href = '" + Request.Url.AbsoluteUri.Replace("Login.aspx", "Activation.aspx?ActivationCode=" + theVerificationCode) + "'>Click here to activate your account.</a>";
-                //body += "<br /><br />Thanks";
+              
                 mm.Body = body;
 
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "webmail.matrimonyforgujarati.com";
+                smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential("support@matrimonyforgujarati.com", "oHm@1110");
+                NetworkCredential NetworkCred = new NetworkCredential("matrimonyforgujarati@gmail.com", "oHm@1110");
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
-                smtp.Port = 25;
+                smtp.Port = 625;
                 smtp.Send(mm);
                 //Console.WriteLine(i);
 

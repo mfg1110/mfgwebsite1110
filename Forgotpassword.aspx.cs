@@ -9,59 +9,81 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class forgotpassword : System.Web.UI.Page
+public partial class Forgotpassword : System.Web.UI.Page
 {
     Registration.Registration Registrationobj = new Registration.Registration();
     DataSet ds;
-    string  regid;
+    string regid;
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
-    protected void btngetpassord_Click(object sender, EventArgs e)
+    protected void lnksend_Click(object sender, EventArgs e)
     {
         try
         {
-            ds = Registrationobj.getregistrationdetailbyemail(txtemail.Text);
+            ds = Registrationobj.getregistrationdetailbyemail(txtemailid.Text);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 regid = ds.Tables[0].Rows[i]["id"].ToString();
             }
 
-            string body = this.PopulateBody(txtemail.Text, regid);
+            string body = this.PopulateBody(txtemailid.Text, regid);
 
-            SendEmail(txtemail.Text, body);
-            lblmsg.CssClass = "alert alert-success";
-            lblmsg.Visible = true;
-            lblmsg.Text = "Sent Email To Your Email ID.Please Reset Your Password";
+            SendEmail(txtemailid.Text, body);
+
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            Response.Redirect("login.aspx");
+            lblmsgsucess.Visible = false;
+            lblmsg1.Visible = true;
+            lblmsg.Text = "Server Not Connected";
         }
     }
 
     private void SendEmail(string email, string body)
     {
 
-        using (MailMessage mm = new MailMessage("no-reply@rana-samaj.com", email))
+        using (MailMessage mm = new MailMessage("support@matrimonyforgujarati.com", email))
         {
+            try
+            {
+                mm.Subject = "Reset Password";
+                //string body = "Hello " + Comment + ",";
+                //body += "<br /><br />Email From: " + frommail ;
 
-            mm.Subject = "Reset Password";
-            //string body = "Hello " + Comment + ",";
-            //body += "<br /><br />Email From: " + frommail ;
+                //body += "<br /><br /><b>Thanks</b>";
+                mm.Body = body;
 
-            //body += "<br /><br /><b>Thanks</b>";
-            mm.Body = body;
-            mm.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.ionos.com";
-            smtp.EnableSsl = true;
-            NetworkCredential NetworkCred = new NetworkCredential("no-reply@rana-samaj.com", "oHm@1110");
-            smtp.UseDefaultCredentials = true;
-            smtp.Credentials = NetworkCred;
-            smtp.Port = 25;
-            smtp.Send(mm);
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Timeout = 99999;
+                smtp.Host = "smtp.ionos.com";
+
+                //NetworkCredential NetworkCred = new NetworkCredential("support@matrimonyforgujarati.com", "oHm@1110");
+                NetworkCredential NetworkCred = new NetworkCredential("no-reply@rana-samaj.com", "oHm@1110");
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = NetworkCred;
+
+                smtp.Port = 25;
+                smtp.EnableSsl = false;
+                smtp.Send(mm);
+                lblmsgsucess.Visible = true;
+                lblmsgsuccessspan.Visible = true;
+                lblmsg1.Visible = false;
+                lblmsgsucess.Text = "Sent Email To Your Email ID.Please Reset Your Password";
+                txtemailid.Text = "";
+                Registrationobj.ADD_Log(regid.ToString(), "Forgot Password", "Email Sent.Please Reset Your Password", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+                txtemailid.Text = "";
+            }
+            catch (Exception ex)
+            {
+                lblmsgsucess.Visible = false;
+                lblmsg1.Visible = true;
+                lblmsg.Text = "Server Not Connected";
+                txtemailid.Text = "";
+            }
+
         }
     }
 
