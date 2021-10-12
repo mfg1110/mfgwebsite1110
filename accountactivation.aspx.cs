@@ -34,7 +34,6 @@ public partial class accountactivation : System.Web.UI.Page
                             con.Close();
 
                             lblmsg.Text = "Activation successfull.";
-
                         }
                         catch (SqlException ex)
                         {

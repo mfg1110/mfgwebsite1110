@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MainMasterpage.master" AutoEventWireup="true" CodeFile="accountactivation.aspx.cs" Inherits="accountactivation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/FrontMasterPage.master" AutoEventWireup="true" CodeFile="accountactivation.aspx.cs" Inherits="accountactivation" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

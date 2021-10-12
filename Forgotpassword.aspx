@@ -1,44 +1,73 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage/MainMasterpage.master" AutoEventWireup="true" CodeFile="Forgotpassword.aspx.cs" Inherits="Forgotpassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/FrontMasterPage.master" AutoEventWireup="true" CodeFile="forgotpassword.aspx.cs" EnableViewStateMac="false" Inherits="forgotpassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <section class="section-padding">
-        <div class="container">
+       <div class="content-wrapper pb-0">
+    <section class="single-post-area section-padding ">
+          <div class="row">
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+            
             <div class="row">
-                <div class="col-lg-4 col-md-4 mx-auto">
-                     <span class="label label-danger" id="lblmsg1" runat="server" visible="false"  >
-  <span><i class="glyphicon glyphicon-remove-circle"> </i>  <asp:Label ID="lblmsg" runat="server" Text=""   Font-Bold="true"> </asp:Label></span>
-  
-</span>       
-        <span class="label label-success" id="lblmsgsuccessspan" runat="server" visible="false"  >
-  <span><i class="glyphicon glyphicon-ok-circle"> </i>  <asp:Label ID="lblmsgsucess" runat="server" Text=""   Font-Bold="true"> </asp:Label></span>
-  
-</span>
-                    <div class="card padding-card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">FORGOT PASSWORD</h5>
-                        
+                <div class="col-12">
+                    <h2 class="contact-title"  style="margin-top:53px">Forgot Password</h2>
+                </div>
+                <div class="col-lg-8">
+                    <asp:Label ID="lblmsg" runat="server" Text="" CssClass="alert alert-warning" Visible="false"> </asp:Label>
+                 
+                        <div class="row">
+
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>EMAIL ID<span class="text-danger">*</span></label>
-                                   <asp:TextBox ID="txtemailid" runat="server" class="form-control" placeholder="EMAIL ID" required=""></asp:TextBox>
-                          
+                                    <asp:TextBox ID="txtemail" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email'" placeholder="Enter Email"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ValidationGroup="A" ControlToValidate="txtemail" ForeColor="Red" Display="Dynamic" CssClass="alert alert-danger" ErrorMessage="Please Enter Email"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+
+                            <div class="col-sm-6">
                                
-                               
-                              
-                         <asp:LinkButton ID="lnksend" runat="server" class="btn btn-success btn-block" OnClick="lnksend_Click">SEND</asp:LinkButton>
-                           <%-- <div class="mt-4 text-center login-with-social">
-                                <button type="button" class="btn btn-facebook btn-block"><i class="mdi mdi-facebook"></i>Login With Facebook</button>
-                                <button type="button" class="btn btn-twitter btn-block"><i class="mdi mdi-twitter"></i>Login With Twitter</button>
-                                <button type="button" class="btn btn-google btn-block"><i class="mdi mdi-google-plus"></i>Login With Google</button>
-                            </div>--%>
+                            </div>
                             
                         </div>
-                    </div>
+                   
+                       <div class="form-group mt-3">
+                            <asp:Button ID="btngetpassord" runat="server" ValidationGroup="A" class="btn btn-primary mr-2" Text="Reset Password" OnClick="btngetpassord_Click" />
+
+
+                        </div>
                 </div>
+                <%--<div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                <h3>Buttonwood, California.</h3>
+                                <p>Rosemead, CA 91770</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                            <div class="media-body">
+                                <h3>+1 253 565 2365</h3>
+                                <p>Mon to Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-email"></i></span>
+                            <div class="media-body">
+                                <h3>support@colorlib.com</h3>
+                                <p>Send us your query anytime!</p>
+                            </div>
+                        </div>
+                    </div>--%>
+            </div>
             </div>
         </div>
+                </div>
+              </div>
+      
     </section>
 </asp:Content>
 

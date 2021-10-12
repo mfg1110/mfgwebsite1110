@@ -5,13 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class logout : System.Web.UI.Page
+public partial class Logout : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session.Clear();
+         HttpCookie nameCookie = Request.Cookies["Name"];
+        HttpCookie idCookie = Request.Cookies["id"];
+        if (nameCookie != null)
+        {
+            DateTime dtExpiry = DateTime.Now.AddDays(-1); 
+            Response.Cookies["Name"].Expires = dtExpiry;
+            Response.Cookies["id"].Expires = dtExpiry;
+        }
         Session.Abandon();
-       
-        Response.Redirect("main.aspx");
+        Response.Redirect("Login.aspx");
     }
 }

@@ -1,61 +1,53 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage/MainMasterpage.master" AutoEventWireup="true" CodeFile="Aboutus.aspx.cs" Inherits="Aboutus" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/FrontMasterPage.master" AutoEventWireup="true" CodeFile="Aboutus.aspx.cs" EnableViewStateMac="false" Inherits="Aboutus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <section class="section-padding bg-dark inner-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="mt-0 mb-3 text-white">ABOUT US</h1>
-                    <div class="breadcrumbs">
-                        <p class="mb-0 text-white"><a class="text-white" href="#">Home</a> &nbsp;/&nbsp; <span class="text-success">ABOUT US</span></p>
+    <div class="content-wrapper pb-0">
+        <div class="row">
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <section class="contact-section" style="background: #ffffff">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="contact-title">Rana Samaj Matrimony</h2>
+                                        <p>
+                                            There are so many people in the world who get missing from home or Family. In most cases small children are missing from their parents at public place.
+Lots of people in our INDIA are missing and not come back to home. So we are designing one application which is helping a person to find their missing families.
+In Missing People Find Application anyone can post about missing person and also can get details about found people.
+                                        </p>
+                                        <p>
+                                            <b>Lets Start with you. Help To Helpless.
+What the purpose of this Website?
+This Website mainly focus on find stolen/lost/missing people. You can post your lost person in our Website if any one found it he or she will contact you.
+You can see all missing people state wise.</b>
+                                        </p>
+                                        <br />
+                                        <ul>
+                                            <li>What the process?
+         <ul>
+             <li>1) Register your self</li>
+             <li>2) Login your account</li>
+             <li>3) And ADD Your Biodata
+
+             </li>
+
+         </ul>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="section-padding bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="pl-4 col-lg-5 col-md-5 pr-4">
-                    <img class="rounded img-fluid" src="img/about.jpg" alt="Card image cap">
-                </div>
-                <div class="col-lg-6 col-md-6 pl-5 pr-5">
-                    <h2 class="mt-5 mb-5">WE HELP AT EVERY STAGE</h2>
-                    <h5 class="mt-2">Our Vision</h5>
-                    <p>Matrimony For Gujrati is a matchmaking service created for parents who are looking for a life partner for their loved ones. Unlike other Matrimonial services, we focus on providing detailed family and background information to help you take the next step with confidence. With over 80+ community sites, you can find a match from your own community.</p>
-                   <%-- <h5 class="mt-4">Our Goal</h5>--%>
-                    <p>Matrimony For Gujarati - India's No. 1 and Most Trusted Matrimony service, has helped Millions like you find matches from across different communities such as Agarwal, Brahmin, Kalita, Kayastha, Khandayat, Khatri, Lingayath, Maratha, Nair, Parsi, Rajput, Reddy. Why Choose Matrimony For Gujarati?</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section-padding">
-        <div class="section-title text-center mb-5">
-            <h2>Assisted Services</h2>
-           <%-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>--%>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="mt-4 mb-4"><i class="text-success mdi mdi-account-box-outline mdi-48px"></i></div>
-                    <h5 class="mt-3 mb-3">Sign Up</h5>
-                
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="mt-4 mb-4"><i class="text-success mdi mdi-check-circle-outline mdi-48px"></i></div>
-                    <h5 class="mb-3">Shortlisted Matches</h5>
-                   
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="mt-4 mb-4"><i class="text-success mdi mdi-account-multiple-outline mdi-48px"></i></div>
-                    <h5 class="mt-3 mb-3">Find Common Links With Prospects</h5>
-                  
-                </div>
-            </div>
-            
-        </div>
-    </section>
+    </div>
 </asp:Content>
 
