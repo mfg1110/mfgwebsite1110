@@ -111,4 +111,54 @@ public partial class main : System.Web.UI.Page
             btn.BackColor = Color.Green;
         }
     }
+    protected void rptlatestprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            bool colorflag = false;
+            //Reference the Repeater Item.
+            RepeaterItem item = e.Item;
+            LinkButton lnkexpressintrest = (item.FindControl("lnkexpressintrest") as LinkButton);
+            Label lblbiodataid = (item.FindControl("lblbiodataid") as Label);
+            DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+
+            if (dsname.Tables[0].Rows.Count == 0)
+            {
+                lnkexpressintrest.Visible = false;
+            }
+            else
+            {
+                lnkexpressintrest.Visible = true;
+                DataSet dsexpressintrest = Registrationobj.Getinboxbyid(regid);
+                for (int i = 0; i < dsexpressintrest.Tables[0].Rows.Count; i++)
+                {
+                    if (dsexpressintrest.Tables[0].Rows[i]["Biodata_id"].ToString() == lblbiodataid.Text)
+                    {
+                        lnkexpressintrest.Text = "Intrested";
+                        colorflag = true;
+                        
+                        //lnkexpressintrest.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        lnkexpressintrest.Text = "Express Intrest";
+                        colorflag = false;
+                       
+                    }
+                }
+
+
+                if(colorflag == true)
+                {
+                    lnkexpressintrest.CssClass = "btn btn-primary btn-sm";
+                }
+                else
+                {
+                    lnkexpressintrest.CssClass = "btn btn-success btn-sm";
+                }
+            }
+
+
+        }
+    }
 }

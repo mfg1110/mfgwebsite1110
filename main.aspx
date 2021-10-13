@@ -89,7 +89,7 @@
         </div>
         <div class="container">
             <div class="row">
-                 <asp:Repeater ID="rptlatestprofile" runat="server">
+                 <asp:Repeater ID="rptlatestprofile" runat="server" OnItemDataBound="rptlatestprofile_ItemDataBound">
                                 <ItemTemplate>
                 <div class="col-lg-4 col-md-4">
                     <div class="card card-list">
@@ -97,7 +97,7 @@
                             <span class="badge badge-success"><%# Eval("gender") %></span>
                           <%--  <img class="card-img-top" src="img/list/1.png" alt=" <%# Eval("Photo") %>">--%>
                              <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="card-img-top" height="100" style="object-fit: contain;">
-                                       
+                                       <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id")%>' Visible="false" ></asp:Label> 
                             <div class="card-body">
                                 <h5 class="card-title"> <%# Eval("Name") %></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-heart"></i><p> <%# Eval("Height") %>, <%# Eval("Occupation") %>, <%# Eval("Hightest_Education") %>, Rs. <%# Eval("Monthly_Income") %> </p></h6>
@@ -113,7 +113,7 @@
                                
                             </div>
                         </a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                 </div>
 
                                     </ItemTemplate>

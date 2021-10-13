@@ -33,18 +33,18 @@
                                         <div class="row gutter">
                                             <div class="col-md-6 col-md-offset-3">
                                                 <div class="row">
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 center-text">
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 center-text">
                                                         <h3><i class="glyphicon glyphicon-edit"></i></h3>
                                                         <asp:LinkButton ID="linkedit" runat="server" ForeColor="White" CommandName="edit" CommandArgument='<%# Eval("Biodata_id") %>' OnCommand="linkedit_Command">Edit</asp:LinkButton>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 center-text">
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 center-text">
                                                         <h3><i class="glyphicon glyphicon-eye-close"></i></h3>
-                                                        <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="White" CommandName="DeactivateProfile" CommandArgument='<%# Eval("regid") %>'>Deactivate Profile</asp:LinkButton>
+                                                        <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="White" CommandName="DeactivateProfile" CommandArgument='<%# Eval("id") %>'>Deactivate Profile</asp:LinkButton>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-3 col-xs-3 center-text">
+                                                    <div class="col-md-4 col-sm-4 col-xs-4 center-text">
 
                                                         <h3><i class="glyphicon glyphicon-trash"></i></h3>
-                                                        <asp:LinkButton ID="lnkdelete" runat="server" ForeColor="White" CommandName="Delete" CommandArgument='<%# Eval("regid") %>'>Delete</asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkdelete" runat="server" ForeColor="White" CommandName="Delete" CommandArgument='<%# Eval("id") %>'>Delete</asp:LinkButton>
                                                     </div>
 
                                                     <%--  <div class="col-md-3 col-sm-3 col-xs-3 center-text">
