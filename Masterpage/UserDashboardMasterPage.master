@@ -55,6 +55,7 @@
                     <li><a href="events.html">Events <span class="label label-success">&nbsp;</span></a></li>
                 </ul>--%>
             </li>
+               <li id="liprofile" runat="server"><a href="../UserDashboard/Userprofile.aspx?Biodata_id=<%=txtbiodataid.Text%>""><i class="icon-devices_other"></i><span class="menu-item">Profile</span> </a>  </li>
             <li id="lipostbiodata" runat="server"><a href="../UserDashboard/Profile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Post Biodata</span> </a>  </li>
              <li id="liupdatebiodata" runat="server"><a  href="../UserDashboard/Profile.aspx?Biodata_id=<%=txtbiodataid.Text%>"><i class="icon-devices_other"></i><span class="menu-item">Update Biodata</span> </a>  </li>
               <li id="lipostpatnerpreferences" runat="server"><a href="../UserDashboard/Patnerprefrences.aspx"><i class="icon-devices_other"></i><span class="menu-item">Post Patner Prefrences</span> </a>  </li>
@@ -63,11 +64,11 @@
              <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">Waiting List</span> </a>  </li>--%>
               <li><a href="../UserDashboard/Messenger.aspx"><i class="icon-devices_other"></i><span class="menu-item">Member Chat</span> </a>  </li>
 
-             <li><a href="../UserDashboard/Changepassword.aspx"><i class="icon-devices_other"></i><span class="menu-item">Change Password</span> </a>  </li>
+             <li><a href="../UserDashboard/Changepassword.aspx?regid=<%=txtid.Text%>"><i class="icon-devices_other"></i><span class="menu-item">Change Password</span> </a>  </li>
              <li><a href="../UserDashboard/latestprofile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Latest Profile</span> </a>  </li>
 
            <li><a href="../UserDashboard/shortlistprofile.aspx"><i class="icon-devices_other"></i><span class="menu-item">Shortlisted Profile</span> </a>  </li>
-           
+             <li><a href="../UserDashboard/Interests.aspx"><i class="icon-devices_other"></i><span class="menu-item">Interests</span> </a>  </li>
            
            
         </ul>
