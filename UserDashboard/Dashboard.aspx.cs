@@ -30,6 +30,7 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
             {
                 Bindtotalgenderview();
                 Bindtotalsubcategoryview();
+                loaddata();
              
             }
         }
@@ -41,6 +42,7 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
               
                 Bindtotalsubcategoryview();
                 Bindtotalgenderview();
+                loaddata();
             }
 
         }
@@ -77,6 +79,35 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
 
 
     }
+
+    public void loaddata()
+    {
+        ds = Registrationobj.getbiodatadetail();
+        //rptdata.DataSource = ds;
+        //rptdata.DataBind();
+
+
+        rptourdata.DataSource = ds;
+        rptourdata.DataBind();
+    }
+
+    public string ProcessDataItem(object myDataItemValue)
+    {
+
+        if (myDataItemValue == "")
+        {
+
+            return "image_not_found.png";
+        }
+
+
+        return myDataItemValue.ToString();
+
+    }
+    public bool ThumbnailCallback()
+    {
+        return false;
+    }
     protected void lnksubcast_Command(object sender, CommandEventArgs e)
     {
         LinkButton btn = (LinkButton)(sender);
@@ -85,5 +116,9 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
         //ds = Registrationobj.getbiodatadetailbysubcat(Subcast, regid);
         //rptourdata.DataSource = ds;
         //rptourdata.DataBind();
+    }
+    protected void rptourdata_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+
     }
 }
