@@ -63,7 +63,7 @@
                             </div>--%>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">How To Use
+                            <a class="nav-link" href="../Viewlist.aspx" aria-haspopup="true" aria-expanded="false">Profiles
                             </a>
                             <%--  <div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
                                 <a class="dropdown-item" href="blog.html">Blog</a>
