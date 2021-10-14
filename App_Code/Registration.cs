@@ -663,8 +663,8 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Biodata bd,Star_tb st where bd.Visibility_Flag='True' and bd.Zodiac_Sign=st.Starname and bd.Search_ID like '%" + Search_ID + "%'", con);
-          
+            SqlCommand cmd = new SqlCommand("select * from [admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Biodata] bd,[admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Star_tb] st where bd.Visibility_Flag='True' and bd.Zodiac_Sign=st.Star_id and bd.Search_ID = @Search_ID", con);
+            cmd.Parameters.AddWithValue("@Search_ID", Search_ID);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             con.Close();

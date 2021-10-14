@@ -26,11 +26,11 @@ public partial class UserDashboard_Delete : System.Web.UI.Page
                 string msg = string.Empty;
                 msg = "Delete Your Account Successfully";
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + msg + "');", true);
-                Response.Redirect("Logout.aspx");
+                Response.Redirect("../Logout.aspx");
             }
             catch (Exception ex)
             {
-                Response.Redirect("Logout.aspx");
+                Response.Redirect("../Logout.aspx");
             }
         }
 

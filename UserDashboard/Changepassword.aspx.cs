@@ -55,7 +55,7 @@ public partial class UserDashboard_Changepassword : System.Web.UI.Page
 
         else
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
 
     }
@@ -73,11 +73,11 @@ public partial class UserDashboard_Changepassword : System.Web.UI.Page
             lblmsg1.Visible = false;
 
             Registrationobj.ADD_Log(regid.ToString(), "Change Password", "Password Changed Successfully", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
-            Response.Redirect("Logout.aspx");
+            Response.Redirect("../Logout.aspx");
         }
         catch (Exception ex)
         {
-            Response.Redirect("login.aspx");
+            Response.Redirect("../login.aspx");
         }
     }
 }

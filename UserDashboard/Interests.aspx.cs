@@ -45,7 +45,7 @@ public partial class UserDashboard_Interests : System.Web.UI.Page
         else
         {
 
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../Login.aspx");
         }
     }
     public void loaddata()
