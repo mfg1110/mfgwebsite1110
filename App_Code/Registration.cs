@@ -2428,6 +2428,27 @@ namespace Registration
 
         }
 
+        [WebMethod]
+        public void delete_employee_feedback(int Employee_Feedback_ID)
+        {
+            string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(dbconnection))
+            {
+                using (SqlCommand cmd = new SqlCommand("delete Employee_Feedback_tb  WHERE Employee_Feedback_ID=@Employee_Feedback_ID"))
+                {
+                    cmd.Parameters.AddWithValue("@Employee_Feedback_ID", Employee_Feedback_ID);
+
+
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+
+        }
     }
 
 }

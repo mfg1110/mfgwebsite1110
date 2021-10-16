@@ -23,4 +23,17 @@ public partial class Dashboard_Employeefeedback : System.Web.UI.Page
         rptemployeedata.DataSource = ds;
         rptemployeedata.DataBind();
     }
+    protected void lnkdelete_Command(object sender, CommandEventArgs e)
+    {
+        LinkButton b = (LinkButton)sender;
+
+        string arguments = b.CommandArgument;
+        string[] args = arguments.Split(';');
+
+        string id = args[0];
+
+        Registrationobj.delete_employee_feedback(Convert.ToInt32(id));
+
+        loaddata();
+    }
 }

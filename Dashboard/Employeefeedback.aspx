@@ -37,7 +37,10 @@
                                             <td><%#Eval("Employee_Name")%></td>
                                              <td><%#Eval("Description")%></td>
                                              <td><%#Eval("DATE1")%></td>
-                                            
+                                              <td>
+                                                  <asp:LinkButton ID="lnkdelete" runat="server" CommandArgument='<%#Eval("Employee_Feedback_ID")%>' OnCommand="lnkdelete_Command"><i class="glyphicon glyphicon-trash"></i> Delete</asp:LinkButton>
+                                               
+                                            </td>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

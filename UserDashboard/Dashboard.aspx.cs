@@ -121,4 +121,10 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
     {
 
     }
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string Search_ID = btn.CommandArgument;
+        Response.Redirect("Userprofile.aspx?Search_ID=" + Search_ID);
+    }
 }

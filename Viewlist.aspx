@@ -17,7 +17,7 @@
         </div>
     </section>
     <section class="section-padding">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="card sidebar-card">
