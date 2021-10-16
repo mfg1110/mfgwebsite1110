@@ -355,7 +355,7 @@ nav.navbar .navbar-nav .nav-link {
     margin-bottom: 18px;
 }
 .card-list .badge {
-    left: 20px;
+    /*left: 20px;*/
     padding: 7px 10px;
     position: absolute;
     top: 20px;
