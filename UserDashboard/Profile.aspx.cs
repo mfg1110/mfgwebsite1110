@@ -973,14 +973,16 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             //lblmsg.Visible = true;
             //lblmsg.Text = "Data Updated Successfully";
 
-            // Response.Redirect("Default.aspx");
+
+            Response.Redirect("../Default.aspx");
         }
 
         catch (Exception ex)
         {
             //lblmsg.Visible = true;
             //lblmsg.Text = ex.ToString();
-            Response.Redirect("Default.aspx");
+
+            Response.Redirect("../Default.aspx");
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Server Error : Connection Timeout.');", true);
         }
     }
@@ -1028,8 +1030,8 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
         {
             totnoofchild = ddlnoofchild.SelectedValue.ToString();
         }
-        //try
-        //{
+        try
+        {
         if (FileUpload1.HasFile)
         {
 
@@ -1164,16 +1166,17 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
         //lblmsg.Visible = true;
         //lblmsg.Text = "Data Updated Successfully";
 
-        Response.Redirect("Default.aspx");
+        Response.Redirect("../Default.aspx");
 
-        //}
-        //catch (Exception ex)
-        //{
-        //    //lblmsg.Visible = true;
-        //    //lblmsg.Text = ex.ToString();
-        //    Response.Redirect("Default.aspx");
-        //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Server Error : Connection Timeout.');", true);
-        //}
+        }
+        catch (Exception ex)
+        {
+            //lblmsg.Visible = true;
+            //lblmsg.Text = ex.ToString();
+          
+        Response.Redirect("../Default.aspx");
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Server Error : Connection Timeout.');", true);
+        }
     }
     private void ReduceImageSize(double scaleFactor, Stream sourcePath, string targetPath)
     {
