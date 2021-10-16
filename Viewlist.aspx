@@ -292,7 +292,7 @@
                                         <div class="row no-gutters">
                                             <div class="col-lg-5 col-md-5">
                                                 <span class="badge badge-success"><%# Eval("gender") %></span>
-                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="card-img-top embed-responsive" height="300" width="300" style="object-fit: contain;">
+                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="300" width="300" style="object-fit: contain;">
                                             </div>
                                             <div class="col-lg-7 col-md-7">
                                                 <div class="card-body">

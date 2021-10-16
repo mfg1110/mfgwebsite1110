@@ -119,7 +119,7 @@
                     </div>
                     <div class="card padding-card">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">His Personal details</h5>
+                            <h5 class="card-title mb-3"> Personal details</h5>
                             <div class="row mb-3">
                               
                                 <div class="col-lg-6 col-md-6">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="card padding-card">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">His professional details</h5>
+                            <h5 class="card-title mb-3"> professional details</h5>
                             <div class="row mb-3">
                               
                                 <div class="col-lg-6 col-md-6">
@@ -163,7 +163,7 @@
                     </div>
                     <div class="card padding-card">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">His Family details</h5>
+                            <h5 class="card-title mb-3"> Family details</h5>
                             <div class="row mb-3">
                               
                                 <div class="col-lg-6 col-md-6">

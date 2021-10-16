@@ -21,21 +21,7 @@
                                     <button class="btn btn-success" type="button">Register</button>
                      
                                 </div>
-                                <%--<div class="col-lg-4 col-md-4">
-                                    <div class="card card-list mb-0 box-shadow-none">
-                                        <a href="#">
-                                            <span class="badge badge-success">For Sale</span>
-                                            <img class="card-img-top" src="img/list/1.png" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="card-title">House in Kent Street</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i> 127 Kent Sreet, Sydny, NEW 2000</h6>
-                                                <h2 class="text-success mb-0 mt-3">
-                                                    $130,000 <small>/month</small>
-                                                </h2>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>--%>
+                              
                             </div>
                         </div>
                     </div>
@@ -51,21 +37,7 @@
                                     <button class="btn btn-success" type="button">Register</button>
                      
                                 </div>
-                                <%--<div class="col-lg-4 col-md-4 ">
-                                    <div class="card card-list box-shadow-none">
-                                        <a href="#">
-                                            <span class="badge badge-danger">For Rent</span>
-                                            <img class="card-img-top" src="img/list/2.png" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Family House in Hudson</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i> Hoboken, NJ, USA</h6>
-                                                <h2 class="text-success mb-0 mt-3">
-                                                    $127,000 <small>/month</small>
-                                                </h2>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>--%>
+                               
                             </div>
                         </div>
                     </div>
@@ -89,37 +61,65 @@
         </div>
         <div class="container">
             <div class="row">
-                 <asp:Repeater ID="rptlatestprofile" runat="server" OnItemDataBound="rptlatestprofile_ItemDataBound">
-                                <ItemTemplate>
-                <div class="col-lg-4 col-md-4">
-                    <div class="card card-list">
-                        <a href="#">
-                            <span class="badge badge-success"><%# Eval("gender") %></span>
-                          <%--  <img class="card-img-top" src="img/list/1.png" alt=" <%# Eval("Photo") %>">--%>
-                             <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="card-img-top" height="100" style="object-fit: contain;">
-                                       <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id")%>' Visible="false" ></asp:Label> 
-                            <div class="card-body">
-                                <h5 class="card-title"> <%# Eval("Name") %></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-heart"></i><p> <%# Eval("Height") %>, <%# Eval("Occupation") %>, <%# Eval("Hightest_Education") %>, Rs. <%# Eval("Monthly_Income") %> </p></h6>
-                               <%-- <h2 class="text-success mb-0 mt-3">
-                                    $130,000 <small>/month</small>
-                                </h2>--%>
-                            </div>
-                            <div class="card-footer">
-                                <span> <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton>
-</span>
-                                <span> <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
-</span>
-                               
-                            </div>
-                        </a>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                </div>
+                        <asp:Repeater ID="rptlatestprofile" runat="server" OnItemDataBound="rptlatestprofile_ItemDataBound1">
+                            <ItemTemplate>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="card card-list card-list-view">
 
-                                    </ItemTemplate>
-                     </asp:Repeater>
-              
-            </div>
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-5 col-md-5">
+                                                <span class="badge badge-success"><%# Eval("gender") %></span>
+                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="300" width="300" style="object-fit: contain;">
+                                            </div>
+                                            <div class="col-lg-7 col-md-7">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%# Eval("Name") %></h5>
+                                                    <h5 class="card-title"></h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><b>Height : </b><%# Eval("Height") %>
+                                                        <br />
+                                                        <br />
+                                                        <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id") %>' Visible="false"></asp:Label>
+                                                        <%--  <b> Occupation :</b> <%# Eval("Occupation") %><br /><br />--%>
+                                                        <b>Hightest Education :</b><%# Eval("Hightest_Education") %><br />
+                                                        <br />
+                                                        <b>Monthly Income : Rs.</b>    <%# Eval("Monthly_Income") %> </h6>
+                                                  
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <hr />
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
+                            <asp:Repeater ID="rptPaging" runat="server" onitemcommand="rptPaging_ItemCommand">
+<ItemTemplate>
+<asp:LinkButton ID="lnkPage"
+style="padding:8px; margin:2px; background:#0033c4; border:solid 1px #666; color:#fff; font-weight:bold"
+CommandName="Page" CommandArgument="<%# Container.DataItem %>"
+runat="server" Font-Bold="True"><%# Container.DataItem %>
+</asp:LinkButton>
+</ItemTemplate>
+</asp:Repeater>
+                    </div>
            
         </div>
     </section>

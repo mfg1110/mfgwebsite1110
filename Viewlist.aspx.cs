@@ -57,6 +57,7 @@ public partial class Viewlist : System.Web.UI.Page
             loaddata();
             Bindtotalgenderview();
             Bindtotalsubcategoryview();
+            binddropdownlist();
         }
     }
     public void bindsubcast(int caste_ID)

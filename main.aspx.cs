@@ -113,6 +113,10 @@ public partial class main : System.Web.UI.Page
     }
     protected void rptlatestprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
+      
+    }
+    protected void rptlatestprofile_ItemDataBound1(object sender, RepeaterItemEventArgs e)
+    {
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
             bool colorflag = false;
@@ -136,19 +140,19 @@ public partial class main : System.Web.UI.Page
                     {
                         lnkexpressintrest.Text = "Intrested";
                         colorflag = true;
-                        
+
                         //lnkexpressintrest.BackColor = Color.Green;
                     }
                     else
                     {
                         lnkexpressintrest.Text = "Express Intrest";
                         colorflag = false;
-                       
+
                     }
                 }
 
 
-                if(colorflag == true)
+                if (colorflag == true)
                 {
                     lnkexpressintrest.CssClass = "btn btn-primary btn-sm";
                 }
@@ -160,5 +164,9 @@ public partial class main : System.Web.UI.Page
 
 
         }
+    }
+    protected void rptPaging_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+
     }
 }
