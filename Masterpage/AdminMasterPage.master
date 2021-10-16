@@ -96,7 +96,7 @@
                 </ul>
             </li>
 
-            
+             <li><a href="../Dashboard/Employeefeedback.aspx"><i class="icon-devices_other"></i><span class="menu-item">Employee Feedback</span> <span class="down-arrow"></span></a></li>
         </ul>
     </div>
     <div class="dashboard-wrapper dashboard-wrapper-lg">

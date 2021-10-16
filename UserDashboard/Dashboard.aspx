@@ -56,7 +56,7 @@
                 </asp:Repeater>
                 
                 
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+               <%-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="panel panel-grey spacer-sm">
                         <div class="social-details clearfix">
                             <div class="social-icon pull-left">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="panel panel-grey spacer-sm">
                         <div class="social-details clearfix">
@@ -229,11 +229,11 @@
                                     <ul class="rating-wrapper">
                                         <asp:Repeater ID="rptourdata" runat="server" OnItemDataBound="rptourdata_ItemDataBound">
                                             <ItemTemplate>
-                                                <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                                                <%--<div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
                                                 <li>
                                                      
                                                     <div class="user pull-left">
-                                                        <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="prf-img img-responsive" height="500" style="object-fit: contain;">
+                                                        <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img img-thumbnail"  style="object-fit: contain;height:100px;width:100px">
                                                     </div>
                                                     <div class="info">
                                                          <h4><%# Eval("Name") %></h4>
@@ -241,7 +241,54 @@
                                                     </div>
                                                         
                                                 </li>
-                                                 </div>
+                                                 </div>--%>
+
+                                                <div class="col-lg-4 col-md-4">
+                                    <div class="card card-list card-list-view">
+
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-5 col-md-5">
+                                              
+                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="150" width="150" style="object-fit: contain;height:150px;width:150px">
+                                            </div>
+                                            <div class="col-lg-7 col-md-7">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%# Eval("Name") %></h5>   <span class="badge badge-success"><%# Eval("gender") %></span>
+                                            <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id") %>' Visible="false"></asp:Label>
+                                                    <h6 class="card-subtitle mb-2 text-muted"><b>Height : </b><%# Eval("Height") %>
+                                                        <br />
+                                                        <br />
+                                                        <%--  <b> Occupation :</b> <%# Eval("Occupation") %><br /><br />--%>
+                                                        <b>Hightest Education :</b><%# Eval("Hightest_Education") %><br />
+                                                        <br />
+                                                        <b>Monthly Income : Rs.</b>    <%# Eval("Monthly_Income") %> </h6>
+                                                    <%--<h2 class="text-success mb-0 mt-3">$130,000 <small>/month</small></h2>--%>
+                                                    <%--  <div class="card-subtitle mb-2 text-muted"> <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-primary" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton></div>    --%>
+
+                                                    <%--                             --%>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <hr />
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-2">
+                                            </div>
+                                            <div class="col-lg-4">
+                                              <%--  <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton>--%>
+                                            </div>
+                                            <div class="col-lg-4">
+                                               <%-- <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>--%>
+                                            </div>
+                                            <div class="col-lg-2">
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    </div>
+                                </div>
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </ul>

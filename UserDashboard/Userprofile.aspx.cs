@@ -24,12 +24,19 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
         {
 
             id = Convert.ToInt32(idCookie.Value);
-           
+            if (Request.QueryString["Search_ID"] != null)
+            {
+                if (!IsPostBack)
+                {
+                    loaddatabySearch_ID();
+                }
+            }
             if (Request.QueryString["Biodata_id"] != null)
             {
                 if (!IsPostBack)
                 {
                     loaddata();
+                  
                     //  txtname.Text = Session["Fname"].ToString();
                 }
             }
@@ -38,7 +45,13 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
         {
             id = Convert.ToInt32(Session["id"].ToString());
 
-           
+            if (Request.QueryString["Search_ID"] != null)
+            {
+                if (!IsPostBack)
+                {
+                    loaddatabySearch_ID();
+                }
+            }
             if (Request.QueryString["Biodata_id"] != null)
             {
                 if (!IsPostBack)
@@ -49,6 +62,7 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
 
 
             }
+
 
         }
         else
@@ -75,6 +89,43 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
         try
         {
             ds = Registrationobj.getbiodatadetailbyBiodata_id(Convert.ToInt32(Request.QueryString["Biodata_id"].ToString()));
+            //rptdata.DataSource = ds;
+            //rptdata.DataBind();
+
+            rptuserprofile.DataSource = ds;
+            rptuserprofile.DataBind();
+            string s = ds.Tables[0].Rows[0]["Photo"].ToString();
+
+            Page.Title = "Rana Samaj Matrimony";
+            image.Content = "https://rana-samaj.com/Picture/" + s;
+            this.Page.Header.Controls.Add(image);
+
+            title.Attributes.Add("property", "og:title");
+            title.Content = ds.Tables[0].Rows[0]["Name"].ToString();
+            Page.Header.Controls.Add(title);
+
+            // Page.MetaDescription = ds.Tables[0].Rows[0]["Date_of_Birth"].ToString();
+            //description.Attributes.Add("property", "og:description");
+            //description.Content = ds.Tables[0].Rows[0]["Date_of_Birth"].ToString();
+            //this.Page.Header.Controls.Add(description);
+
+
+
+            image1.Attributes.Add("property", "og:image");
+            image1.Content = "https://rana-samaj.com/Picture/" + s;
+            Page.Header.Controls.Add(image1);
+        }
+        catch (Exception ex)
+        {
+            ex.ToString();
+        }
+    }
+
+    public void loaddatabySearch_ID()
+    {
+        try
+        {
+            ds = Registrationobj.getbiodatadetailbySearch_ID(Request.QueryString["Search_ID"].ToString());
             //rptdata.DataSource = ds;
             //rptdata.DataBind();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,36 +15,47 @@ public partial class UserDashboard_latestprofile : System.Web.UI.Page
     HtmlMeta title = new HtmlMeta();
     HtmlMeta image = new HtmlMeta();
     HtmlMeta image1 = new HtmlMeta();
+    int id;
     protected void Page_Load(object sender, EventArgs e)
     {
-        image.HttpEquiv = "image";
-        image.Name = "image";
         HttpCookie nameCookie = Request.Cookies["Name"];
         HttpCookie idCookie = Request.Cookies["id"];
         if (nameCookie != null)
         {
 
+            id = Convert.ToInt32(idCookie.Value);
 
-            //lbluname.Text = "ttkhj";
+            if (Request.QueryString["Biodata_id"] != null)
+            {
+               
+            }
+            if (!IsPostBack)
+            {
+                loaddata();
+                //  txtname.Text = Session["Fname"].ToString();
+            }
         }
-        else if (Session["UserID"] != null)
+        else if (Session["id"] != null)
         {
+            id = Convert.ToInt32(Session["id"].ToString());
+
+
+            if (Request.QueryString["Biodata_id"] != null)
+            {
+               
+
+
+            }
+            if (!IsPostBack)
+            {
+                loaddata();
+
+            }
 
         }
         else
         {
-
-        }
-        if (!IsPostBack)
-        {
-            //try
-            //{
-            loaddata();
-            //}
-            //catch(Exception ex)
-            //{
-            //    Response.Redirect("login.aspx");
-            //}
+            Response.Redirect("../Login.aspx");
         }
     }
     protected void rptourdata_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -79,5 +91,32 @@ public partial class UserDashboard_latestprofile : System.Web.UI.Page
     {
         return false;
     }
+    protected void lnkexpressintrest_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string[] commandArguments = btn.CommandArgument.Split(',');
+        string Biodata_id = commandArguments[0];
 
+        DataSet dsname = Registrationobj.getbiodatabyregid(id);
+
+        if (dsname.Tables[0].Rows.Count == 0)
+        {
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), id, "", id.ToString(), id.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
+        }
+        else
+        {
+            string name = dsname.Tables[0].Rows[0]["name"].ToString();
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), id, name, id.ToString(), id.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
+        }
+    }
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string Search_ID = btn.CommandArgument;
+        Response.Redirect("Userprofile.aspx?Search_ID=" + Search_ID);
+    }
 }

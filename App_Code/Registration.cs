@@ -2363,6 +2363,71 @@ namespace Registration
             
         }
 
+        public void Insert_Employee_Feedback(string Employee_Name, string Description, DateTime DATE1)
+        {
+            string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+            SqlConnection conn = new SqlConnection(dbconnection);
+            SqlCommand cmd1 = new SqlCommand("select * from Employee_Feedback_tb", conn);
+            conn.Open();
+
+
+            SqlDataReader dr = cmd1.ExecuteReader();
+            int Employee_Feedback_ID = 0;
+
+            while (dr.Read())
+            {
+
+                Employee_Feedback_ID = dr.GetInt32(0);
+
+
+            }
+            Employee_Feedback_ID = Employee_Feedback_ID + 1;
+            dr.Close();
+
+            using (SqlConnection con = new SqlConnection(dbconnection))
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Employee_Feedback_tb(Employee_Feedback_ID,Employee_Name,Description,DATE1) VALUES (@Employee_Feedback_ID,@Employee_Name,@Description,@DATE1)"))
+                {
+                    cmd.Parameters.AddWithValue("@Employee_Feedback_ID", Employee_Feedback_ID);
+                    cmd.Parameters.AddWithValue("@Employee_Name", Employee_Name);
+                    cmd.Parameters.AddWithValue("@Description", Description);
+                    cmd.Parameters.AddWithValue("@DATE1", DATE1);
+
+                    cmd.Connection = con;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+
+        }
+
+        [WebMethod]
+        public DataSet Get_Employee_Feedback()
+        {
+            string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(dbconnection))
+            {
+                using (SqlCommand cmd = new SqlCommand("select * from Employee_Feedback_tb", con))
+                {
+                    con.Open();
+                  
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    con.Close();
+                    // Create an instance of DataSet.
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+                    return ds;
+                }
+            }
+
+        }
+
     }
 
 }
