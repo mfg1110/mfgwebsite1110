@@ -292,12 +292,12 @@
                                         <div class="row no-gutters">
                                             <div class="col-lg-5 col-md-5">
                                                 <span class="badge badge-success"><%# Eval("gender") %></span>
-                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="300" width="300" style="object-fit: contain;">
+                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="150" width="150" style="object-fit: contain;margin-top:22px;height:150px;width:150px">
                                             </div>
                                             <div class="col-lg-7 col-md-7">
                                                 <div class="card-body">
                                                     <h5 class="card-title"><%# Eval("Name") %></h5>
-                                                    <h5 class="card-title"></h5>
+                                            <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id") %>' Visible="false"></asp:Label>
                                                     <h6 class="card-subtitle mb-2 text-muted"><b>Height : </b><%# Eval("Height") %>
                                                         <br />
                                                         <br />

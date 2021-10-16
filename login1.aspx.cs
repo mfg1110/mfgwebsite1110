@@ -155,7 +155,7 @@ public partial class login : System.Web.UI.Page
                         Session.Timeout = 525600;
                     }
 
-                    Response.Redirect("Dashboard/CMS.aspx", true);
+                    Response.Redirect("../Dashboard/Default.aspx", true);
                 }
                 else
                 {

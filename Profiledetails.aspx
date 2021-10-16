@@ -102,7 +102,7 @@
                                     <div class="list-icon">
                                          <i class="mdi mdi-minus"></i>
                                         <strong>Zodiac Sign :</strong>
-                                        <p class="mb-0"><%# Eval("Zodiac_Sign") %></p>
+                                        <p class="mb-0"><%# Eval("Starname") %></p>
                                     </div>
                                 </div>
                                 

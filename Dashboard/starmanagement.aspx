@@ -51,7 +51,7 @@
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="notice red" runat="server" ControlToValidate="txtstar" ValidationGroup="B" ForeColor="Red" ErrorMessage="Please Enter Star"></asp:RequiredFieldValidator>
                                 </div>
 
-                                <asp:LinkButton ID="lnkstarsubmit" runat="server" class="btn btn-info waves-effect waves-light" OnClick="lnkstarsubmit_Click" ValidationGroup="B"> ADD</asp:LinkButton>
+                                <asp:LinkButton ID="lnkstarsubmit" runat="server" class="btn btn-info waves-effect waves-light" OnClick="lnkstarsubmit_Click1" ValidationGroup="B">ADD</asp:LinkButton>
                         </div>
                     </div>
                 </div>

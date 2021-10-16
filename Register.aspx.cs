@@ -211,6 +211,35 @@ public partial class Register : System.Web.UI.Page
 
         return body;
     }
+
+    protected void lnkexpressintrest_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string[] commandArguments = btn.CommandArgument.Split(',');
+        string Biodata_id = commandArguments[0];
+
+        DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+
+        if (dsname.Tables[0].Rows.Count == 0)
+        {
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
+        }
+        else
+        {
+            string name = dsname.Tables[0].Rows[0]["name"].ToString();
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
+        }
+    }
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string Search_ID = btn.CommandArgument;
+        Response.Redirect("Profile1.aspx?Search_ID=" + Search_ID);
+    }
     protected void lnklogin_Click(object sender, EventArgs e)
     {
 

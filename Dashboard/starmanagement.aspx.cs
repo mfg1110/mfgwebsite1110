@@ -17,30 +17,16 @@ public partial class Dashboard_starmanagement : System.Web.UI.Page
     public static string id;
     protected void Page_Load(object sender, EventArgs e)
     {
-      
-            loadstar_details();
+      if(!IsPostBack)
+      {
+          loadstar_details();
        
+      }
+          
     }
     protected void lnkstarsubmit_Click(object sender, EventArgs e)
     {
-        if (lnkstarsubmit.Text == "ADD")
-        {
-            Registrationobj.ADD_Star(txtstar.Text,
-                                    "Admin",
-                                    "Admin",
-                                     DateTime.Now,
-                                     DateTime.Now
-                                     );
-            loadstar_details();
-        }
-        else if (lnkstarsubmit.Text == "Update")
-        {
-            Registrationobj.Updatestar(Convert.ToInt32(id),
-                                    txtstar.Text,
-                                    DateTime.Now
-                                    );
-            loadstar_details();
-        }
+       
     }
 
     public void loadstar_details()
@@ -77,5 +63,26 @@ public partial class Dashboard_starmanagement : System.Web.UI.Page
         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             txtstar.Text = ds.Tables[0].Rows[i]["Starname"].ToString();
         lnkstarsubmit.Text = "Update";
+    }
+    protected void lnkstarsubmit_Click1(object sender, EventArgs e)
+    {
+        if (lnkstarsubmit.Text == "ADD")
+        {
+            Registrationobj.ADD_Star(txtstar.Text,
+                                    "Admin",
+                                    "Admin",
+                                     DateTime.Now,
+                                     DateTime.Now
+                                     );
+            loadstar_details();
+        }
+        else if (lnkstarsubmit.Text == "Update")
+        {
+            Registrationobj.Updatestar(Convert.ToInt32(id),
+                                    txtstar.Text,
+                                    DateTime.Now
+                                    );
+            loadstar_details();
+        }
     }
 }
