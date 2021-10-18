@@ -72,6 +72,24 @@ public partial class UserDashboard_Interests : System.Web.UI.Page
             ex.ToString();
         }
     }
+    public string ProcessDataItem(object myDataItemValue)
+    {
+
+        if (myDataItemValue == "")
+        {
+
+            return "image_not_found.png";
+        }
+
+
+        return myDataItemValue.ToString();
+
+    }
+    public bool ThumbnailCallback()
+    {
+        return false;
+    }
+
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
         LinkButton btn = (LinkButton)(sender);
