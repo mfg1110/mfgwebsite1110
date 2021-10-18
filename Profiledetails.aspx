@@ -52,7 +52,7 @@
                                             <div class="row no-gutters">
 
                                                 <div class="col-sm-5">
-                                                    <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img img-thumbnail" height="300" width="300" style="object-fit: contain; margin-top: 22px; height: 150px; width: 150px">
+                                                    <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img img-thumbnail" height="300" width="300" style="margin-top: 22px; height: 150px; width: 150px">
                                                 </div>
                                                 <div class="col-sm-7">
                                                      <div class="card-body">
