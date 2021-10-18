@@ -98,13 +98,15 @@
                                     </div>
                                                    
                                 </div>
-                                                 <hr />
+                                               
                                             </ItemTemplate>
                                         </asp:Repeater>
+                                         
                                     </ul>
                                 </div>
+                                 <hr />
                             </div>
-
+                            
                         </div>
                         </div>
                     </div>

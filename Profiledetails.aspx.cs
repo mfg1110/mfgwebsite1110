@@ -135,6 +135,7 @@ public partial class Profiledetails : System.Web.UI.Page
             LinkButton lnkregister = (item.FindControl("lnkregister") as LinkButton);
             LinkButton lnkshortlist = (item.FindControl("lnkshortlist") as LinkButton);
             HtmlGenericControl lipatner = e.Item.FindControl("lipatner") as HtmlGenericControl;
+            HtmlGenericControl lipreference = e.Item.FindControl("lipreference") as HtmlGenericControl;
             //if (nameCookie != null)
             //{
             //    lnkregister.Visible = false;
@@ -158,6 +159,7 @@ public partial class Profiledetails : System.Web.UI.Page
             }
             else
             {
+                lipreference.Visible = true;
                 lipatner.Visible = true;
                 rptbasicpreference.DataSource = dspatnerpreference;
                 rptbasicpreference.DataBind();
