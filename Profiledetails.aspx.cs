@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -34,23 +35,36 @@ public partial class Profiledetails : System.Web.UI.Page
         }
 
     }
-    public string ProcessDataItem(object myDataItemValue)
+
+   
+
+    protected void lnkexpressintrest_Click(object sender, EventArgs e)
     {
+        LinkButton btn = (LinkButton)(sender);
+        string[] commandArguments = btn.CommandArgument.Split(',');
+        string Biodata_id = commandArguments[0];
 
-        if (myDataItemValue == "")
+        DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+
+        if (dsname.Tables[0].Rows.Count == 0)
         {
-
-            return "image_not_found.png";
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
         }
-
-
-        return myDataItemValue.ToString();
-
+        else
+        {
+            string name = dsname.Tables[0].Rows[0]["name"].ToString();
+            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+            btn.Text = "Intrested";
+            btn.BackColor = Color.Green;
+        }
     }
+  
     public void loaddata()
     {
-        try
-        {
+        //try
+        //{
             ds = Registrationobj.getbiodatadetailbySearch_ID(Request.QueryString["Search_ID"].ToString());
             //rptdata.DataSource = ds;
             //rptdata.DataBind();
@@ -77,11 +91,11 @@ public partial class Profiledetails : System.Web.UI.Page
             image1.Attributes.Add("property", "og:image");
             image1.Content = "https://rana-samaj.com/Picture/" + s;
             Page.Header.Controls.Add(image1);
-        }
-        catch (Exception ex)
-        {
-            ex.ToString();
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    ex.ToString();
+        //}
     }
 
     protected void rptprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -96,6 +110,69 @@ public partial class Profiledetails : System.Web.UI.Page
 
             rptfeacheredprofile.DataSource = ds;
             rptfeacheredprofile.DataBind();
+
+
+            RepeaterItem item = e.Item;
+            //string maritialstatus = (item.FindControl("lblmaritialstatus") as Label).Text;
+            //Label noofchild = (item.FindControl("lblnoofchild") as Label);
+            Label lblbiodata = (item.FindControl("lblbiodata") as Label);
+            Label lblgender = (item.FindControl("lblgender") as Label);
+            Label lblg = (item.FindControl("lblg") as Label);
+            Label lblg1 = (item.FindControl("lblg1") as Label);
+            if (lblgender.Text == "Male")
+            {
+                lblg.Text = "His";
+                lblg1.Text = "His";
+            }
+            else if (lblgender.Text == "Female")
+            {
+                lblg.Text = "Her";
+                lblg1.Text = "Her";
+            }
+            Repeater rptbasicpreference =  (Repeater)e.Item.FindControl("rptbasicpreference");
+            HttpCookie nameCookie = Request.Cookies["Name"];
+            HttpCookie idCookie = Request.Cookies["id"];
+            LinkButton lnkregister = (item.FindControl("lnkregister") as LinkButton);
+            LinkButton lnkshortlist = (item.FindControl("lnkshortlist") as LinkButton);
+            HtmlGenericControl lipatner = e.Item.FindControl("lipatner") as HtmlGenericControl;
+            //if (nameCookie != null)
+            //{
+            //    lnkregister.Visible = false;
+            //    lnkshortlist.Visible = true;
+            //}
+            //else if (Session["id"] != null)
+            //{
+            //    lnkregister.Visible = false;
+            //    lnkshortlist.Visible = true;
+            //}
+            //else
+            //{
+            //    lnkregister.Visible = true;
+            //    lnkshortlist.Visible = false;
+            //}
+            DataSet dspatnerpreference;
+            dspatnerpreference = Registrationobj.getpatnerpreferencebyid(Convert.ToInt32(lblbiodata.Text));
+            if (dspatnerpreference.Tables[0].Rows.Count == 0)
+            {
+                lipatner.Visible = false;
+            }
+            else
+            {
+                lipatner.Visible = true;
+                rptbasicpreference.DataSource = dspatnerpreference;
+                rptbasicpreference.DataBind();
+            }
+
+            //DataSet dsshortlisted = Registrationobj.getshortlistbyprofileid(Convert.ToInt32(lblbiodata.Text));
+            //if (dsshortlisted.Tables[0].Rows.Count > 0)
+            //{
+            //    lnkshortlist.Text = "Shortlisted";
+            //}
+            //else
+            //{
+            //    lnkshortlist.Text = "Shortlist";
+            //}
+         
         }
     }
 
@@ -110,5 +187,30 @@ public partial class Profiledetails : System.Web.UI.Page
         rptprofile.DataSource = ds;
         rptprofile.DataBind();
     }
+    public string ProcessMyDataItem(object myValue)
+    {
+        if (myValue == "")
+        {
+            return "Data Not Added";
+        }
+        if (String.Equals(myValue, "0"))
+        {
+            return "Data Not Added";
+        }
+        return myValue.ToString();
+    }
 
+
+
+    public string ProcessDataItem(object myDataItemValue)
+    {
+        if (myDataItemValue == "")
+        {
+
+            return "image_not_found.png";
+        }
+
+        return myDataItemValue.ToString();
+
+    }
 }

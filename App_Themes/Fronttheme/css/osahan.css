@@ -37,9 +37,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: #34495e;
 }
 p {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 22px;
-	color:#AAAAAA;
+	/*color:#AAAAAA;*/
+    color:#100202;
 }
 img {
     height: auto;
