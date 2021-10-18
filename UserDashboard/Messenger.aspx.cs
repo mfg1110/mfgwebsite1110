@@ -215,4 +215,19 @@ public partial class Messenger : System.Web.UI.Page
             FooterTemplate.FindControl("trEmpty").Visible = true;
         }
     }
+    protected void lnkdelete_Command(object sender, CommandEventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string ID = btn.CommandArgument;
+        Registrationobj.deletechat(Convert.ToInt32(ID));
+        LoadChatbox();
+    }
+    protected void linkdeleteall_Command(object sender, CommandEventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string Sender = btn.CommandArgument;
+        Registrationobj.clearchat(Sender);
+        LoadChatbox();
+        loaddata();
+    }
 }

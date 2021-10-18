@@ -363,7 +363,12 @@
                                                 <img src="../image/user.png" class="rounded-circle user_img" />
 
                                                          <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
+                                                 <div style="float:right">
+                                           <asp:LinkButton ID="linkdeleteall" runat="server" CommandArgument='<%#Eval("Sender")%>' OnCommand="linkdeleteall_Command" ><i class="glyphicon glyphicon-trash"></i>Clear Chat </asp:LinkButton>
+                                         </div>
                                             </li>
+
+                                    
                                         
                                         
                         </ul>
@@ -396,13 +401,21 @@
                                     <div class="d-flex justify-content-start mb-4">
                                         <asp:DataList ID="DataList2" runat="server" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Center" RepeatLayout="Table">
                                             <ItemTemplate>
+                                                  <div style="float:right">  </div>
                                                 <div class="<%# GetStyleForMsgList(Eval("Sender").ToString()) %>  MainChatListClass">
+                                                    
                                                     <asp:Label ID="Label1" runat="server" Text='<%# GetPerfactName(Eval("Sender").ToString()) %>'></asp:Label>
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>'></asp:Label>
+                                                   
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>'></asp:Label> 
+                                                  
                                                     <br />
+                                                 
                                                     <span class="time_date" style="color: white"><%# Eval("Date1") %></span>
+                                                    <div style="float:right">
+                                                       <asp:LinkButton ID="lnkdelete" ForeColor="White" runat="server" CommandArgument='<%#Eval("ID")%>' OnCommand="lnkdelete_Command" ><i class="glyphicon glyphicon-trash"></i> </asp:LinkButton>
+                                                        </div>
                                                 </div>
-
+                                                
                                             </ItemTemplate>
                                         </asp:DataList>
 

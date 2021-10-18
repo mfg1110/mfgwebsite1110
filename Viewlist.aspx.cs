@@ -28,7 +28,7 @@ public partial class Viewlist : System.Web.UI.Page
         {
 
             regid = Convert.ToInt32(idCookie.Value);
-
+            sidebar.Visible = true;
             if (Request.QueryString["regid"] != null)
             {
 
@@ -39,7 +39,7 @@ public partial class Viewlist : System.Web.UI.Page
             regid = Convert.ToInt32(Session["id"].ToString());
 
             //txtpostedby.Text = Session["Fname"].ToString();
-
+            sidebar.Visible = true;
             if (Request.QueryString["regid"] != null)
             {
 

@@ -70,6 +70,8 @@
                         </div>
                     </div>
                 </div>--%>
+                  <asp:Repeater ID="rpttotalprofile" runat="server">
+                    <ItemTemplate>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="panel panel-grey spacer-sm">
                         <div class="social-details clearfix">
@@ -77,13 +79,15 @@
                                 <div class="round-icon pink-icon"><i class="icon-verified_user"></i></div>
                             </div>
                             <div class="social-num">
-                                <h4>09<span class="label pink-bg hidden-md">9+</span></h4>
+                                <h4><%#Eval("total_record")%></h4>
                                 <p>Total Profiles</p>
                               
                             </div>
                         </div>
                     </div>
                 </div>
+                        </ItemTemplate>
+                      </asp:Repeater>
             </div>
             <div class="row gutter">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">

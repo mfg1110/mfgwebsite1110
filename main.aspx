@@ -80,9 +80,7 @@
                                                         <br />
                                                         <asp:Label ID="lblbiodataid" runat="server" Text='<%# Eval("Biodata_id") %>' Visible="false"></asp:Label>
                                                         <%--  <b> Occupation :</b> <%# Eval("Occupation") %><br /><br />--%>
-                                                        <b>Hightest Education :</b><%# Eval("Hightest_Education") %><br />
-                                                        <br />
-                                                        <b>Monthly Income : Rs.</b>    <%# Eval("Monthly_Income") %> </h6>
+                                                        <b>Hightest Education :</b><%# Eval("Hightest_Education") %><br /><br /><b>Monthly Income : Rs.</b>    <%# Eval("Monthly_Income") %> </h6>
                                                   
                                                 </div>
 
@@ -276,7 +274,7 @@ runat="server" Font-Bold="True"><%# Container.DataItem %>
     <section class="section-padding bg-dark text-center">
         <h2 class="text-white mt-0">Join With US</h2>
        
-        <button type="button" class="btn btn-success">Contact Us</button> <button type="button" class="btn btn-outline-success">Read More</button>
+      <a href="Contactus.aspx" class="btn btn-success">Contact Us</a>
     </section>
 
     

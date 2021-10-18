@@ -1872,11 +1872,32 @@ namespace Registration
         }
 
         [WebMethod]
+        public DataSet getTotalprofile()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT count( * ) as total_record FROM Biodata np where Deactivate_flag='false'", con);
+
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
+
+        [WebMethod]
         public DataSet getbiodatadetailbysubcat(string subcat,int id)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Biodata np WHERE Visibility_Flag='true' and Deactivate_flag='true' and id!=@id and np.Subcast=@Subcast ORDER BY CreatedByDateTime desc;", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Biodata np WHERE Visibility_Flag='true' and Deactivate_flag='false' and id!=@id and np.Subcast=@Subcast ORDER BY CreatedByDateTime desc;", con);
             cmd.Parameters.AddWithValue("@Subcast", subcat);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
@@ -2173,6 +2194,50 @@ namespace Registration
                 using (SqlCommand cmd = new SqlCommand("delete Star_tb  WHERE Star_id=@Star_id"))
                 {
                     cmd.Parameters.AddWithValue("@Star_id", Star_id);
+
+
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+
+        }
+
+        [WebMethod]
+        public void deletechat(int id)
+        {
+            string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(dbconnection))
+            {
+                using (SqlCommand cmd = new SqlCommand("delete chat WHERE ID=@ID"))
+                {
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    con.Close();
+                }
+            }
+
+        }
+
+        [WebMethod]
+        public void clearchat(string Sender)
+        {
+            string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(dbconnection))
+            {
+                using (SqlCommand cmd = new SqlCommand("delete chat WHERE Sender=@Sender"))
+                {
+                    cmd.Parameters.AddWithValue("@Sender", Sender);
 
 
                     cmd.Connection = con;

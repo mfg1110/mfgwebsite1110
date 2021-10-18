@@ -249,7 +249,7 @@
                             </asp:UpdatePanel>
                             </div>
 </div>
-
+                    <div id="sidebar" runat="server" visible="false">
                     <div class="card sidebar-card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">Find that special someone By Subcaste</h5>
@@ -279,7 +279,7 @@
                             </asp:Repeater>
                         </div>
                     </div>
-
+                    </div>
                 </div>
                 <div class="col-lg-8 col-md-8">
 
