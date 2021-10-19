@@ -223,7 +223,7 @@ public partial class Viewlist : System.Web.UI.Page
                     else
                     {
                         lnkexpressintrest.Text = "Express Intrest";
-                        lnkexpressintrest.BackColor = Color.Blue;
+                       
                     }
                 }
             }

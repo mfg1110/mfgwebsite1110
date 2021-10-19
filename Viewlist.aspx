@@ -337,29 +337,22 @@
 
                             <asp:Repeater ID="rptPaging" runat="server" onitemcommand="rptPaging_ItemCommand">
 <ItemTemplate>
-<asp:LinkButton ID="lnkPage"
+    <nav class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            
+                            <li class="page-item active"><asp:LinkButton ID="lnkPage"
 style="padding:8px; margin:2px; background:#0033c4; border:solid 1px #666; color:#fff; font-weight:bold"
 CommandName="Page" CommandArgument="<%# Container.DataItem %>"
 runat="server" Font-Bold="True"><%# Container.DataItem %>
-</asp:LinkButton>
+</asp:LinkButton></li>
+                            
+                        </ul>
+                    </nav>
+
 </ItemTemplate>
 </asp:Repeater>
                     </div>
-                    <nav class="mt-5">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1"><i class="mdi mdi-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">10</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </nav>
+                    
                 </div>
 
             </div>
