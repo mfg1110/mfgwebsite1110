@@ -29,14 +29,13 @@ public partial class UserDashboard_Deactive_Profile : System.Web.UI.Page
                     Registrationobj.deactivate("true", Convert.ToInt32(regid));
                     lblmsg1.Visible = false;
                     lblmsgsucess.Text = "Your Profile Successfully Deactivated";
-                    lbldeactive.Text = "Activated Profile";
+                   
                 }
                 else if (ds.Tables[0].Rows[0]["Deactivate_flag"].ToString() == "true")
                 {
                     Registrationobj.deactivate("false", Convert.ToInt32(regid));
                     lblmsg1.Visible = false;
                     lblmsgsucess.Text = "Your Profile Successfully activated";
-                    lbldeactive.Text = "Deactive Profile";
                 }
 
             }

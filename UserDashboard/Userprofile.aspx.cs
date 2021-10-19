@@ -40,6 +40,8 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
                     //  txtname.Text = Session["Fname"].ToString();
                 }
             }
+
+           
         }
         else if (Session["id"] != null)
         {
@@ -171,7 +173,7 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
         else if (e.CommandName == "DeactivateProfile")
         {
             Response.Write("<script>alert('" + e.CommandArgument.ToString() + "');</script>");
-            Response.Redirect("../UserDashboard/Profile.aspx?Biodata_id=" + e.CommandArgument.ToString());
+            Response.Redirect("../UserDashboard/Deactive_Profile.aspx?regid=" + e.CommandArgument.ToString());
         }
         else if (e.CommandName == "Delete")
         {
@@ -179,5 +181,29 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
             Response.Redirect("../UserDashboard/Delete.aspx?regid=" + e.CommandArgument.ToString());
         }
            
+    }
+    protected void rptuserprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            ds = Registrationobj.getbiodatabyregid(id);
+            RepeaterItem item = e.Item;
+
+            LinkButton LinkButton1 = (item.FindControl("LinkButton1") as LinkButton);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+
+                if (ds.Tables[0].Rows[0]["Deactivate_flag"].ToString() == "true")
+                {
+                    LinkButton1.Text = "Activated Profile";
+                }
+                else
+                {
+                    LinkButton1.Text = "Deactive Profile";
+                }
+                // lideletebio.Visible = true;
+
+            }
+        }
     }
 }

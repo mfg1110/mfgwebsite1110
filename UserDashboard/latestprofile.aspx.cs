@@ -65,7 +65,7 @@ public partial class UserDashboard_latestprofile : System.Web.UI.Page
 
     public void loaddata()
     {
-        ds = Registrationobj.getbiodatadetail();
+        ds = Registrationobj.getbiodatadetailbyid(id);
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
 

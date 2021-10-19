@@ -12,7 +12,7 @@
 
     <div class="main-container">
         <div class="container-fluid">
-            <asp:Repeater ID="rptuserprofile" runat="server" OnItemCommand="rptuserprofile_ItemCommand">
+            <asp:Repeater ID="rptuserprofile" runat="server" OnItemCommand="rptuserprofile_ItemCommand" OnItemDataBound="rptuserprofile_ItemDataBound">
                 <ItemTemplate>
                     <div class="spacer-xs">
                         <div class="row gutter">

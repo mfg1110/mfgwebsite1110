@@ -81,7 +81,12 @@ public partial class UserDashboard_shortlistprofile : System.Web.UI.Page
     {
         return false;
     }
-
+    protected void LinkButton1_Click(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        string Search_ID = btn.CommandArgument;
+        Response.Redirect("../Profiledetails.aspx?Search_ID=" + Search_ID);
+    }
     protected void rptourdata_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
 

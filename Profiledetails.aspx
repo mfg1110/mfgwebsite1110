@@ -35,7 +35,9 @@
                                                             <h5 class="card-title mb-4"><%# Eval("Name") %></h5>
                                                             <h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-phone"></i><%# Eval("Home_Mobile1") %></h6>
                                                             <h6 class="card-subtitle mb-3 text-muted"><i class="mdi mdi-email"></i><%# Eval("Email_Address_1") %></h6>
-
+                                                             <asp:LinkButton ID="lnkchat"  runat="server" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("id") %>' Visible="true" OnCommand="lnkchat_Command">Chat</asp:LinkButton>
+                                       <asp:LinkButton ID="lnkshortlist" CommandArgument='<%# Eval("Biodata_id") %>'  CssClass="btn btn-success btn-sm" runat="server"  OnCommand="lnkshortlist_Command">Shortlist</asp:LinkButton>
+                                                            
                                                         </div>
                                                     </a>
                                                 </div>

@@ -162,25 +162,28 @@ public partial class Profiledetails : System.Web.UI.Page
             Repeater rptbasicpreference =  (Repeater)e.Item.FindControl("rptbasicpreference");
             HttpCookie nameCookie = Request.Cookies["Name"];
             HttpCookie idCookie = Request.Cookies["id"];
-            LinkButton lnkregister = (item.FindControl("lnkregister") as LinkButton);
+            LinkButton lnkchat = (item.FindControl("lnkchat") as LinkButton);
             LinkButton lnkshortlist = (item.FindControl("lnkshortlist") as LinkButton);
             HtmlGenericControl lipatner = e.Item.FindControl("lipatner") as HtmlGenericControl;
             HtmlGenericControl lipreference = e.Item.FindControl("lipreference") as HtmlGenericControl;
-            //if (nameCookie != null)
-            //{
-            //    lnkregister.Visible = false;
-            //    lnkshortlist.Visible = true;
-            //}
-            //else if (Session["id"] != null)
-            //{
-            //    lnkregister.Visible = false;
-            //    lnkshortlist.Visible = true;
-            //}
-            //else
-            //{
-            //    lnkregister.Visible = true;
-            //    lnkshortlist.Visible = false;
-            //}
+            if (nameCookie != null)
+            {
+                
+                lnkshortlist.Visible = true;
+                lnkchat.Visible = true;
+            }
+            else if (Session["id"] != null)
+            {
+             
+                lnkshortlist.Visible = true;
+                lnkchat.Visible = true;
+            }
+            else
+            {
+               
+                lnkshortlist.Visible = false;
+                lnkchat.Visible = false;
+            }
             DataSet dspatnerpreference;
             dspatnerpreference = Registrationobj.getpatnerpreferencebyid(Convert.ToInt32(lblbiodata.Text));
             if (dspatnerpreference.Tables[0].Rows.Count == 0)
@@ -195,15 +198,18 @@ public partial class Profiledetails : System.Web.UI.Page
                 rptbasicpreference.DataBind();
             }
 
-            //DataSet dsshortlisted = Registrationobj.getshortlistbyprofileid(Convert.ToInt32(lblbiodata.Text));
-            //if (dsshortlisted.Tables[0].Rows.Count > 0)
-            //{
-            //    lnkshortlist.Text = "Shortlisted";
-            //}
-            //else
-            //{
-            //    lnkshortlist.Text = "Shortlist";
-            //}
+            DataSet dsshortlisted = Registrationobj.getshortlistbyprofileid(Convert.ToInt32(lblbiodata.Text));
+            if (dsshortlisted.Tables[0].Rows.Count > 0)
+            {
+                lnkshortlist.ForeColor = Color.White;
+                lnkshortlist.BackColor = Color.Green;
+                lnkshortlist.BorderColor = Color.Green;
+                lnkshortlist.Text = "Shortlisted";
+            }
+            else
+            {
+                lnkshortlist.Text = "Shortlist";
+            }
          
         }
     }
@@ -244,5 +250,44 @@ public partial class Profiledetails : System.Web.UI.Page
 
         return myDataItemValue.ToString();
 
+    }
+    protected void lnkshortlist_Command(object sender, CommandEventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        profileid = Convert.ToInt32(e.CommandArgument.ToString());
+        try
+        {
+            if (btn.Text == "Shortlist")
+            {
+                Registrationobj.ADD_Shortlist(regid,
+                                              profileid,
+                                              regid.ToString(),
+                                              regid.ToString(),
+                                              DateTime.Now,
+                                              DateTime.Now
+                                              );
+                btn.Text = "Shortlisted";
+            }
+            else if (btn.Text == "Shortlisted")
+            {
+                Registrationobj.Remove_Shortlist(regid,
+                                             profileid
+                                             );
+                btn.Text = "Shortlist";
+            }
+        }
+        catch (Exception ex)
+        {
+            ClientScript.RegisterStartupScript(typeof(Page), "SomeError", "<script type='text/javascript'>alert('Error!');</script>");
+
+        }
+    }
+
+
+    protected void lnkchat_Command(object sender, CommandEventArgs e)
+    {
+        LinkButton btn = (LinkButton)(sender);
+        profileid = Convert.ToInt32(e.CommandArgument.ToString());
+        Response.Redirect("UserDashboard/Messenger.aspx?id=" + profileid);
     }
 }

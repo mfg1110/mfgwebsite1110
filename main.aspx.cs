@@ -145,6 +145,9 @@ public partial class main : System.Web.UI.Page
                 {
                     if (dsexpressintrest.Tables[0].Rows[i]["Biodata_id"].ToString() == lblbiodataid.Text)
                     {
+                        lnkexpressintrest.ForeColor = Color.White;
+                        lnkexpressintrest.BackColor = Color.Green;
+                        lnkexpressintrest.BorderColor = Color.Green;
                         lnkexpressintrest.Text = "Intrested";
                         colorflag = true;
 

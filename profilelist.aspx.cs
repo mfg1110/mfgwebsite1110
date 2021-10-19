@@ -103,6 +103,7 @@ public partial class profilelist : System.Web.UI.Page
             Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
             btn.Text = "Intrested";
             btn.BackColor = Color.Green;
+            btn.BorderColor = Color.Green;
         }
         else
         {
@@ -110,6 +111,7 @@ public partial class profilelist : System.Web.UI.Page
             Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
             btn.Text = "Intrested";
             btn.BackColor = Color.Green;
+            btn.BorderColor = Color.Green;
         }
     }
 }
