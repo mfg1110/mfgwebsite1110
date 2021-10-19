@@ -214,25 +214,25 @@ public partial class Register : System.Web.UI.Page
 
     protected void lnkexpressintrest_Click(object sender, EventArgs e)
     {
-        LinkButton btn = (LinkButton)(sender);
-        string[] commandArguments = btn.CommandArgument.Split(',');
-        string Biodata_id = commandArguments[0];
+        //LinkButton btn = (LinkButton)(sender);
+        //string[] commandArguments = btn.CommandArgument.Split(',');
+        //string Biodata_id = commandArguments[0];
 
-        DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+        //DataSet dsname = Registrationobj.getbiodatabyregid(regid);
 
-        if (dsname.Tables[0].Rows.Count == 0)
-        {
-            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
-            btn.Text = "Intrested";
-            btn.BackColor = Color.Green;
-        }
-        else
-        {
-            string name = dsname.Tables[0].Rows[0]["name"].ToString();
-            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
-            btn.Text = "Intrested";
-            btn.BackColor = Color.Green;
-        }
+        //if (dsname.Tables[0].Rows.Count == 0)
+        //{
+        //    Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+        //    btn.Text = "Intrested";
+        //    btn.BackColor = Color.Green;
+        //}
+        //else
+        //{
+        //    string name = dsname.Tables[0].Rows[0]["name"].ToString();
+        //    Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+        //    btn.Text = "Intrested";
+        //    btn.BackColor = Color.Green;
+        //}
     }
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
