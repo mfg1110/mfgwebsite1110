@@ -34,8 +34,8 @@
                                  <div class="col-lg-12 col-md-8">
                                     <h1 class="mt-5 mb-4 text-white">FINDING LOVE IS BEING OVERLY DIFFICULT IN TODAY’S WORLD. BUT ONCE YOU HAVE FOUND IT, THERE IS NOTHING BETTER</h1>
                                     <h6 class="mb-5 text-white">It is indeed true that everyone wishes to be loved as it makes them feel special and cared for.</h6>
-                                    <button class="btn btn-success" type="button">Register</button>
-                     
+                                   
+                                    <a href="Register.aspx" class="btn btn-success">Register</a>
                                 </div>
                                
                             </div>

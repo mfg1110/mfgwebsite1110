@@ -19,6 +19,36 @@ public partial class Profiledetails : System.Web.UI.Page
     HtmlMeta image1 = new HtmlMeta();
     protected void Page_Load(object sender, EventArgs e)
     {
+        HttpCookie nameCookie = Request.Cookies["Name"];
+        HttpCookie idCookie = Request.Cookies["id"];
+        if (nameCookie != null)
+        {
+
+            regid = Convert.ToInt32(idCookie.Value);
+           
+            if (Request.QueryString["regid"] != null)
+            {
+
+            }
+        }
+        else if (Session["id"] != null)
+        {
+            regid = Convert.ToInt32(Session["id"].ToString());
+
+            //txtpostedby.Text = Session["Fname"].ToString();
+           
+            if (Request.QueryString["regid"] != null)
+            {
+
+
+            }
+
+        }
+        else
+        {
+
+        }
+
         if (Request.QueryString["Search_ID"] != null)
         {
             image.HttpEquiv = "image";
@@ -106,7 +136,7 @@ public partial class Profiledetails : System.Web.UI.Page
 
             Repeater rptfeacheredprofile = (Repeater)e.Item.FindControl("rptfeacheredprofile");
 
-            ds = Registrationobj.getbiodatadetail();
+            ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
 
             rptfeacheredprofile.DataSource = ds;
             rptfeacheredprofile.DataBind();

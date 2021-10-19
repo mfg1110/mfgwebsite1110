@@ -100,7 +100,7 @@
             <section class="section-padding footer bg-white">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-3">
+                        <div class="col-lg-6 col-md-6">
                             <h4 class="mb-5"><a class="text-success logo" href="index.html"><i class="mdi mdi-heart"></i><strong>Matrimony</strong> For Gujarati</a></h4>
                           <%--  <p>86 Petersham town, New South wales<br>
                                 Waedll Steet, Australia PA 6550</p>--%>
@@ -108,7 +108,7 @@
                             <p class="mb-0"><a class="text-success" href="#"><span class="__cf_email__" data-cfemail="b0d9d1dddfc3d1d8d1def0d7ddd1d9dc9ed3dfdd">[support@matrimonyforgujarati.com]</span></a></p>
                             <p class="mb-0"><a class="text-info" href="https://www.matrimonyforgujarati.com">www.matrimonyforgujarati.com</a></p>
                         </div>
-                        <div class="col-lg-2 col-md-2">
+                       <%-- <div class="col-lg-2 col-md-2">
                             <h6 class="mb-4">COMPANY</h6>
                             <ul>
                                 <li><a href="#">About us</a></li>
@@ -119,8 +119,8 @@
                                 <ul>
                                 </ul>
                             </ul>
-                        </div>
-                        <div class="col-lg-2 col-md-2">
+                        </div>--%>
+                        <%--<div class="col-lg-2 col-md-2">
                             <h6 class="mb-4">LEARN MORE</h6>
                             <ul>
                                 <li><a href="#">Privacy</a></li>
@@ -131,15 +131,15 @@
                                 <ul>
                                 </ul>
                             </ul>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <h6 class="mb-4">NEWSLETTER</h6>
-                            <div class="input-group">
+                        </div>--%>
+                        <div class="col-lg-6 col-md-6">
+                           <%-- <h6 class="mb-4">NEWSLETTER</h6>--%>
+                           <%-- <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Email Address..." aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="button"><i class="mdi mdi-arrow-right"></i></button>
                                 </div>
-                            </div>
+                            </div>--%>
                             <h6 class="mb-4 mt-5">GET IN TOUCH</h6>
                             <div class="footer-social">
                                 <a href="#"><i class="mdi mdi-facebook"></i></a>

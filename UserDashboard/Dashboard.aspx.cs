@@ -93,7 +93,7 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
 
     public void loaddata()
     {
-        ds = Registrationobj.getbiodatadetail();
+        ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
 

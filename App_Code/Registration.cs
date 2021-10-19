@@ -570,7 +570,7 @@ namespace Registration
         }
 
         [WebMethod]
-        public DataSet getbiodatadetail(int id)
+        public DataSet getbiodatadetailbyid(int id)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 

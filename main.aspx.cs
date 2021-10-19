@@ -74,7 +74,7 @@ public partial class main : System.Web.UI.Page
     }
     public void loaddata()
     {
-        ds = Registrationobj.getbiodatadetail();
+        ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
 
@@ -94,22 +94,29 @@ public partial class main : System.Web.UI.Page
         LinkButton btn = (LinkButton)(sender);
         string[] commandArguments = btn.CommandArgument.Split(',');
         string Biodata_id = commandArguments[0];
-
-        DataSet dsname = Registrationobj.getbiodatabyregid(regid);
-
-        if (dsname.Tables[0].Rows.Count == 0)
+        if (btn.Text == "Express Intrest")
         {
-            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
-            btn.Text = "Intrested";
-            btn.BackColor = Color.Green;
+            DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+
+            if (dsname.Tables[0].Rows.Count == 0)
+            {
+                Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+                btn.Text = "Intrested";
+                btn.BackColor = Color.Green;
+            }
+            else
+            {
+                string name = dsname.Tables[0].Rows[0]["name"].ToString();
+                Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
+                btn.Text = "Intrested";
+                btn.BackColor = Color.Green;
+            }
         }
         else
         {
-            string name = dsname.Tables[0].Rows[0]["name"].ToString();
-            Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
-            btn.Text = "Intrested";
-            btn.BackColor = Color.Green;
+
         }
+        
     }
     protected void rptlatestprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
