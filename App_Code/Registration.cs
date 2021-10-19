@@ -685,7 +685,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Biodata bio,Caste_tb ct,Subcaste_tb st where Visibility_Flag='True' and ct.Caste_name=bio.cast and st.Subcaste_name=bio.Subcast and ct.Caste_ID=st.Caste_ID and bio.Biodata_id=@Biodata_id", con);
+            SqlCommand cmd = new SqlCommand("select * from Biodata bio,Caste_tb ct,Subcaste_tb st,Star_tb sta where bio.Zodiac_Sign=sta.Star_id and  Visibility_Flag='True' and ct.Caste_name=bio.cast and st.Subcaste_name=bio.Subcast and ct.Caste_ID=st.Caste_ID and bio.Biodata_id=@Biodata_id", con);
             cmd.Parameters.AddWithValue("@Biodata_id", Biodata_id);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
