@@ -178,10 +178,10 @@ public partial class Register : System.Web.UI.Page
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential("matrimonyforgujarati@gmail.com", "oHm@1110");
-                smtp.UseDefaultCredentials = true;
+                NetworkCredential NetworkCred = new NetworkCredential("ohmsoftwaresinc.com", "v@HT6fsT$@vzy");
+                smtp.UseDefaultCredentials = false; 
                 smtp.Credentials = NetworkCred;
-                smtp.Port = 625;
+                smtp.Port = 587;
                 smtp.Send(mm);
                 //Console.WriteLine(i);
 
