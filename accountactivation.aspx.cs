@@ -34,7 +34,13 @@ public partial class accountactivation : System.Web.UI.Page
                             con.Close();
 
                             lblmsg.Text = "Activation successfull.";
+                            SqlCommand cmdinsert = new SqlCommand("Update Ranasamaj_Registration SET status='Active'");
+                            cmdinsert.CommandType = CommandType.Text;
 
+                            cmdinsert.Connection = con;
+                            con.Open();
+                            cmdinsert.ExecuteNonQuery();
+                            con.Close();
                         }
                         catch (SqlException ex)
                         {
