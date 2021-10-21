@@ -10,7 +10,7 @@ public partial class Login : System.Web.UI.Page
 {
     Registration.Registration Registrationobj = new Registration.Registration();
     string Videostrname = "", Videoextension, videopath;
-    DataSet ds;
+    DataSet ds,dsuseractivation;
     string flaguserexist = "", status;
     public string theVerificationCode;
     Boolean flag;
@@ -33,7 +33,8 @@ public partial class Login : System.Web.UI.Page
                     string namevar = ds.Tables[0].Rows[i]["Fname"].ToString();
                     string User_ID = ds.Tables[0].Rows[i]["id"].ToString();
                     //string Token = ds.Tables[0].Rows[i]["Token"].ToString();
-                    if (status == "Active")
+                    dsuseractivation = Registrationobj.Getuserverifyornot(User_ID);
+                    if (dsuseractivation.Tables[0].Rows.Count==null)
                     {
 
                         if (txtuname.Text == email && txtpassword.Text == passwordvar)
