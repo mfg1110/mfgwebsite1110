@@ -57,16 +57,12 @@ public partial class Forgotpassword : System.Web.UI.Page
 
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
-                smtp.Timeout = 99999;
-                smtp.Host = "smtp.ionos.com";
-
-                //NetworkCredential NetworkCred = new NetworkCredential("support@matrimonyforgujarati.com", "oHm@1110");
-                NetworkCredential NetworkCred = new NetworkCredential("no-reply@rana-samaj.com", "oHm@1110");
-                smtp.UseDefaultCredentials = false;
+                smtp.Host = "mail.matrimonyforgujarati.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential("support@matrimonyforgujarati.com", "oHm@1110");
+                smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
-
-                smtp.Port = 25;
-                smtp.EnableSsl = false;
+                smtp.Port = 587;
                 smtp.Send(mm);
                 lblmsgsucess.Visible = true;
                 lblmsgsuccessspan.Visible = true;

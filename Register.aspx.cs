@@ -166,8 +166,8 @@ public partial class Register : System.Web.UI.Page
 
         using (MailMessage mm = new MailMessage("support@matrimonyforgujarati.com", email))
         {
-            //try
-            //{
+            try
+            {
                 int i;
 
                 // string theVerificationCode = Registrationobj.GetVerificationCodeFromDatabase(Userid.ToString());
@@ -190,12 +190,12 @@ public partial class Register : System.Web.UI.Page
                 lblmsg.BackColor = System.Drawing.Color.Green;
                 lblmsg.Visible = true;
                 lblmsg.Text = "E-mail Successfully Sent";
-            //}
-            //catch (Exception ex)
-            //{
-            //    lblmsg.Visible = true;
-            //    lblmsg.Text = "Invalid E-mail";
-            //}
+            }
+            catch (Exception ex)
+            {
+                lblmsg.Visible = true;
+                lblmsg.Text = "Server not Connected";
+            }
         }
     }
 
