@@ -10,8 +10,8 @@
                     <div class="card padding-card">
                         <div class="card-body">
                             <h5 class="card-title mb-4">LOGIN</h5>
-                            <asp:Label ID="lblerror" runat="server" Text="" CssClass="alert alert-warning" Visible="false"> </asp:Label>
-                  <asp:Label ID="lblmsg" runat="server" Text="" CssClass="alert alert-warning" Visible="false"> </asp:Label>
+                            <asp:Label ID="lblerror" runat="server" Text="" CssClass="badge badge-danger" Visible="false"> </asp:Label>
+                  <asp:Label ID="lblmsg" runat="server" Text="" CssClass="badge badge-danger" Visible="false"> </asp:Label>
                                 <div class="form-group">
                                     <label>USER NAME <span class="text-danger">*</span></label>
                                    <asp:TextBox ID="txtuname" runat="server" class="form-control" placeholder="Username" required=""></asp:TextBox>

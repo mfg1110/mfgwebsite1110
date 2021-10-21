@@ -34,7 +34,7 @@ public partial class Login : System.Web.UI.Page
                     string User_ID = ds.Tables[0].Rows[i]["id"].ToString();
                     //string Token = ds.Tables[0].Rows[i]["Token"].ToString();
                     dsuseractivation = Registrationobj.Getuserverifyornot(User_ID);
-                    if (dsuseractivation.Tables[0].Rows.Count==null)
+                    if (dsuseractivation.Tables[0].Rows.Count==0)
                     {
 
                         if (txtuname.Text == email && txtpassword.Text == passwordvar)
