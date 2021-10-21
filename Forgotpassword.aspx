@@ -7,18 +7,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 mx-auto">
-                     <span class="label label-danger" id="lblmsg1" runat="server" visible="false"  >
+                     
+                    <div class="card padding-card">
+
+                        <div class="card-body">
+                           
+                            <h5 class="card-title mb-4">FORGOT PASSWORD</h5>
+                         <span class="badge badge-danger" id="lblmsg1" runat="server" visible="false" style="color:white" >
   <span><i class="glyphicon glyphicon-remove-circle"> </i>  <asp:Label ID="lblmsg" runat="server" Text=""   Font-Bold="true"> </asp:Label></span>
   
 </span>       
-        <span class="label label-success" id="lblmsgsuccessspan" runat="server" visible="false"  >
+        <span class="badge badge-success" id="lblmsgsuccessspan" runat="server" visible="false" style="color:white"  >
   <span><i class="glyphicon glyphicon-ok-circle"> </i>  <asp:Label ID="lblmsgsucess" runat="server" Text=""   Font-Bold="true"> </asp:Label></span>
   
 </span>
-                    <div class="card padding-card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">FORGOT PASSWORD</h5>
-                        
                                 <div class="form-group">
                                     <label>EMAIL ID<span class="text-danger">*</span></label>
                                    <asp:TextBox ID="txtemailid" runat="server" class="form-control" placeholder="EMAIL ID" required=""></asp:TextBox>
