@@ -54,7 +54,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-sm-4">
+                                            <div class="col-md-4">
                                                 <span style="text-align: center">
                                                     <asp:Label ID="Label2" runat="server" Text=" Age (in Years) "></asp:Label>
 
@@ -66,7 +66,7 @@
                                                 <div class="form-group">
 
 
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-2.5">
 
                                                         <div class="form-group">
                                                            
@@ -121,10 +121,11 @@
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlage1" ForeColor="Red" Display="Dynamic" CssClass="alert alert-danger embed-responsive" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        To
+                                                    <div class="col-sm-2.5">
+                                                        TO
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                   
+                                                    <div class="col-sm-2.5">
 
                                                         <div class="form-group">
                                                              <asp:DropDownList ID="ddlage2" runat="server" class="form-control valid">

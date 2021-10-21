@@ -21,6 +21,7 @@ public partial class Register : System.Web.UI.Page
     string flaguserexist = "";
     public string theVerificationCode;
     Boolean flag;
+    string activationCode;
     protected void Page_Load(object sender, EventArgs e)
     {
         image.HttpEquiv = "image";
@@ -46,10 +47,10 @@ public partial class Register : System.Web.UI.Page
     protected void lnkregisterme_Click(object sender, EventArgs e)
     {
         int Userid = 0;
-        string activationCode = GenerateNewRandom().ToString();
+         activationCode = GenerateNewRandom().ToString();
 
-        try
-        {
+        //try
+        //{
             //HttpCookie cactivationcode = new HttpCookie("activationcode");
             //cactivationcode.Value = activationCode;
             //Response.Cookies.Add(cactivationcode);
@@ -84,7 +85,7 @@ public partial class Register : System.Web.UI.Page
                 // Session["phoneno"] = txtphoneno.Text;
                 Session["email"] = txtemail.Text;
                 Session["password"] = txtpwd.Text;
-                Registrationobj.Register_Data(txtname.Text, "", txtemail.Text, "", txtpwd.Text, "", activationCode, "true", ddlprofilefor.SelectedValue.ToString(), DateTime.Now, DateTime.Now);
+              
                 string body = this.PopulateBody(txtname.Text, "", activationCode);
 
                 //SendActivationEmail(txtuserid.Text, body);
@@ -99,11 +100,11 @@ public partial class Register : System.Web.UI.Page
                 //txtpwd.Text = "";
                 //txtcpwd.Text = "";
             }
-        }
-        catch (Exception ex)
-        {
-            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + ex.ToString() + "');", true);
-        }
+        //}
+        //    catch (Exception ex)
+        //{
+        //    ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + ex.ToString() + "');", true);
+        //}
     }
 
     #region Validation Function
@@ -165,8 +166,8 @@ public partial class Register : System.Web.UI.Page
 
         using (MailMessage mm = new MailMessage("support@matrimonyforgujarati.com", email))
         {
-            try
-            {
+            //try
+            //{
                 int i;
 
                 // string theVerificationCode = Registrationobj.GetVerificationCodeFromDatabase(Userid.ToString());
@@ -176,25 +177,25 @@ public partial class Register : System.Web.UI.Page
 
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
+                smtp.Host = "mail.matrimonyforgujarati.com";
                 smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential("ohmsoftwaresinc.com", "v@HT6fsT$@vzy");
-                smtp.UseDefaultCredentials = false; 
+                NetworkCredential NetworkCred = new NetworkCredential("support@matrimonyforgujarati.com", "oHm@1110");
+                smtp.UseDefaultCredentials = true; 
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
                 smtp.Send(mm);
                 //Console.WriteLine(i);
-
+                Registrationobj.Register_Data(txtname.Text, "", txtemail.Text, "", txtpwd.Text, "", activationCode, "true", ddlprofilefor.SelectedValue.ToString(), DateTime.Now, DateTime.Now);
                 // Response.Redirect("accountactivation.aspx");
                 lblmsg.BackColor = System.Drawing.Color.Green;
                 lblmsg.Visible = true;
                 lblmsg.Text = "E-mail Successfully Sent";
-            }
-            catch (Exception ex)
-            {
-                lblmsg.Visible = true;
-                lblmsg.Text = "Invalid E-mail";
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    lblmsg.Visible = true;
+            //    lblmsg.Text = "Invalid E-mail";
+            //}
         }
     }
 

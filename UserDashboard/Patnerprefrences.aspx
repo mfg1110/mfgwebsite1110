@@ -42,11 +42,11 @@
                             <h4>Patner prefrences</h4>
                         </div>
                         <div class="panel-body">
-                <div class="row">
+                <div class="row gutter">
                       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                         <ContentTemplate>
                     <div class="form-contact contact_form" id="contactForm1" novalidate="novalidate">
-                        <div class="row">
+                        <div class="row gutter-10">
                             <div class="col-sm-12">
                                 <h2 class="contact-title"></h2>
                                     <asp:Label ID="lblmsg" runat="server" Text="dfds" CssClass="alert alert-success" Visible="false"> </asp:Label>
@@ -523,7 +523,7 @@
                                 </div>
                             </div>
                                  </div>
-                            <div class="col-sm-12">
+                            <div class="col-md-12" style="margin-left:20px">
                                 <div class="form-group">
 
                                     <asp:Button ID="btnsubmit" runat="server" ValidationGroup="B" class="btn btn-primary mr-2" Text="Submit" OnClick="btnsublit_Click" />
