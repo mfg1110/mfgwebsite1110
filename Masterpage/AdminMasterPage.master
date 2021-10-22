@@ -101,6 +101,16 @@
     </div>
     <div class="dashboard-wrapper dashboard-wrapper-lg">
         <header>
+             <ul class="pull-left" id="left-nav">
+                <li class="dropdown pull-left">
+                    <a href="../Default.aspx" id="drop6" role="button" style="color:white;font-size:larger">
+                    
+                       Go To Website
+                      
+                </a>
+                    
+                </li>
+            </ul>
             <%--<ul class="pull-left" id="left-nav">
                 <li class="dropdown pull-left"><a href="#" id="drop6" role="button" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="msg-chats">
@@ -226,7 +236,7 @@
                         <li class="dropdown-footer">See all the notifications</li>
                     </ul>
                     </li>--%>
-                    <li class="list-box dropdown hidden-xs"><a href="../Default.aspx"><i class="icon-exit_to_app"></i></a></li>
+                    <li class="list-box dropdown hidden-xs"><a href="../logout.aspx"><i class="icon-exit_to_app"></i></a></li>
                     <li class="list-box hidden-lg hidden-md">
                         <button type="button" id="toggleMenu" class="toggle-menu"><i class="icon-menu"></i></button>
                     </li>

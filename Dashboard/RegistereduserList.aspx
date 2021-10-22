@@ -8,7 +8,7 @@
         <div class="page-title">
             <h4>Registered User Details</h4>
         </div>
-        <ul class="sales-stats hidden-xs">
+        <%--<ul class="sales-stats hidden-xs">
             <li>
                 <div class="sales-block hidden-sm hidden-xs">
                     <span id="sale_today">
@@ -31,7 +31,7 @@
                     <h5>Week's Income</h5>
                 </div>
             </li>
-        </ul>
+        </ul>--%>
     </div>
     
     <div class="main-container">

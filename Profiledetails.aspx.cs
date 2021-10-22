@@ -135,8 +135,15 @@ public partial class Profiledetails : System.Web.UI.Page
         {
 
             Repeater rptfeacheredprofile = (Repeater)e.Item.FindControl("rptfeacheredprofile");
-
-            ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
+            if (Request.QueryString["Search_ID"] != null)
+            {
+                ds = Registrationobj.getbiodatadetailbynotsearchid(Request.QueryString["Search_ID"].ToString());
+            }
+            else
+            {
+                ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
+            }
+          
 
             rptfeacheredprofile.DataSource = ds;
             rptfeacheredprofile.DataBind();

@@ -235,7 +235,7 @@
 
                                             <div class="col-sm-8">
                                                 <div class="form-group mt-3">
-                                                    <asp:Button ID="Button1" runat="server" class="btn btn-primary mr-2" ValidationGroup="B" Text="Search" OnClick="btnsubmit_Click" />
+                                                    <asp:Button ID="Button1" runat="server" class="btn btn-success mr-2" ValidationGroup="B" Text="Search" OnClick="btnsubmit_Click" />
                                                     <%--<input type="button" id="Save" value="Save Data" />--%>
                                                 </div>
                                             </div>
