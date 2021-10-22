@@ -26,9 +26,15 @@
                                 </asp:DropDownList>
                             </div>
                             <div class="form-group">
-                                <label>NAME <span class="text-danger">*</span></label>
+                                <label>FIRST NAME <span class="text-danger">*</span></label>
 
                                 <asp:TextBox ID="txtname" class="form-control" runat="server" placeholder="Name"></asp:TextBox>
+
+                            </div>
+                             <div class="form-group">
+                                <label>LAST NAME <span class="text-danger">*</span></label>
+
+                                <asp:TextBox ID="txtlname" class="form-control" runat="server" placeholder="Name"></asp:TextBox>
 
                             </div>
                             <div class="form-group">

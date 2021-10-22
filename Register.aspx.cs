@@ -185,7 +185,7 @@ public partial class Register : System.Web.UI.Page
                 smtp.Port = 587;
                 smtp.Send(mm);
                 //Console.WriteLine(i);
-                Registrationobj.Register_Data(txtname.Text, "", txtemail.Text, "", txtpwd.Text, "", activationCode, "true", ddlprofilefor.SelectedValue.ToString(), DateTime.Now, DateTime.Now);
+                Registrationobj.Register_Data(txtname.Text, txtlname.Text, txtemail.Text, "", txtpwd.Text, "", activationCode, "true", ddlprofilefor.SelectedValue.ToString(), DateTime.Now, DateTime.Now);
                 // Response.Redirect("accountactivation.aspx");
                 lblmsg.BackColor = System.Drawing.Color.Green;
                 lblmsg.Visible = true;
