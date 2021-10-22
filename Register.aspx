@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <h5 class="card-title mb-4">REGISTER</h5>
                              <asp:Label ID="lblerror" runat="server" Text="" CssClass="alert alert-warning" Visible="false"> </asp:Label>
-                  <asp:Label ID="lblmsg" runat="server" Text="" CssClass="alert alert-warning" Visible="false"> </asp:Label>
+                  <asp:Label ID="lblmsg" runat="server" Text="" CssClass="alert alert-warning" Visible="false" ForeColor="White"> </asp:Label>
                             <div class="form-group">
                                 <label>PROFILE FOR<span class="text-danger">*</span></label>
                                 <asp:DropDownList ID="ddlprofilefor" runat="server" class="form-control">
@@ -28,13 +28,13 @@
                             <div class="form-group">
                                 <label>FIRST NAME <span class="text-danger">*</span></label>
 
-                                <asp:TextBox ID="txtname" class="form-control" runat="server" placeholder="Name"></asp:TextBox>
+                                <asp:TextBox ID="txtname" class="form-control" runat="server" placeholder="First Name"></asp:TextBox>
 
                             </div>
                              <div class="form-group">
                                 <label>LAST NAME <span class="text-danger">*</span></label>
 
-                                <asp:TextBox ID="txtlname" class="form-control" runat="server" placeholder="Name"></asp:TextBox>
+                                <asp:TextBox ID="txtlname" class="form-control" runat="server" placeholder="Lname Name"></asp:TextBox>
 
                             </div>
                             <div class="form-group">

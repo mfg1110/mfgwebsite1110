@@ -75,7 +75,7 @@ public partial class Viewlist : System.Web.UI.Page
         ddlreligion.DataTextField = "Caste_name";
         ddlreligion.DataValueField = "Caste_ID";
         ddlreligion.DataBind();
-        ddlreligion.Items.Insert(0, new ListItem("--Select--", "0"));
+       // ddlreligion.Items.Insert(0, new ListItem("--Select--", "0"));
 
     }
     public void Bindtotalsubcategoryview()
