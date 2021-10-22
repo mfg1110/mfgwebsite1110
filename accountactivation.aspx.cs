@@ -22,8 +22,7 @@ public partial class accountactivation : System.Web.UI.Page
             {
                 using (SqlCommand cmd = new SqlCommand("DELETE FROM UserActivation WHERE ActivationCode = @ActivationCode"))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
+                  
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@ActivationCode", activationCode);
                         cmd.Connection = con;
@@ -34,13 +33,13 @@ public partial class accountactivation : System.Web.UI.Page
                             con.Close();
 
                             lblmsg.Text = "Activation successfull.";
-                            //SqlCommand cmdinsert = new SqlCommand("Update Ranasamaj_Registration SET status='Active'");
-                            //cmdinsert.CommandType = CommandType.Text;
+                            SqlCommand cmdinsert = new SqlCommand("Update Ranasamaj_Registration SET status='Active'");
+                            cmdinsert.CommandType = CommandType.Text;
 
-                            //cmdinsert.Connection = con;
-                            //con.Open();
-                            //cmdinsert.ExecuteNonQuery();
-                            //con.Close();
+                            cmdinsert.Connection = con;
+                            con.Open();
+                            cmdinsert.ExecuteNonQuery();
+                            con.Close();
                         }
                         catch (SqlException ex)
                         {
@@ -50,7 +49,7 @@ public partial class accountactivation : System.Web.UI.Page
 
 
                     }
-                }
+                
             }
 
         }
