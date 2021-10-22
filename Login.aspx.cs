@@ -10,7 +10,7 @@ public partial class Login : System.Web.UI.Page
 {
     Registration.Registration Registrationobj = new Registration.Registration();
     string Videostrname = "", Videoextension, videopath;
-    DataSet ds,dsuseractivation;
+    DataSet ds, dsuseractivation;
     string flaguserexist = "", status;
     public string theVerificationCode;
     Boolean flag;
@@ -34,78 +34,81 @@ public partial class Login : System.Web.UI.Page
                     string User_ID = ds.Tables[0].Rows[i]["id"].ToString();
                     //string Token = ds.Tables[0].Rows[i]["Token"].ToString();
                     dsuseractivation = Registrationobj.Getuserverifyornot(User_ID);
-                    if (dsuseractivation.Tables[0].Rows.Count==0)
+
+
+                    if (dsuseractivation.Tables[0].Rows.Count == 0)
                     {
 
                         if (txtuname.Text == email && txtpassword.Text == passwordvar)
                         {
 
-                            //DataSet dsdata = Registrationobj.Getuserverifyornot(Session["id"].ToString());
-                            //if (dsdata.Tables[0].Rows.Count <= 0)
-                            //{
 
-                            //    }
-                            //     else
-                            //     {
-                            //lblmsg.Visible = true;
-                            //lblmsg.Text = "You Are Not Valid User";
+                            
 
-                            //    }
-
-
-                            if (chkRememberMe.Checked)
+                            if (status == "delete")
                             {
-                                //Response.Cookies["myCookie"].Value = Token.ToString();
-                                HttpCookie cName = new HttpCookie("Name");
-                                cName.Value = namevar;
-
-                                HttpCookie cid = new HttpCookie("id");
-                                cid.Value = User_ID;
-                                //Response.Cookies["Token"].Expires = DateTime.Now.AddYears(365);
-                                HttpCookie myCookie = new HttpCookie("myCookie");
-                                Response.Cookies.Remove("myCookie");
-                                Response.Cookies.Add(myCookie);
-                                //myCookie.Values.Add("Token", Token);
-                                DateTime dtExpiry = DateTime.Now.AddDays(365 * 60); //you can add years and months too here
-                                Response.Cookies["myCookie"].Expires = dtExpiry;
-
-                                Response.Cookies["Name"].Expires = dtExpiry;
-                                Response.Cookies["id"].Expires = dtExpiry;
-                                HttpContext.Current.Response.SetCookie(myCookie);
-                                HttpContext.Current.Response.SetCookie(cName);
-                                HttpContext.Current.Response.SetCookie(cid);
-                                Response.Cookies.Add(cName);
-                                Response.Cookies.Add(cid);
+                                lblmsg.Visible = true;
+                                lblmsg.Text = "Your Account Deleted";
                             }
-                            else
+                            else if (status == "Active")
                             {
-                                //Response.Cookies["Token"].Expires = DateTime.Now.AddDays(-1);
-                                HttpCookie myCookie = new HttpCookie("myCookie");
-                                Response.Cookies.Remove("myCookie");
-                                Response.Cookies.Add(myCookie);
-                                //myCookie.Values.Add("Token", Token);
-                                DateTime dtExpiry = DateTime.Now.AddDays(-1); //you can add years and months too here
-                                Response.Cookies["myCookie"].Expires = dtExpiry;
+                                if (chkRememberMe.Checked)
+                                {
+                                    //Response.Cookies["myCookie"].Value = Token.ToString();
+                                    HttpCookie cName = new HttpCookie("Name");
+                                    cName.Value = namevar;
 
-                                Response.Cookies["Name"].Expires = dtExpiry;
-                                Response.Cookies["id"].Expires = dtExpiry;
-                                HttpContext.Current.Response.SetCookie(myCookie);
+                                    HttpCookie cid = new HttpCookie("id");
+                                    cid.Value = User_ID;
+                                    //Response.Cookies["Token"].Expires = DateTime.Now.AddYears(365);
+                                    HttpCookie myCookie = new HttpCookie("myCookie");
+                                    Response.Cookies.Remove("myCookie");
+                                    Response.Cookies.Add(myCookie);
+                                    //myCookie.Values.Add("Token", Token);
+                                    DateTime dtExpiry = DateTime.Now.AddDays(365 * 60); //you can add years and months too here
+                                    Response.Cookies["myCookie"].Expires = dtExpiry;
 
-                                Session.Clear();
-                                Session["UserID"] = txtuname.Text;
-                                Session["Fname"] = namevar;
-                                Session["id"] = User_ID;
-                                Session.Timeout = 525600;
+                                    Response.Cookies["Name"].Expires = dtExpiry;
+                                    Response.Cookies["id"].Expires = dtExpiry;
+                                    HttpContext.Current.Response.SetCookie(myCookie);
+                                    HttpContext.Current.Response.SetCookie(cName);
+                                    HttpContext.Current.Response.SetCookie(cid);
+                                    Response.Cookies.Add(cName);
+                                    Response.Cookies.Add(cid);
+                                }
+                                else
+                                {
+                                    //Response.Cookies["Token"].Expires = DateTime.Now.AddDays(-1);
+                                    HttpCookie myCookie = new HttpCookie("myCookie");
+                                    Response.Cookies.Remove("myCookie");
+                                    Response.Cookies.Add(myCookie);
+                                    //myCookie.Values.Add("Token", Token);
+                                    DateTime dtExpiry = DateTime.Now.AddDays(-1); //you can add years and months too here
+                                    Response.Cookies["myCookie"].Expires = dtExpiry;
+
+                                    Response.Cookies["Name"].Expires = dtExpiry;
+                                    Response.Cookies["id"].Expires = dtExpiry;
+                                    HttpContext.Current.Response.SetCookie(myCookie);
+
+                                    Session.Clear();
+                                    Session["UserID"] = txtuname.Text;
+                                    Session["Fname"] = namevar;
+                                    Session["id"] = User_ID;
+                                    Session.Timeout = 525600;
+                                }
+                                Response.Redirect("UserDashboard/Dashboard.aspx", true);
                             }
-
-
-
+                            else if (dsuseractivation.Tables[0].Rows.Count >= 0)
+                            {
+                                lblmsg.Visible = true;
+                                lblmsg.Text = "Please Check Your Email.And Active Your Account";
+                            }
 
                             //HttpCookie ExampleCookie = Request.Cookies["ExampleCookie"];
                             //ExampleCookie["Name"] = namevar;
                             //ExampleCookie["id"] = User_ID;
                             //Response.Cookies.Add(ExampleCookie);
-                            Response.Redirect("UserDashboard/Dashboard.aspx", true);
+                           
                         }
                         else if (txtuname.Text == "Admin" && txtpassword.Text == "oHm@1110")
                         {
@@ -156,27 +159,14 @@ public partial class Login : System.Web.UI.Page
 
                             Response.Redirect("Dashboard/CMS.aspx", true);
                         }
-                        else
-                        {
-                            lblmsg.Visible = true;
-                            lblmsg.Text = "Invalid E-mail Password";
-                        }
+                       
 
                     }
-                    else
-                    {
-                        lblmsg.Visible = true;
-                        lblmsg.Text = "Please Check Your Email.And Active Your Account";
-                    }
-                    //if (txtemail.Text == "Admin" && txtpassword.Text == "bmw88")
-                    //{
-                    //    Session["EmailID"] = "Admin";
-                    //    Session["Fname"] = "Admin";
-                    //    Session["User_ID"] = "1";
-                    //    Response.Redirect("~/AdminPanel/Default.aspx");
-                    //}
+                   
+
                 }
             }
+
 
         }
         catch (Exception ex)

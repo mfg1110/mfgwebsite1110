@@ -63,6 +63,11 @@ public partial class Masterpage_UserDashboardMasterPage : System.Web.UI.MasterPa
                 {
                    // lbldeactive.Text = "Activated Profile";
                 }
+                else if (ds.Tables[0].Rows[0]["Deactivate_flag"].ToString() == "delete")
+                {
+                    lipostbiodata.Visible = true;
+                    liupdatebiodata.Visible = false;
+                }
                 else
                 {
                     //lbldeactive.Text = "Deactive Profile";

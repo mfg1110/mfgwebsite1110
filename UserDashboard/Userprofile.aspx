@@ -12,6 +12,7 @@
 
     <div class="main-container">
         <div class="container-fluid">
+              <asp:Label ID="lblerror" runat="server" Text="" CssClass="badge badge-danger" Visible="false"> </asp:Label>
             <asp:Repeater ID="rptuserprofile" runat="server" OnItemCommand="rptuserprofile_ItemCommand" OnItemDataBound="rptuserprofile_ItemDataBound">
                 <ItemTemplate>
                     <div class="spacer-xs">

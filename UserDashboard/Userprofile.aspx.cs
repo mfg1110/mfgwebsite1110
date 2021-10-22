@@ -93,9 +93,17 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
             ds = Registrationobj.getbiodatadetailbyBiodata_id(Convert.ToInt32(Request.QueryString["Biodata_id"].ToString()));
             //rptdata.DataSource = ds;
             //rptdata.DataBind();
-
-            rptuserprofile.DataSource = ds;
-            rptuserprofile.DataBind();
+            string Deactivate_flag=ds.Tables[0].Rows[0]["Deactivate_flag"].ToString();
+            if (Deactivate_flag == "delete")
+            {
+                lblerror.Visible = true;
+                lblerror.Text = "Your Biodata is Deleted";
+            }
+            else
+            {
+                rptuserprofile.DataSource = ds;
+                rptuserprofile.DataBind();
+            }
             string s = ds.Tables[0].Rows[0]["Photo"].ToString();
 
             Page.Title = "Rana Samaj Matrimony";
@@ -106,13 +114,7 @@ public partial class UserDashboard_Userprofile : System.Web.UI.Page
             title.Content = ds.Tables[0].Rows[0]["Name"].ToString();
             Page.Header.Controls.Add(title);
 
-            // Page.MetaDescription = ds.Tables[0].Rows[0]["Date_of_Birth"].ToString();
-            //description.Attributes.Add("property", "og:description");
-            //description.Content = ds.Tables[0].Rows[0]["Date_of_Birth"].ToString();
-            //this.Page.Header.Controls.Add(description);
-
-
-
+            
             image1.Attributes.Add("property", "og:image");
             image1.Content = "https://rana-samaj.com/Picture/" + s;
             Page.Header.Controls.Add(image1);
