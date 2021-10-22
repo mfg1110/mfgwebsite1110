@@ -13,7 +13,7 @@ public partial class Login : System.Web.UI.Page
     DataSet ds, dsuseractivation;
     string flaguserexist = "", status;
     public string theVerificationCode;
-    Boolean flag;
+    Boolean flag=false;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -38,13 +38,9 @@ public partial class Login : System.Web.UI.Page
 
                     if (dsuseractivation.Tables[0].Rows.Count == 0)
                     {
-
-                        if (txtuname.Text == email && txtpassword.Text == passwordvar)
+                       if (txtuname.Text == email && txtpassword.Text == passwordvar)
                         {
-
-
-                            
-
+                            flag = true;
                             if (status == "delete")
                             {
                                 lblmsg.Visible = true;
@@ -98,23 +94,20 @@ public partial class Login : System.Web.UI.Page
                                 }
                                 Response.Redirect("UserDashboard/Dashboard.aspx", true);
                             }
-                            else if (dsuseractivation.Tables[0].Rows.Count >= 0)
+                           
+                            else
                             {
-                                lblmsg.Visible = true;
-                                lblmsg.Text = "Please Check Your Email.And Active Your Account";
-                            }
 
+                                lblmsg.Visible = true;
+                                lblmsg.Text = "Invalid Email or Password";
+                            }
                             //HttpCookie ExampleCookie = Request.Cookies["ExampleCookie"];
                             //ExampleCookie["Name"] = namevar;
                             //ExampleCookie["id"] = User_ID;
                             //Response.Cookies.Add(ExampleCookie);
                            
                         }
-                        else if (txtuname.Text != email && txtpassword.Text != passwordvar)
-                        {
-                            lblmsg.Visible = true;
-                            lblmsg.Text = "Invalid Email or Password";
-                        }
+                       
                         else if (txtuname.Text == "Admin" && txtpassword.Text == "oHm@1110")
                         {
                             if (chkRememberMe.Checked)
@@ -165,7 +158,12 @@ public partial class Login : System.Web.UI.Page
                             Response.Redirect("Dashboard/CMS.aspx", true);
                         }
                        
+                       if(flag==false)
+                       {
 
+                           lblmsg.Visible = true;
+                           lblmsg.Text = "Invalid Email or Password";
+                       }
                     }
                    
 
