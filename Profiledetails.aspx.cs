@@ -137,12 +137,17 @@ public partial class Profiledetails : System.Web.UI.Page
             Repeater rptfeacheredprofile = (Repeater)e.Item.FindControl("rptfeacheredprofile");
             if (Request.QueryString["Search_ID"] != null)
             {
-                ds = Registrationobj.getbiodatadetailbynotsearchid(Request.QueryString["Search_ID"].ToString());
+                if (regid != null)
+                {
+                    ds = Registrationobj.getbiodatadetailnotbyidSearch_ID(Convert.ToInt32(regid), Request.QueryString["Search_ID"].ToString());
+                }
+                else
+                {
+                    ds = Registrationobj.getbiodatadetailbynotsearchid(Request.QueryString["Search_ID"].ToString());
+                }
+               
             }
-            else
-            {
-                ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
-            }
+            else 
           
 
             rptfeacheredprofile.DataSource = ds;

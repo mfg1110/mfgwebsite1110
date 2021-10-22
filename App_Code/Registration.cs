@@ -592,6 +592,27 @@ namespace Registration
 
         }
 
+        public DataSet getbiodatadetailnotbyidSearch_ID(int id, string Search_ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='true' and Deactivate_flag='false' and id!=@id  and Search_ID=@Search_ID  ORDER BY CreatedByDateTime desc", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@Search_ID", Search_ID);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
         [WebMethod]
         public DataSet getbiodatadetailbynotsearchid(string Search_ID)
         {

@@ -334,6 +334,14 @@
                                     </div>
                                 </div>
                             </ItemTemplate>
+
+                            <FooterTemplate>
+                                    <div id="trEmpty" runat="server" visible="false">
+                                        <td colspan="3" align="center">No records found.
+                                        </td>
+                                    </div>
+
+                                </FooterTemplate>
                         </asp:Repeater>
 
                             <asp:Repeater ID="rptPaging" runat="server" onitemcommand="rptPaging_ItemCommand">
