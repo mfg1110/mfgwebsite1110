@@ -28,6 +28,7 @@ public partial class UserDashboard_Deactive_Profile : System.Web.UI.Page
                 {
                     Registrationobj.deactivate("true", Convert.ToInt32(regid));
                     lblmsg1.Visible = false;
+                    lblmsgsuccessspan.Visible = true;
                     lblmsgsucess.Text = "Your Profile Successfully Deactivated";
                    
                 }
@@ -35,9 +36,10 @@ public partial class UserDashboard_Deactive_Profile : System.Web.UI.Page
                 {
                     Registrationobj.deactivate("false", Convert.ToInt32(regid));
                     lblmsg1.Visible = false;
+                    lblmsgsuccessspan.Visible = true;
                     lblmsgsucess.Text = "Your Profile Successfully activated";
                 }
-
+                Response.Redirect("../UserDashboard/Dashboard.aspx");
             }
             catch (SqlException ex)
             {

@@ -57,7 +57,7 @@
                                         <div class="row no-gutters">
                                             <div class="col-lg-5 col-md-5">
                                               
-                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="150" width="150" style="object-fit: contain;height:150px;width:150px">
+                                                <img src="../Picture/<%# ProcessDataItem(Eval("Photo")) %>" alt="" class="img-thumbnail" height="150" width="150" style="height:150px;width:150px">
                                             </div>
                                             <div class="col-lg-7 col-md-7">
                                                 <div class="card-body">

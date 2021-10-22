@@ -20,9 +20,9 @@
                     </span>
 
                     <br />
-                     <div style="text-align:center">   
+                    <%-- <div style="text-align:center">   
                         <b>Login</b> <a href="Login.aspx">Click Here..</a>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
