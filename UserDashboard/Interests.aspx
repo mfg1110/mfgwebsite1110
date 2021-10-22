@@ -40,7 +40,7 @@
                                         </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
-                                    <div id="trEmpty" runat="server" visible="false">
+                                    <div id="trEmpty" runat="server" visible="false" class="alert alert-success">
                                         <td colspan="3" align="center">No records found.
                                         </td>
                                     </div>
