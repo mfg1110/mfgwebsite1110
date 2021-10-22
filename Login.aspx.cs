@@ -110,6 +110,11 @@ public partial class Login : System.Web.UI.Page
                             //Response.Cookies.Add(ExampleCookie);
                            
                         }
+                        else if (txtuname.Text != email && txtpassword.Text != passwordvar)
+                        {
+                            lblmsg.Visible = true;
+                            lblmsg.Text = "Invalid Email or Password";
+                        }
                         else if (txtuname.Text == "Admin" && txtpassword.Text == "oHm@1110")
                         {
                             if (chkRememberMe.Checked)
