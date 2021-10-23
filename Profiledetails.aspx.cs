@@ -324,4 +324,27 @@ public partial class Profiledetails : System.Web.UI.Page
         profileid = Convert.ToInt32(e.CommandArgument.ToString());
         Response.Redirect("UserDashboard/Messenger.aspx?id=" + profileid);
     }
+    protected void rptfeacheredprofile_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            RepeaterItem item = e.Item;
+            HttpCookie nameCookie = Request.Cookies["Name"];
+            HttpCookie idCookie = Request.Cookies["id"];
+            LinkButton lnkexpressintrest = (item.FindControl("lnkexpressintrest") as LinkButton);
+            if (nameCookie != null)
+            {
+                lnkexpressintrest.Visible = true;
+            }
+            else if (Session["id"] != null)
+            {
+                lnkexpressintrest.Visible = true;
+            }
+            else
+            {
+                lnkexpressintrest.Visible = false;
+            }
+
+        }
+    }
 }

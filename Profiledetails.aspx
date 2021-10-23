@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="card sidebar-card">
-                                <asp:Repeater ID="rptfeacheredprofile" runat="server">
+                                <asp:Repeater ID="rptfeacheredprofile" runat="server" OnItemDataBound="rptfeacheredprofile_ItemDataBound">
                                     <ItemTemplate>
                                         <div class="card">
 
