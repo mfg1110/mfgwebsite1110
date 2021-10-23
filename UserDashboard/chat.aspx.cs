@@ -77,7 +77,7 @@ public partial class UserDashboard_chat : System.Web.UI.Page
     public void loaddata()
     {
         DataSet dsusername = Registrationobj.getregistrationbyid(Convert.ToInt32(regid));
-        string Username = dsusername.Tables[0].Rows[0]["fname"].ToString() + " " + dsusername.Tables[0].Rows[0]["lname"].ToString();
+        string Username = dsusername.Tables[0].Rows[0]["name"].ToString();
         ds = Registrationobj.getchatuser(Username);
         //rptdata.DataSource = ds;
         //rptdata.DataBind();

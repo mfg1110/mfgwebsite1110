@@ -104,11 +104,18 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-lg-6 col-md-6">
+                                                            <div class="col-lg-4 col-md-4">
                                                                 <div class="list-icon">
                                                                     <i class="mdi mdi-minus"></i>
                                                                     <strong>Date of Birth / Time of Birth:</strong>
-                                                                    <p class="mb-0"><%# Eval("Date_of_Birth") %> / <%# Eval("Time_of_Birth") %></p>
+                                                                    <p class="mb-0"><%# Eval("Date_of_Birth", "{0: dd/MM/yyyy}")%>   <%# Eval("Time_of_Birth") %></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-4">
+                                                                <div class="list-icon">
+                                                                    <i class="mdi mdi-minus"></i>
+                                                                    <strong>Gender :</strong>
+                                                                    <p class="mb-0"><%# Eval("Gender") %> </p>
                                                                 </div>
                                                             </div>
                                                         </div>

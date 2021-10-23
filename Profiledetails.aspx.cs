@@ -52,7 +52,7 @@ public partial class Profiledetails : System.Web.UI.Page
         if (Request.QueryString["Search_ID"] != null)
         {
             image.HttpEquiv = "image";
-            image.Name = "image";
+                image.Name = "image";
             if (!IsPostBack)
             {
                 loaddata();
@@ -101,15 +101,20 @@ public partial class Profiledetails : System.Web.UI.Page
 
             rptprofile.DataSource = ds;
             rptprofile.DataBind();
-            string s = ds.Tables[0].Rows[0]["Photo"].ToString();
+            if(ds.Tables[0].Rows.Count>0)
+            {
+                string s = ds.Tables[0].Rows[0]["Photo"].ToString();
+                Page.Title = "Rana Samaj Matrimony";
+                //image.Content = "https://rana-samaj.com/Picture/" + s;
+                //this.Page.Header.Controls.Add(image);
 
-            Page.Title = "Rana Samaj Matrimony";
-            image.Content = "https://rana-samaj.com/Picture/" + s;
-            this.Page.Header.Controls.Add(image);
+                //title.Attributes.Add("property", "og:title");
+                //title.Content = ds.Tables[0].Rows[0]["Name"].ToString();
+                //Page.Header.Controls.Add(title);
+            }
+          
 
-            title.Attributes.Add("property", "og:title");
-            title.Content = ds.Tables[0].Rows[0]["Name"].ToString();
-            Page.Header.Controls.Add(title);
+           
 
             // Page.MetaDescription = ds.Tables[0].Rows[0]["Date_of_Birth"].ToString();
             //description.Attributes.Add("property", "og:description");
@@ -118,9 +123,9 @@ public partial class Profiledetails : System.Web.UI.Page
 
 
 
-            image1.Attributes.Add("property", "og:image");
-            image1.Content = "https://rana-samaj.com/Picture/" + s;
-            Page.Header.Controls.Add(image1);
+            //image1.Attributes.Add("property", "og:image");
+            //image1.Content = "https://rana-samaj.com/Picture/" + s;
+            //Page.Header.Controls.Add(image1);
         //}
         //catch (Exception ex)
         //{
@@ -147,8 +152,7 @@ public partial class Profiledetails : System.Web.UI.Page
                 }
                
             }
-            else 
-          
+            
 
             rptfeacheredprofile.DataSource = ds;
             rptfeacheredprofile.DataBind();
@@ -182,13 +186,31 @@ public partial class Profiledetails : System.Web.UI.Page
             {
                 
                 lnkshortlist.Visible = true;
-                lnkchat.Visible = true;
+             
+                DataSet dsbiodata = Registrationobj.getbiodatabyregid(regid);
+                if(dsbiodata.Tables[0].Rows.Count>0)
+                {
+                    lnkchat.Visible = true;
+                }
+                else
+                {
+                    lnkchat.Visible = false;
+                }
             }
             else if (Session["id"] != null)
             {
              
                 lnkshortlist.Visible = true;
-                lnkchat.Visible = true;
+               
+                DataSet dsbiodata = Registrationobj.getbiodatabyregid(regid);
+                if (dsbiodata.Tables[0].Rows.Count > 0)
+                {
+                    lnkchat.Visible = true;
+                }
+                else
+                {
+                    lnkchat.Visible = false;
+                }
             }
             else
             {

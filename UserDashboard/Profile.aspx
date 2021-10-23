@@ -726,8 +726,8 @@
                                                                 <div class="col-sm-12">
                                                                     <h2 class="contact-title">Education Details</h2>
                                                                 </div>
-
-                                                                <div class="col-sm-6">
+                                                                 <div class="col-md-12">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         Hightest Education   
                                             <asp:TextBox ID="txtHightestEducation" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter  Hightest Education'" onblur="this.placeholder = 'Enter  Hightest Education'" placeholder="Enter  Hightest Education" ValidationGroup="B"></asp:TextBox>
@@ -737,7 +737,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-sm-6">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         University  (optional)
                                             <asp:TextBox ID="txtUniversity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter University'" onblur="this.placeholder = 'Enter University'" placeholder="Enter University" ValidationGroup="B"></asp:TextBox>
@@ -746,7 +746,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-sm-6">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         Year of Passing (optional)
                                             <asp:TextBox ID="txtYearofPassing" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Year of Passing '" onblur="this.placeholder = 'Enter Year of Passing '" placeholder="Enter Year of Passing " ValidationGroup="B"></asp:TextBox>
@@ -754,6 +754,7 @@
          --%><span style="font-size: small; color: #ff6a00">* Ex. March - 2011</span>
                                                                     </div>
                                                                 </div>
+                                                                     </div>
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
@@ -766,6 +767,7 @@
                                                                 <div class="col-sm-12">
                                                                     <h2 class="contact-title">Occupation Details</h2>
                                                                 </div>
+                                                                 <div class="col-md-12">
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group">
                                                                         Occupation 
@@ -820,6 +822,7 @@
                                             </asp:DropDownList>
                                                                     </div>
                                                                 </div>
+                                                                     </div>
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
@@ -832,6 +835,7 @@
                                                                 <div class="col-sm-12">
                                                                     <h2 class="contact-title">Family Details</h2>
                                                                 </div>
+                                                                 <div class="col-md-12">
                                                                    <div class="col-md-12">
                                                                 <div class="col-sm-6">
                                                                     <div class="form-group">
@@ -937,6 +941,7 @@
                                                                     </div>
                                                                 </div>
                                                                     </div>
+                                                                     </div>
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
@@ -955,7 +960,7 @@
                           
                                     </div>
                                 </div>--%>
-
+                                                                 <div class="col-md-12">
 
                                                                 <div class="col-sm-3">
                                                                     Contrycode
@@ -1537,6 +1542,7 @@
                                                                         <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtfamilyaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Email Address 2"></asp:RequiredFieldValidator>--%>
                                                                     </div>
                                                                 </div>
+                                                                     </div>
                                                             </div>
                                                         </ContentTemplate>
                                                     </asp:UpdatePanel>
@@ -1547,6 +1553,7 @@
                                                         <div class="col-sm-12">
                                                             <h2 class="contact-title">ADD Photos</h2>
                                                         </div>
+                                                         <div class="col-md-12">
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 Profile Photo
@@ -1565,6 +1572,7 @@
 
                                                             </div>
                                                         </div>
+                                                             </div>
                                                     </div>
                                                     <div class="row">
 

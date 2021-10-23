@@ -974,7 +974,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             //lblmsg.Text = "Data Updated Successfully";
 
 
-            Response.Redirect("../Default.aspx");
+          //  Response.Redirect("../Default.aspx");
         }
 
         catch (Exception ex)
@@ -982,7 +982,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             //lblmsg.Visible = true;
             //lblmsg.Text = ex.ToString();
 
-            Response.Redirect("../Default.aspx");
+          //  Response.Redirect("../Default.aspx");
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Server Error : Connection Timeout.');", true);
         }
     }

@@ -597,7 +597,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='true' and Deactivate_flag='false' and id!=@id  and Search_ID=@Search_ID  ORDER BY CreatedByDateTime desc", con);
+            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='true' and Deactivate_flag='false' and id!=@id  and Search_ID!=@Search_ID  ORDER BY CreatedByDateTime desc", con);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@Search_ID", Search_ID);
             cmd.ExecuteNonQuery();
@@ -752,7 +752,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Ranasamaj_Registration where id=@id", con);
+            SqlCommand cmd = new SqlCommand("select * from [db_matrimonyforgujarati].[Ranasamaj_Registration] rr,[db_matrimonyforgujarati].[Biodata] rb where rr.id=rb.id and rr.id=@id", con);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -2123,7 +2123,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT Sender FROM chat where Sender!=@username group by Sender", con);
+            SqlCommand cmd = new SqlCommand("select Sender FROM [db_matrimonyforgujarati].[chat] WHERE Sender!=@username  GROUP BY Sender", con);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

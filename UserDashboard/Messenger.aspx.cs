@@ -75,7 +75,7 @@ public partial class Messenger : System.Web.UI.Page
     public void loaddata()
     {
         DataSet dsusername = Registrationobj.getregistrationbyid(Convert.ToInt32(regid));
-        string Username = dsusername.Tables[0].Rows[0]["fname"].ToString() + " " + dsusername.Tables[0].Rows[0]["lname"].ToString();
+        string Username = dsusername.Tables[0].Rows[0]["Name"].ToString();
         ds = Registrationobj.getchatuser(Username);
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
@@ -84,11 +84,11 @@ public partial class Messenger : System.Web.UI.Page
         rptusers.DataSource = ds;
         rptusers.DataBind();
        
-        if (ds.Tables[0].Rows.Count == 0)
-        {
-            Control FooterTemplate = rptusers.Controls[rptusers.Controls.Count - 1].Controls[0];
-            FooterTemplate.FindControl("trEmpty").Visible = true;
-        }
+        //if (ds.Tables[0].Rows.Count == 0)
+        //{
+        //    Control FooterTemplate = rptusers.Controls[rptusers.Controls.Count - 1].Controls[0];
+        //    FooterTemplate.FindControl("trEmpty").Visible = true;
+        //}
     }
     protected void lnksender_Click(object sender, EventArgs e)
     {
@@ -117,7 +117,7 @@ public partial class Messenger : System.Web.UI.Page
 
             string date3 = DateTime.Now.ToString("MM-dd-yyyy");
             DataSet dsreceiver = Registrationobj.getregistrationbyid(Convert.ToInt32(profileid));
-            CurrentRecevier.Text = dsreceiver.Tables[0].Rows[0]["fname"].ToString() + " " + dsreceiver.Tables[0].Rows[0]["lname"].ToString();
+            CurrentRecevier.Text = dsreceiver.Tables[0].Rows[0]["name"].ToString() + " " + dsreceiver.Tables[0].Rows[0]["lname"].ToString();
         }
       
 

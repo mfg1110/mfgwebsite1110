@@ -58,6 +58,7 @@ public partial class Masterpage_UserDashboardMasterPage : System.Web.UI.MasterPa
                 lipostbiodata.Visible = false;
                 liupdatebiodata.Visible = true;
                 liprofile.Visible = true;
+                memberchat.Visible = true;
               //  lideactivate.Visible = true;
                 if (ds.Tables[0].Rows[0]["Deactivate_flag"].ToString() == "true")
                 {
