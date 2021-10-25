@@ -1833,7 +1833,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Shortlist_tb st,Biodata bt where st.ProfileID=bt.Biodata_id and st.RegID=@RegID", con);
+            SqlCommand cmd = new SqlCommand("select * from [admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Shortlist_tb] st,[admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Biodata] bt where st.ProfileID=bt.Biodata_id and bt.Deactivate_flag='false' and st.RegID=@RegID", con);
             cmd.Parameters.AddWithValue("@RegID", RegID);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

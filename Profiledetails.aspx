@@ -236,10 +236,11 @@
                                             <p><span class="mdi mdi-check"></span><b> Religion</b>: <%# ProcessMyDataItem(Eval("Religion")) %></p>
                                             <p> <span class="mdi mdi-check"></span><b> Caste</b>:  <%# ProcessMyDataItem(Eval("Caste")) %></p>
                                             <p> <span class="mdi mdi-check"></span><b> Zoradic</b>:  <%# ProcessMyDataItem(Eval("Zoradic")) %></p>
+                                             <p><span class="mdi mdi-check"></span> <b>Education</b>:  <%# ProcessMyDataItem(Eval("Education")) %></p>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
 
-                                            <p><span class="mdi mdi-check"></span> <b>Education</b>:  <%# ProcessMyDataItem(Eval("Education")) %></p>
+                                           
                                             <p> <span class="mdi mdi-check"></span> <b>Mother language</b>: <%# ProcessMyDataItem(Eval("Mother_language")) %></p>
                                             <p><span class="mdi mdi-check"></span> <b>Occupation</b>:  <%# ProcessMyDataItem(Eval("Occupation")) %></p>
                                             <p><span class="mdi mdi-check"></span> <b>Occupation</b>:  <%# ProcessMyDataItem(Eval("Occupation")) %></p>
