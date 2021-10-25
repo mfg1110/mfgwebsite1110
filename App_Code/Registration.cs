@@ -769,6 +769,28 @@ namespace Registration
         }
 
         [WebMethod]
+        public DataSet getregistration(int id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from [db_matrimonyforgujarati].[Ranasamaj_Registration] where id=@id", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
+
+        [WebMethod]
         public DataSet getregistrationbyname(int id,string name)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
