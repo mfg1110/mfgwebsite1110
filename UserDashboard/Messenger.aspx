@@ -371,7 +371,7 @@
 
                                                          <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
                                                  <div style="float:right">
-                                           <asp:LinkButton ID="linkdeleteall" runat="server" CommandArgument='<%#Eval("Sender")%>' OnCommand="linkdeleteall_Command" ><i class="glyphicon glyphicon-trash"></i>Clear Chat </asp:LinkButton>
+                                           <asp:LinkButton ID="linkdeleteall" runat="server" CommandArgument='CurrentRecevier.Text' OnCommand="linkdeleteall_Command" ><i class="glyphicon glyphicon-trash"></i>Clear Chat </asp:LinkButton>
                                          </div>
                                             </li>
 

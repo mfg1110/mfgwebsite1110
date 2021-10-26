@@ -225,7 +225,7 @@ public partial class Messenger : System.Web.UI.Page
     protected void linkdeleteall_Command(object sender, CommandEventArgs e)
     {
         LinkButton btn = (LinkButton)(sender);
-        string Sender = btn.CommandArgument;
+        string Sender =CurrentRecevier.Text;
         Registrationobj.clearchat(Sender);
         LoadChatbox();
         loaddata();
