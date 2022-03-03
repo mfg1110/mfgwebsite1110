@@ -324,7 +324,7 @@ public partial class UserDashboard_Patnerprefrences : System.Web.UI.Page
 
             loaddata();
             lblmsg.Visible = true;
-            lblmsg.Text = "Data Added Successfully";
+            lblmsg.Text = Globalvariable.Data_Added;
 
             Registrationobj.ADD_Log(regid.ToString(), "Partner_Prefrence", "Data Added Successfully", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
         }
@@ -389,7 +389,7 @@ public partial class UserDashboard_Patnerprefrences : System.Web.UI.Page
 
             loaddata();
             lblmsg.Visible = true;
-            lblmsg.Text = "Data Updated Successfully";
+            lblmsg.Text = Globalvariable.Data_Updated;
             Registrationobj.ADD_Log(regid.ToString(), "Partner_Prefrence", "Updated Successfully", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
         }
 

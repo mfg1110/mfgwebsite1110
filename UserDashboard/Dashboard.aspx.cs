@@ -28,10 +28,9 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                Bindtotalgenderview();
-                Bindtotalsubcategoryview();
+                
                 loaddata();
-                Bindtotalprofile();
+                
              
             }
         }
@@ -41,10 +40,9 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
             if (!IsPostBack)
             {
               
-                Bindtotalsubcategoryview();
-                Bindtotalgenderview();
+               
                 loaddata();
-                Bindtotalprofile();
+               
             }
 
         }
@@ -63,34 +61,8 @@ public partial class UserDashboard_Dashboard : System.Web.UI.Page
         //rptourdata.DataSource = ds;
         //rptourdata.DataBind();
     }
-    public void Bindtotalsubcategoryview()
-    {
-        ds = Registrationobj.getTotalpostsubcast();
-        rptmenu.DataSource = ds;
-
-        rptmenu.DataBind();
-
-
-    }
-    public void Bindtotalprofile()
-    {
-        ds = Registrationobj.getTotalprofile();
-        rpttotalprofile.DataSource = ds;
-
-        rpttotalprofile.DataBind();
-
-
-    }
-    public void Bindtotalgenderview()
-    {
-        ds = Registrationobj.getTotalgender();
-        rptgender.DataSource = ds;
-
-        rptgender.DataBind();
-
-
-    }
-
+   
+   
     public void loaddata()
     {
         ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));

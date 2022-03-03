@@ -47,7 +47,7 @@
           <%--  <p class="profile-complete">Profile Complete - 78%</p>--%>
         </div>
         <ul class="menu clearfix">
-            <li class="active selected"><a href="#"><i class="icon-graphic_eq"></i><span class="menu-item">Dashboards</span> <span class="down-arrow"></span></a>
+            <li class="active selected"><a href="../Dashboard/Default.aspx"><i class="icon-graphic_eq"></i><span class="menu-item">Dashboards</span> <span class="down-arrow"></span></a>
                <%-- <ul>
                     <li><a href="index.html" class="current">Overview</a></li>
                     <li><a href="social-analytics.html">Social Analytics <span class="label label-danger">&nbsp;</span></a></li>
@@ -58,26 +58,25 @@
             <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">User Management</span> <span class="down-arrow"></span></a>
                 <ul>
                     <li><a href="../Dashboard/RegistereduserList.aspx">User List</a></li>
-                    <li><a href="default.html">Photo Approve</a></li>
+                 <%--   <li><a href="default.html">Photo Approve</a></li>
                     <li><a href="offcanvas-layout.html">Feachered Member</a></li>
-                    <li><a href="layout-sidebar.html">Search Member</a></li>
+                    <li><a href="layout-sidebar.html">Search Member</a></li>--%>
                   
                 </ul>
             </li>
 
-              <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">CMS Management</span> <span class="down-arrow"></span></a>
+             <%-- <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">CMS Management</span> <span class="down-arrow"></span></a>
                 <ul>
                     <li><a href="../Dashboard/CMS.aspx">CMS</a></li>
-                    <li><a href="default.html">Photo FAQ</a></li>
-                    <li><a href="offcanvas-layout.html">ADD FAQ</a></li>
+                   
                                  
                 </ul>
-            </li>
+            </li>--%>
              <li><a href="#"><i class="icon-devices_other"></i><span class="menu-item">Community Management</span> <span class="down-arrow"></span></a>
                 <ul>
                     <li><a href="../Dashboard/Religion.aspx">ADD Community</a></li>
-                    <li><a href="default.html">Community List</a></li>
-                               
+                   <%-- <li><a href="default.html">Community List</a></li>
+                         --%>      
                 </ul>
             </li>
 

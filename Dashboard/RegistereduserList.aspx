@@ -51,7 +51,7 @@
                                             <th class="span1">ID</th>
                                             <th class="span4">Name</th>
                                             <th class="span5 hidden-phone">Email</th>
-                                            <th class="span2 hidden-phone">password</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,11 +63,11 @@
                                             <td>
                                                 <%#Eval("UserID")%>
                                             </td>
-                                            <td><%#Eval("password")%></td>
-                                            <td class="text-nowrap">
+                                           
+                                           <%-- <td class="text-nowrap">
                                                 <a href="#" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil text-inverse m-r-10"></i></a>
                                                 <a href="#" data-toggle="tooltip" data-original-title="Close"><i class="fa fa-close text-danger"></i></a>
-                                            </td>
+                                            </td>--%>
                                         </tr>
                                     </ItemTemplate>
                                 </asp:Repeater>

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage/UserDashboardMasterPage.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="UserDashboard_Profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage/UserDashboardMasterPage.master" AutoEventWireup="true" CodeFile="Profile.aspx.cs" Inherits="UserDashboard_Profile" viewStateEncryptionMode="Never" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-     <style type="text/css">
+    <style type="text/css">
         #wizHeader li .prevStep {
             background-color: #669966;
         }
@@ -105,7 +105,7 @@
             font-size: 12px;
         }
     </style>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function showImagePreview(input) {
             if (input.files && input.files[0]) {
                 var filerdr = new FileReader();
@@ -115,9 +115,18 @@
                 filerdr.readAsDataURL(input.files[0]);
             }
         }
-    </script>
+    </script>--%>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true" EnableScriptGlobalization="True">
+         <%-- <Scripts>
+         <asp:ScriptReference Name="jqueryajax" />
+         <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+     </Scripts>--%>
+    </asp:ScriptManager>
+ <%--   EnableCdn="true" EnablePartialRendering="true" ScriptMode="Release"--%>
     <div class="top-bar clearfix">
         <div class="page-title">
             <h4>Profile<small class="samll">User Profile</small></h4>
@@ -143,92 +152,94 @@
             </li>
         </ul>--%>
     </div>
-     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-     <div class="main-container">
+
+    <div class="main-container">
         <div class="container-fluid">
             <div class="row gutter">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <h4>Bio Data</h4>
                         </div>
+
                         <div class="panel-body">
-                           
-                               
-                                    <div class="form-contact contact_form" id="contactForm1" novalidate="novalidate">
 
+                            <asp:Wizard ID="Wizard1" runat="server" DisplaySideBar="false" OnActiveStepChanged="Wizard1_ActiveStepChanged1" OnLoad="Wizard1_Load" OnPreviousButtonClick="Wizard1_PreviousButtonClick">
 
+                                <FinishNavigationTemplate>
+                                    <asp:Button ID="FinishPreviousButton" runat="server" CausesValidation="False"
+                                        CommandName="MovePrevious" Text="Previous" OnClick="FinishPreviousButton_Click" class="btn btn-primary mr-2" />
+                                    <asp:Button ID="FinishButton" runat="server" CommandName="MoveComplete" OnClick="FinishButton_Click"
+                                        Text="Finish It" class="btn btn-primary mr-2" />
+                                </FinishNavigationTemplate>
+                                <StartNavigationTemplate>
+                                    <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" ValidationGroup="B" OnClick="StartNextButton_Click"
+                                        Text="Save & Next" class="btn btn-primary mr-2" />
+                                </StartNavigationTemplate>
+                                <StepNavigationTemplate>
+                                    <asp:Button ID="StepPreviousButton" runat="server" CausesValidation="False"
+                                        CommandName="MovePrevious" Text="Previous" class="btn btn-primary mr-2" />
+                                    <asp:Button ID="StepNextButton" runat="server" CommandName="MoveNext" ValidationGroup="B" OnClick="StepNextButton_Click"
+                                        Text="Save & Next" class="btn btn-primary mr-2" />
+                                </StepNavigationTemplate>
 
-                                        <asp:Wizard ID="Wizard1" runat="server" DisplaySideBar="false" OnActiveStepChanged="Wizard1_ActiveStepChanged1" OnLoad="Wizard1_Load" OnPreviousButtonClick="Wizard1_PreviousButtonClick">
+                                <WizardSteps>
 
-                                            <FinishNavigationTemplate>
-                                                <asp:Button ID="FinishPreviousButton" runat="server" CausesValidation="False"
-                                                    CommandName="MovePrevious" Text="Previous" OnClick="FinishPreviousButton_Click" class="btn btn-primary mr-2" />
-                                                <asp:Button ID="FinishButton" runat="server" CommandName="MoveComplete" OnClick="FinishButton_Click"
-                                                    Text="Finish It" class="btn btn-primary mr-2" />
-                                            </FinishNavigationTemplate>
-                                            <StartNavigationTemplate>
-                                                <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" ValidationGroup="B" OnClick="StartNextButton_Click"
-                                                    Text="Save & Next" class="btn btn-primary mr-2" />
-                                            </StartNavigationTemplate>
-                                            <StepNavigationTemplate>
-                                                <asp:Button ID="StepPreviousButton" runat="server" CausesValidation="False"
-                                                    CommandName="MovePrevious" Text="Previous" class="btn btn-primary mr-2" />
-                                                <asp:Button ID="StepNextButton" runat="server" CommandName="MoveNext" ValidationGroup="B" OnClick="StepNextButton_Click"
-                                                    Text="Save & Next" class="btn btn-primary mr-2" />
-                                            </StepNavigationTemplate>
+                                    <asp:WizardStep ID="WizardStep1" runat="server" Title="Step 1">
+                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Inline"  UpdateMode="Conditional" ChildrenAsTriggers="true">
+                                           
+                                            <ContentTemplate>
 
-                                            <WizardSteps>
-                                                <asp:WizardStep ID="WizardStep1" runat="server" Title="Step 1">
-                                                    <%--<div class="content">Personal Detail --%>
-
-                                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                        <ContentTemplate>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <h2 class="contact-title">Personal Details</h2>
-                                                                </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Name 
+                                                <%--   <div class="form-contact contact_form" id="contactForm1" novalidate="novalidate">--%>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h2 class="contact-title">Personal Details</h2>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Name 
                                             <asp:TextBox ID="txtname" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Name'" onblur="this.placeholder = 'Enter Name'" placeholder="Enter Name"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Hetvi Rana</span>
-                                                                        <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtname" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter  Name"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Gender
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Hetvi Rana</span>
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtname" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter  Name"></asp:RequiredFieldValidator>
+
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
+                                                                    ControlToValidate="txtname" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Gender
                                     <asp:DropDownList ID="ddlgender" class="form-control valid" runat="server">
                                         <asp:ListItem Value="Male">Male</asp:ListItem>
                                         <asp:ListItem Value="Female">Female</asp:ListItem>
 
                                     </asp:DropDownList>
-  <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlgender" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Gender"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Date Of Birth 
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlgender" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Gender"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Date Of Birth 
                                             <asp:TextBox ID="txtdob" runat="server" class="form-control valid" TextMode="Date" name="name" type="text" onfocus="this.placeholder = 'Enter Date Of Birth'" onblur="this.placeholder = 'Enter Date Of Birth'" placeholder="Date Of Birth"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. yyyy-mm-dd / 1996-01-26</span>
-                                                                          <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtdob" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Date Of Birth"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div> 
-                                                                     <div class="col-md-6">
-                                                                <%--  <div class="col-sm-6">--%>
-                                                                <div class="col-sm-2">
-                                                                    Time of Birth 
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. yyyy-mm-dd / 1996-01-26</span>
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtdob" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Date Of Birth"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <%--  <div class="col-sm-6">--%>
+                                                            <div class="col-sm-2">
+                                                                Time of Birth 
                                         
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    Hours
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                Hours
                                           
                                         <asp:DropDownList ID="ddlhours" runat="server" class="form-control valid">
                                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -245,9 +256,9 @@
                                             <asp:ListItem Value="12">12</asp:ListItem>
 
                                         </asp:DropDownList>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    Minutes
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                Minutes
                                           
                                         <asp:DropDownList ID="ddlminut" runat="server" class="form-control ">
                                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -311,9 +322,9 @@
                                             <asp:ListItem Value="59">59</asp:ListItem>
                                             <asp:ListItem Value="60">60</asp:ListItem>
                                         </asp:DropDownList>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    Second
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                Second
                                         
                                         <asp:DropDownList ID="ddlsecond" runat="server" class="form-control valid">
                                             <asp:ListItem Value="1">1</asp:ListItem>
@@ -377,121 +388,122 @@
                                             <asp:ListItem Value="59">59</asp:ListItem>
                                             <asp:ListItem Value="60">60</asp:ListItem>
                                         </asp:DropDownList>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    AM/PM
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                AM/PM
                                            
                                         <asp:DropDownList ID="ddl12hour" runat="server" class="form-control valid">
                                             <asp:ListItem Value="AM">AM</asp:ListItem>
                                             <asp:ListItem Value="PM">PM</asp:ListItem>
 
                                         </asp:DropDownList>
-                                                                </div>
-                                                                    </div>
-                                                                     </div>
-                                                                <%-- <div class="form-group">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%-- <div class="form-group">
                                        <asp:TextBox ID="txttob" runat="server" class="form-control valid" TextMode="Time" name="name"  type="text" onfocus="this.placeholder = 'Enter Time of Birth'" onblur="this.placeholder = 'Enter Time of Birth'" placeholder="Time of Birth"></asp:TextBox>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txttob" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Time of Birth"></asp:RequiredFieldValidator>
                                     </div>
-                            --%>
-                                                                <%-- </div>--%>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Place of Birth 
+                                                    --%>
+                                                    <%-- </div>--%>
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Place of Birth 
                                             <asp:TextBox ID="txtpob" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Place of Birth'" onblur="this.placeholder = 'Enter Place of Birth'" placeholder="Enter Place of Birth"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Valsad, Gujrat, India</span>
-                                                                        <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtpob" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Place of Birth"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                  
-                                                                 <div class="col-sm-6">
-                                                                    <div class="form-groupstyle1">
-                                                                       Age
-                                           <asp:DropDownList ID="ddlage" runat="server" class="form-control valid">
-                                           
-                                            <asp:ListItem Value="18">18</asp:ListItem>
-                                            <asp:ListItem Value="19">19</asp:ListItem>
-                                            <asp:ListItem Value="20">20</asp:ListItem>
-                                            <asp:ListItem Value="21">21</asp:ListItem>
-                                            <asp:ListItem Value="22">22</asp:ListItem>
-                                            <asp:ListItem Value="23">23</asp:ListItem>
-                                            <asp:ListItem Value="24">24</asp:ListItem>
-                                            <asp:ListItem Value="25">25</asp:ListItem>
-                                            <asp:ListItem Value="26">26</asp:ListItem>
-                                            <asp:ListItem Value="27">27</asp:ListItem>
-                                            <asp:ListItem Value="28">28</asp:ListItem>
-                                            <asp:ListItem Value="29">29</asp:ListItem>
-                                            <asp:ListItem Value="30">30</asp:ListItem>
-                                            <asp:ListItem Value="31">31</asp:ListItem>
-                                            <asp:ListItem Value="32">32</asp:ListItem>
-                                            <asp:ListItem Value="33">33</asp:ListItem>
-                                            <asp:ListItem Value="34">34</asp:ListItem>
-                                            <asp:ListItem Value="35">35</asp:ListItem>
-                                            <asp:ListItem Value="36">36</asp:ListItem>
-                                            <asp:ListItem Value="37">37</asp:ListItem>
-                                            <asp:ListItem Value="38">38</asp:ListItem>
-                                            <asp:ListItem Value="39">39</asp:ListItem>
-                                            <asp:ListItem Value="40">40</asp:ListItem>
-                                            <asp:ListItem Value="41">41</asp:ListItem>
-                                            <asp:ListItem Value="42">42</asp:ListItem>
-                                            <asp:ListItem Value="43">43</asp:ListItem>
-                                            <asp:ListItem Value="44">44</asp:ListItem>
-                                            <asp:ListItem Value="45">45</asp:ListItem>
-                                            <asp:ListItem Value="46">46</asp:ListItem>
-                                            <asp:ListItem Value="47">47</asp:ListItem>
-                                            <asp:ListItem Value="48">48</asp:ListItem>
-                                            <asp:ListItem Value="49">49</asp:ListItem>
-                                            <asp:ListItem Value="50">50</asp:ListItem>
-                                            <asp:ListItem Value="51">51</asp:ListItem>
-                                            <asp:ListItem Value="52">52</asp:ListItem>
-                                            <asp:ListItem Value="53">53</asp:ListItem>
-                                            <asp:ListItem Value="54">54</asp:ListItem>
-                                            <asp:ListItem Value="55">55</asp:ListItem>
-                                            <asp:ListItem Value="56">56</asp:ListItem>
-                                            <asp:ListItem Value="57">57</asp:ListItem>
-                                            <asp:ListItem Value="58">58</asp:ListItem>
-                                            <asp:ListItem Value="59">59</asp:ListItem>
-                                            <asp:ListItem Value="60">60</asp:ListItem>
-                                        </asp:DropDownList>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Valsad, Gujrat, India</span>
-                                                                        <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlage" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Select You Age"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                                <div class="col-sm-6" runat="server" visible="false">
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Valsad, Gujrat, India</span>
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtpob" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Place of Birth"></asp:RequiredFieldValidator>
 
-                                                                    <div class="form-group">
-                                                                        Religion  (optional)
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server"
+                                                                    ControlToValidate="txtpob" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+                                                            <div class="form-groupstyle1">
+                                                                Age
+                                           <asp:DropDownList ID="ddlage" runat="server" class="form-control valid">
+
+                                               <asp:ListItem Value="18">18</asp:ListItem>
+                                               <asp:ListItem Value="19">19</asp:ListItem>
+                                               <asp:ListItem Value="20">20</asp:ListItem>
+                                               <asp:ListItem Value="21">21</asp:ListItem>
+                                               <asp:ListItem Value="22">22</asp:ListItem>
+                                               <asp:ListItem Value="23">23</asp:ListItem>
+                                               <asp:ListItem Value="24">24</asp:ListItem>
+                                               <asp:ListItem Value="25">25</asp:ListItem>
+                                               <asp:ListItem Value="26">26</asp:ListItem>
+                                               <asp:ListItem Value="27">27</asp:ListItem>
+                                               <asp:ListItem Value="28">28</asp:ListItem>
+                                               <asp:ListItem Value="29">29</asp:ListItem>
+                                               <asp:ListItem Value="30">30</asp:ListItem>
+                                               <asp:ListItem Value="31">31</asp:ListItem>
+                                               <asp:ListItem Value="32">32</asp:ListItem>
+                                               <asp:ListItem Value="33">33</asp:ListItem>
+                                               <asp:ListItem Value="34">34</asp:ListItem>
+                                               <asp:ListItem Value="35">35</asp:ListItem>
+                                               <asp:ListItem Value="36">36</asp:ListItem>
+                                               <asp:ListItem Value="37">37</asp:ListItem>
+                                               <asp:ListItem Value="38">38</asp:ListItem>
+                                               <asp:ListItem Value="39">39</asp:ListItem>
+                                               <asp:ListItem Value="40">40</asp:ListItem>
+                                               <asp:ListItem Value="41">41</asp:ListItem>
+                                               <asp:ListItem Value="42">42</asp:ListItem>
+                                               <asp:ListItem Value="43">43</asp:ListItem>
+                                               <asp:ListItem Value="44">44</asp:ListItem>
+                                               <asp:ListItem Value="45">45</asp:ListItem>
+                                               <asp:ListItem Value="46">46</asp:ListItem>
+                                               <asp:ListItem Value="47">47</asp:ListItem>
+                                               <asp:ListItem Value="48">48</asp:ListItem>
+                                               <asp:ListItem Value="49">49</asp:ListItem>
+                                               <asp:ListItem Value="50">50</asp:ListItem>
+                                               <asp:ListItem Value="51">51</asp:ListItem>
+                                               <asp:ListItem Value="52">52</asp:ListItem>
+                                               <asp:ListItem Value="53">53</asp:ListItem>
+                                               <asp:ListItem Value="54">54</asp:ListItem>
+                                               <asp:ListItem Value="55">55</asp:ListItem>
+                                               <asp:ListItem Value="56">56</asp:ListItem>
+                                               <asp:ListItem Value="57">57</asp:ListItem>
+                                               <asp:ListItem Value="58">58</asp:ListItem>
+                                               <asp:ListItem Value="59">59</asp:ListItem>
+                                               <asp:ListItem Value="60">60</asp:ListItem>
+                                           </asp:DropDownList>
+
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="ddlage" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Select You Age"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6" runat="server" visible="false">
+
+                                                        <div class="form-group">
+                                                            Religion  (optional)
                                             <asp:TextBox ID="txtreligion" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Religion'" onblur="this.placeholder = 'Enter Religion'" placeholder="Enter Religion" ValidationGroup="B"></asp:TextBox>
 
-                                                                    </div>
-                                                                </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Zodiac Sign 
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Zodiac Sign 
                                        
                                             <asp:DropDownList ID="ddlzoradicsign" runat="server" class="form-control valid">
-                                                
-
                                             </asp:DropDownList>
 
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlzoradicsign" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Zodiac Sign"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                    
-                                                                      
-                                                                <div class="col-sm-2">
-                                                                    Height 
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlzoradicsign" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Zodiac Sign"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-sm-2">
+                                                            Height 
                               
                                     
-                                                                </div>
+                                                        </div>
 
-                                                                <div class="col-sm-2">
-                                                                    Feet 
+                                                        <div class="col-sm-2">
+                                                            Feet 
                                            <div class="form-group">
                                                <asp:DropDownList ID="ddlfeet" runat="server" class="form-control valid">
 
@@ -508,9 +520,9 @@
 
                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlfeet" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    Inch 
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            Inch 
                                            <div class="form-group">
                                                <asp:DropDownList ID="ddlinch" runat="server" class="form-control valid">
 
@@ -531,34 +543,41 @@
                                                </asp:DropDownList>
                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlinch" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
-                                                                </div>
-                                                              </div>
+                                                        </div>
+                                                    </div>
 
-                                                                   <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Religion
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Religion
                                           <asp:DropDownList ID="ddlreligion" runat="server" class="form-control valid" AutoPostBack="true" OnSelectedIndexChanged="ddlreligion_SelectedIndexChanged">
-                                              <asp:ListItem Value="0">None</asp:ListItem>
+                                             <%-- <asp:ListItem Value="0">None</asp:ListItem>--%>
                                           </asp:DropDownList>
-                                                                        <asp:HiddenField ID="hfCustomerId" runat="server" />
-                                                                        <%--  <span style="font-size: small; color: #ff6a00">* Ex. 75</span>--%>
-                                                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                                                <asp:HiddenField ID="hfCustomerId" runat="server" />
+                                                                <%--  <span style="font-size: small; color: #ff6a00">* Ex. 75</span>--%>
+                                                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
 
-                                                                        <ContentTemplate>
-                                                                            <div class="form-group">
-                                                                                Caste
-                                                          <asp:DropDownList ID="ddlsubcaste" runat="server" class="form-control valid">
-                                                              <asp:ListItem Value="0">None</asp:ListItem>
+                                                            <div class="form-group">
+                                                                Caste
+                                                          
+                                                                <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional" EnableViewState="true">
+                                                                    <%-- <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="ddlreligion" EventName="SelectedIndexChanged" />
+        </Triggers>--%>
+                                                                    <ContentTemplate>
+                                                                        <asp:DropDownList ID="ddlsubcaste" runat="server" class="form-control valid">
+                                                            <%--  <asp:ListItem Value="0">None</asp:ListItem>--%>
                                                           </asp:DropDownList>
-
-                                                                                <span style="font-size: small; color: #0d3dd9">* <a href="#">If Your Caste Not Added Then Please Click Here</a> </span>
-                                                                                <asp:TextBox ID="txtsubcaste" runat="server" class="form-control valid" name="name" type="text" Visible="false" onfocus="this.placeholder = 'Enter Sub Caste'" onblur="this.placeholder = 'Enter Sub Caste'" placeholder="Enter Sub Caste" ValidationGroup="B"></asp:TextBox>
-                                                                                <%-- <asp:DropDownList ID="DropDownList1" runat="server" class="form-control valid">
+                                                                    </ContentTemplate>
+                                                                </asp:UpdatePanel>
+                                                          
+                                                                
+                                                                <%--   <span style="font-size: small; color: #0d3dd9">* <a href="#">If Your Caste Not Added Then Please Click Here</a> </span>--%>
+                                                                <asp:TextBox ID="txtsubcaste" runat="server" class="form-control valid" name="name" type="text" Visible="false" onfocus="this.placeholder = 'Enter Sub Caste'" onblur="this.placeholder = 'Enter Sub Caste'" placeholder="Enter Sub Caste" ValidationGroup="B"></asp:TextBox>
+                                                                <%-- <asp:DropDownList ID="DropDownList1" runat="server" class="form-control valid">
                                                 <asp:ListItem Value="0">None</asp:ListItem>
                                                 <asp:ListItem Value="A+">A+</asp:ListItem>
                                                 <asp:ListItem Value="A-">A-</asp:ListItem>
@@ -569,26 +588,25 @@
                                                 <asp:ListItem Value="B+">B+</asp:ListItem>
                                                 <asp:ListItem Value="B-">B-</asp:ListItem>
                                             </asp:DropDownList>--%>
-                                                                            </div>
-                                                                        </ContentTemplate>
-                                                                    </asp:UpdatePanel>
+                                                            </div>
 
-                                                                </div>
-                                                                     </div>
 
-                                                                 <div class="col-md-12">
-                                                                  
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Weight In Kg (optional)
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Weight In Kg (optional)
                                             <asp:TextBox ID="txtweight" runat="server" class="form-control valid" name="name" TextMode="Number" type="text" onfocus="this.placeholder = 'Enter weight'" onblur="this.placeholder = 'Enter weight'" placeholder="Enter weight" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. 75</span>
-                                                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Blood Group (optional)
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. 75</span>
+                                                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Blood Group (optional)
                                             <asp:DropDownList ID="ddlbloodgroup" runat="server" class="form-control valid">
                                                 <asp:ListItem Value="0">None</asp:ListItem>
                                                 <asp:ListItem Value="A+">A+</asp:ListItem>
@@ -600,21 +618,23 @@
                                                 <asp:ListItem Value="B+">B+</asp:ListItem>
                                                 <asp:ListItem Value="B-">B-</asp:ListItem>
                                             </asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                      </div>
-                                                             <div class="col-sm-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Skin complaction (optional)
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Skin complaction (optional)
                                             <asp:TextBox ID="txtskincomplaction" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Skin complaction'" onblur="this.placeholder = 'Enter Skin complaction'" placeholder="Enter Skin complaction" ValidationGroup="B"></asp:TextBox>
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server"
+                                                                    ControlToValidate="txtskincomplaction" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
 
-                                                                    </div>
-                                                                </div>
-                                                                        
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        Maritial Status
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                Maritial Status
                                     <asp:DropDownList ID="ddlmaritialstatus" class="form-control valid" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlmaritialstatus_SelectedIndexChanged">
 
                                         <asp:ListItem Value="Single">Single</asp:ListItem>
@@ -623,12 +643,12 @@
                                         <asp:ListItem Value="Widower">Widower</asp:ListItem>
                                     </asp:DropDownList>
 
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlmaritialstatus" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Maritial Status"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group" id="noofchild" runat="server" visible="false">
-                                                                        No of Child
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlmaritialstatus" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Select Maritial Status"></asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group" id="noofchild" runat="server" visible="false">
+                                                                No of Child
                                      <asp:DropDownList ID="ddlnoofchild" runat="server" class="form-control valid">
                                          <asp:ListItem Value="0">0</asp:ListItem>
                                          <asp:ListItem Value="1">1</asp:ListItem>
@@ -638,164 +658,189 @@
                                      </asp:DropDownList>
 
 
-                                                                    </div>
-                                                                </div>
-                                                                    
-                                                                   </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Known Language (optional)
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Known Language (optional)
                                             <asp:TextBox ID="txtlanguageknow" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = ' Enter Known Language '" onblur="this.placeholder = 'Enter Known Language '" placeholder="Enter Known Language" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Gujrati, Hindi, English, Marathi</span>
-                                                                        <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtlanguageknow" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Language Know"></asp:RequiredFieldValidator>--%>
-                                                                    </div>
-                                                                </div>
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Gujrati, Hindi, English, Marathi</span>
+                                                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtlanguageknow" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Language Know"></asp:RequiredFieldValidator>--%>
+                                                                <br />
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator11" runat="server"
+                                                                    ControlToValidate="txtlanguageknow" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z, ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
 
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Hobbies (optional)
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Hobbies (optional)
                                             <asp:TextBox ID="txtHobbies" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Hobbies'" onblur="this.placeholder = 'Enter Hobbies'" placeholder="Enter Hobbies" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Reading, cooking</span>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Reading, cooking</span>
+                                                                <br />
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server"
+                                                                    ControlToValidate="txtHobbies" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z, ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Current Address
+                                                    <div class="col-md-12">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Current Address
                                             <asp:TextBox ID="txtcurrentaddress" runat="server" class="form-control valid" name="name" Rows="2" Columns="2" TextMode="MultiLine" type="text" onfocus="this.placeholder = 'Enter Current Address'" onblur="this.placeholder = 'Enter Current Address'" placeholder="Enter Current Address" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtcurrentaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Current Address"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtcurrentaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Current Address"></asp:RequiredFieldValidator>
 
-                                                                    </div>
-                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Nationality (optional)
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                Nationality (optional)
                                             <asp:TextBox ID="txtNationality" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Nationality'" onblur="this.placeholder = 'Enter Nationality'" placeholder="Enter Nationality" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Indian</span>
-                                                                        <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtNationality" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Nationality"></asp:RequiredFieldValidator>--%>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                                 <div class="col-sm-12">
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        City
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Indian</span>
+                                                                <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtNationality" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Nationality"></asp:RequiredFieldValidator>--%>
+                                                                <br />
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server"
+                                                                    ControlToValidate="txtNationality" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                City
                                             <asp:TextBox ID="txtCity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter City'" onblur="this.placeholder = 'Enter City'" placeholder="Enter City" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Valsad</span>
-                                                                        <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        State
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Valsad</span>
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server"
+                                                                    ControlToValidate="txtCity" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                State
                                             <asp:TextBox ID="txtState" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter State'" onblur="this.placeholder = 'Enter State'" placeholder="Enter State" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Gujrat</span>
-                                                                     
-                                                                        <br />   <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtState" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. Gujrat</span>
 
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        Country
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtState" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server"
+                                                                    ControlToValidate="txtState" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                Country
                                             <asp:TextBox ID="txtCountry" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Country'" onblur="this.placeholder = 'Enter Country'" placeholder="Enter Country" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. India</span>
-                                                                        <br />
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtCountry" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
-
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-
+                                                                <span style="font-size: small; color: #ff6a00">* Ex. India</span>
+                                                                <br />
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtCountry" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
+                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server"
+                                                                    ControlToValidate="txtCountry" ErrorMessage="Only Alphabet accept" CssClass="notice red" ForeColor="Red" Display="Dynamic"
+                                                                    ValidationExpression="[a-zA-Z ]*$"></asp:RegularExpressionValidator>
                                                             </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                    <%--</div>--%>
-                                                </asp:WizardStep>
-                                                <asp:WizardStep ID="WizardStep2" runat="server" Title="Step 2">
-                                                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                                        <ContentTemplate>
-                                                            <%--   <div class="content">This is Step 2</div>--%>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <h2 class="contact-title">Education Details</h2>
-                                                                </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        Hightest Education   
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                        <%--</div>--%>
+                                    </asp:WizardStep>
+                                    <asp:WizardStep ID="WizardStep2" runat="server" Title="Step 2">
+                                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                            <ContentTemplate>
+
+                                        <%--   <div class="content">This is Step 2</div>--%>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h2 class="contact-title">Education Details</h2>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        Hightest Education   
                                             <asp:TextBox ID="txtHightestEducation" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter  Hightest Education'" onblur="this.placeholder = 'Enter  Hightest Education'" placeholder="Enter  Hightest Education" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Master Of Computer Application (MCA)</span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtHightestEducation" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter  Hightest Education "></asp:RequiredFieldValidator>
+                                                        <span style="font-size: small; color: #ff6a00">* Ex. Master Of Computer Application (MCA)</span>
+                                                        <br />
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtHightestEducation" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter  Hightest Education "></asp:RequiredFieldValidator>
 
-                                                                    </div>
-                                                                </div>
+                                                    </div>
+                                                </div>
 
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        University  (optional)
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        University  (optional)
                                             <asp:TextBox ID="txtUniversity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter University'" onblur="this.placeholder = 'Enter University'" placeholder="Enter University" ValidationGroup="B"></asp:TextBox>
-                                                                        <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtUniversity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter University"></asp:RequiredFieldValidator>
-         --%>  <span style="font-size: small; color: #ff6a00">* Ex. Gujrat University</span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        Year of Passing (optional)
+                                                        <%--   <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtUniversity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter University"></asp:RequiredFieldValidator>
+                                                        --%>  <span style="font-size: small; color: #ff6a00">* Ex. Gujrat University</span>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        Year of Passing (optional)
                                             <asp:TextBox ID="txtYearofPassing" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Year of Passing '" onblur="this.placeholder = 'Enter Year of Passing '" placeholder="Enter Year of Passing " ValidationGroup="B"></asp:TextBox>
-                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtYearofPassing" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Year of Passing "></asp:RequiredFieldValidator>
-         --%><span style="font-size: small; color: #ff6a00">* Ex. March - 2011</span>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                            </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </asp:WizardStep>
-                                                <asp:WizardStep ID="WizardStep3" runat="server" Title="Step 3">
-                                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                                        <ContentTemplate>
-                                                            <%--<div class="content">This is Step 3</div>--%>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <h2 class="contact-title">Occupation Details</h2>
-                                                                </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Occupation 
+                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtYearofPassing" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Year of Passing "></asp:RequiredFieldValidator>
+                                                        --%><span style="font-size: small; color: #ff6a00">* Ex. March - 2011</span>
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </asp:WizardStep>
+                                    <asp:WizardStep ID="WizardStep3" runat="server" Title="Step 3">
+
+                                        <%--<div class="content">This is Step 3</div>--%>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h2 class="contact-title">Occupation Details</h2>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Occupation 
                                             <asp:TextBox ID="txtOccupation" runat="server" class="form-control valid" name="name" Text="" type="text" onfocus="this.placeholder = 'Enter Occupation'" onblur="this.placeholder = 'Enter Occupation'" placeholder="Enter Occupation" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupation" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Occupation"></asp:RequiredFieldValidator>
-                                                                    </div>
-                                                                </div>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupation" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Occupation"></asp:RequiredFieldValidator>
+                                                    </div>
+                                                </div>
 
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Occupation in details (optional)
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Occupation in details (optional)
                                             <asp:TextBox ID="txtOccupationindetails" runat="server" class="form-control valid" name="name" TextMode="MultiLine" type="text" onfocus="this.placeholder = 'Enter Occupation in details'" onblur="this.placeholder = 'Enter Occupation in details'" placeholder="Enter Occupation in details" ValidationGroup="B"></asp:TextBox>
-                                                                        <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
-         --%>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Monthly Income (optional)
+                                                        <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
+                                                        --%>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Monthly Income (optional)
                                             <asp:TextBox ID="txtmonthlyincome" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Monthly Income '" onblur="this.placeholder = 'Enter Monthly Income '" placeholder="Enter Monthly Income " ValidationGroup="B"></asp:TextBox>
-                                                                        <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
-         --%>
-                                                                    </div>
-                                                                </div>
+                                                        <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
+                                                        --%>
+                                                    </div>
+                                                </div>
 
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        Currency
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        Currency
                                             <asp:DropDownList ID="ddlcurrency" class="form-control valid" runat="server">
                                                 <asp:ListItem Value="0">----------Select----------</asp:ListItem>
                                                 <asp:ListItem Value="INR">INR-Indian rupee</asp:ListItem>
@@ -820,76 +865,77 @@
                                                 <asp:ListItem Value="KRW">KRW-South Korean won</asp:ListItem>
                                                 <asp:ListItem Value="SGD">SGD-Singapore dollar</asp:ListItem>
                                             </asp:DropDownList>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                            </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </asp:WizardStep>
-                                                <asp:WizardStep ID="WizardStep4" runat="server" Title="Step 4">
-                                                    <%--<div class="content">This is Step 4</div>--%>
-                                                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                                        <ContentTemplate>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <h2 class="contact-title">Family Details</h2>
-                                                                </div>
-                                                                 <div class="col-md-12">
-                                                                   <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Father Name 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </asp:WizardStep>
+                                    <asp:WizardStep ID="WizardStep4" runat="server" Title="Step 4">
+                                        <%--<div class="content">This is Step 4</div>--%>
+                                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                            <ContentTemplate>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h2 class="contact-title">Family Details</h2>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-12">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    Father Name 
                                             <asp:TextBox ID="txtfathername" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Father Name'" onblur="this.placeholder = 'Enter Father Name'" placeholder="Enter Father Name" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtfathername" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Father Name "></asp:RequiredFieldValidator>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtfathername" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Father Name "></asp:RequiredFieldValidator>
 
-                                                                    </div>
                                                                 </div>
-                                                                 <div class="col-sm-6">
-                                                                    <div class="form-groupstyle1">
-                                                                        Father Occupation 
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-groupstyle1">
+                                                                    Father Occupation 
                                             <asp:TextBox ID="txtFatherOccupation" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Father Occupation'" onblur="this.placeholder = 'Enter Father Occupation'" placeholder="Enter Father Occupation" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtFatherOccupation" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter Father Occupation "></asp:RequiredFieldValidator>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtFatherOccupation" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter Father Occupation "></asp:RequiredFieldValidator>
 
-                                                                    </div>
                                                                 </div>
-                                                                       </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Mother Name 
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    Mother Name 
                                             <asp:TextBox ID="txtmothername" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Mother Name'" onblur="this.placeholder = 'Enter Mother Name'" placeholder="Enter Mother Name" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtmothername" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Mother Name"></asp:RequiredFieldValidator>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtmothername" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Mother Name"></asp:RequiredFieldValidator>
 
-                                                                    </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-groupstyle1">
-                                                                        Mother Occupation 
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-groupstyle1">
+                                                                    Mother Occupation 
                                             <asp:TextBox ID="txtmotherOccupation" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Mother Occupation'" onblur="this.placeholder = 'Enter Mother Occupation'" placeholder="Enter Mother Occupation" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtmotherOccupation" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter Mother Occupation "></asp:RequiredFieldValidator>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtmotherOccupation" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter Mother Occupation "></asp:RequiredFieldValidator>
 
-                                                                    </div>
                                                                 </div>
-                                                                     </div>
-                                                                 <div class="col-md-12">
-                                                                <div class="col-sm-6">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="col-sm-6">
 
-                                                                    <div class="form-group">
-                                                                        Brother  <%--<asp:TextBox ID="txtbrother" runat="server" class="form-control valid" name="name"  type="text" onfocus="this.placeholder = 'Enter Brother'" onblur="this.placeholder = 'Enter Brother'" placeholder="Enter Brother" ValidationGroup="B"></asp:TextBox>--%>
-                                                                        <asp:DropDownList ID="ddlbrother" runat="server" class="form-control valid">
-                                                                            <asp:ListItem Value="0">0</asp:ListItem>
-                                                                            <asp:ListItem Value="1">1</asp:ListItem>
-                                                                            <asp:ListItem Value="2">2</asp:ListItem>
-                                                                            <asp:ListItem Value="2+">2+</asp:ListItem>
+                                                                <div class="form-group">
+                                                                    Brother  <%--<asp:TextBox ID="txtbrother" runat="server" class="form-control valid" name="name"  type="text" onfocus="this.placeholder = 'Enter Brother'" onblur="this.placeholder = 'Enter Brother'" placeholder="Enter Brother" ValidationGroup="B"></asp:TextBox>--%>
+                                                                    <asp:DropDownList ID="ddlbrother" runat="server" class="form-control valid">
+                                                                        <asp:ListItem Value="0">0</asp:ListItem>
+                                                                        <asp:ListItem Value="1">1</asp:ListItem>
+                                                                        <asp:ListItem Value="2">2</asp:ListItem>
+                                                                        <asp:ListItem Value="2+">2+</asp:ListItem>
 
-                                                                        </asp:DropDownList>
+                                                                    </asp:DropDownList>
 
-                                                                    </div>
                                                                 </div>
+                                                            </div>
 
-                                                                <div class="col-sm-6">
-                                                                    Sister
+                                                            <div class="col-sm-6">
+                                                                Sister
                                    
                                         <div class="form-group">
                                             <asp:DropDownList ID="ddlsister" runat="server" class="form-control valid">
@@ -901,69 +947,73 @@
                                             </asp:DropDownList>
                                             <%-- <asp:TextBox ID="txtSister" runat="server" class="form-control valid" name="name"  type="text" onfocus="this.placeholder = 'Enter Sister'" onblur="this.placeholder = 'Enter Sister'" placeholder="Enter Sister" ValidationGroup="B"></asp:TextBox>--%>
                                         </div>
-                                                                </div>
-                                                                     </div>
-                                                                <div class="col-md-12">
-                                                                     <div class="col-sm-12">
-                                                                    <div class="form-group">
-                                                                        Family Address 
-                                            <asp:TextBox ID="txtfamilyaddress" runat="server" TextMode="MultiLine" Rows="2" Columns="2" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Family Address'" onblur="this.placeholder = 'Enter Family Address'" placeholder="Enter Family Address" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtfamilyaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Family Address"></asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        City
-                                            <asp:TextBox ID="txtfamilycity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter City'" onblur="this.placeholder = 'Enter City'" placeholder="Enter City" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Valsad</span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtfamilycity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        State
-                                            <asp:TextBox ID="txtfamilystate" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter State'" onblur="this.placeholder = 'Enter State'" placeholder="Enter State" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. Gujrat</span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtfamilystate" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    <div class="form-group">
-                                                                        Country
-                                            <asp:TextBox ID="txtfamilycountry" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Country'" onblur="this.placeholder = 'Enter Country'" placeholder="Enter Country" ValidationGroup="B"></asp:TextBox>
-                                                                        <span style="font-size: small; color: #ff6a00">* Ex. India</span>
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtfamilycountry" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
-
-                                                                    </div>
-                                                                </div>
-                                                                    </div>
-                                                                     </div>
                                                             </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </asp:WizardStep>
-                                                <asp:WizardStep ID="WizardStep5" runat="server" Title="Step 5">
-                                                    <%-- <div class="content">This is Step 5</div>--%>
-                                                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
-                                                        <ContentTemplate>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <h2 class="contact-title">Contact Details</h2>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group">
+                                                                    Family Address 
+                                            <asp:TextBox ID="txtfamilyaddress" runat="server" TextMode="MultiLine" Rows="2" Columns="2" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Family Address'" onblur="this.placeholder = 'Enter Family Address'" placeholder="Enter Family Address" ValidationGroup="B"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtfamilyaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Family Address"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <%--<div class="col-6">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group">
+                                                                    City
+                                            <asp:TextBox ID="txtfamilycity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter City'" onblur="this.placeholder = 'Enter City'" placeholder="Enter City" ValidationGroup="B"></asp:TextBox>
+                                                                    <span style="font-size: small; color: #ff6a00">* Ex. Valsad</span>
+                                                                    <br />
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtfamilycity" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group">
+                                                                    State
+                                            <asp:TextBox ID="txtfamilystate" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter State'" onblur="this.placeholder = 'Enter State'" placeholder="Enter State" ValidationGroup="B"></asp:TextBox>
+                                                                    <span style="font-size: small; color: #ff6a00">* Ex. Gujrat</span>
+                                                                    <br />
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtfamilystate" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group">
+                                                                    Country
+                                            <asp:TextBox ID="txtfamilycountry" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Country'" onblur="this.placeholder = 'Enter Country'" placeholder="Enter Country" ValidationGroup="B"></asp:TextBox>
+                                                                    <span style="font-size: small; color: #ff6a00">* Ex. India</span>
+                                                                    <br />
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtfamilycountry" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </asp:WizardStep>
+                                    <asp:WizardStep ID="WizardStep5" runat="server" Title="Step 5">
+                                        <%-- <div class="content">This is Step 5</div>--%>
+                                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                            <ContentTemplate>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h2 class="contact-title">Contact Details</h2>
+                                            </div>
+                                            <%--<div class="col-6">
                                     <div class="form-group">
                                     Landline Number   <asp:TextBox ID="txtMobile1" runat="server" class="form-control valid" name="name"  type="text" onfocus="this.placeholder = 'Enter Home Mobile 1'" onblur="this.placeholder = 'Enter Home Mobile 1'" placeholder="Enter Home Mobile 1" ValidationGroup="B"></asp:TextBox>
                           
                                     </div>
                                 </div>--%>
-                                                                 <div class="col-md-12">
+                                            <div class="col-md-12">
 
-                                                                <div class="col-sm-3">
-                                                                    Contrycode
+                                                <div class="col-sm-3">
+                                                    Contrycode
                                        
                                         <asp:DropDownList ID="ddlcountrycode1" runat="server" class="form-control valid">
                                             <asp:ListItem Value="0">None</asp:ListItem>
@@ -1229,17 +1279,17 @@
                                             <asp:ListItem Value="263">Zimbabwe (+263)</asp:ListItem>
                                         </asp:DropDownList>
 
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    Mobile 1
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    Mobile 1
                                        
                                         <asp:TextBox ID="txtMobile1" runat="server" TextMode="Number" MaxLength="10" onkeypress="return this.value.length<10" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Mobile Number'" onblur="this.placeholder = 'Enter Mobile Number'" placeholder="Enter Mobile Number" ValidationGroup="B"></asp:TextBox>
-                                                                    <asp:RegularExpressionValidator ID="revMobNo" runat="server" ErrorMessage="Invalid Mobile Number" ValidationExpression="^([0-9]{10})$" ControlToValidate="txtMobile1" CssClass="notice red " ValidationGroup="B" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtMobile1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Mobile Number"></asp:RequiredFieldValidator>
-                                                                </div>
+                                                    <asp:RegularExpressionValidator ID="revMobNo" runat="server" ErrorMessage="Invalid Mobile Number" ValidationExpression="^([0-9]{10})$" ControlToValidate="txtMobile1" CssClass="notice red " ValidationGroup="B" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtMobile1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Mobile Number"></asp:RequiredFieldValidator>
+                                                </div>
 
-                                                                <div class="col-sm-3">
-                                                                    Contrycode(optional)
+                                                <div class="col-sm-3">
+                                                    Contrycode(optional)
                    
                                         <asp:DropDownList ID="ddlcountrycode2" runat="server" class="form-control valid">
                                             <asp:ListItem Value="0">None</asp:ListItem>
@@ -1505,89 +1555,92 @@
                                             <asp:ListItem Value="263">Zimbabwe (+263)</asp:ListItem>
                                         </asp:DropDownList>
 
-                                                                </div>
-                                                                <div class="col-sm-3">
-                                                                    Mobile 2 (optional)
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    Mobile 2 (optional)
                                        
                                         <asp:TextBox ID="txtMobile2" runat="server" TextMode="Number" MaxLength="10" onkeypress="return this.value.length<10" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter  Mobile Number'" onblur="this.placeholder = 'Enter Mobile Number'" placeholder="Enter Mobile Number" ValidationGroup="B"></asp:TextBox>
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid Mobile Number" ValidationExpression="^([0-9]{10})$" ControlToValidate="txtMobile2" CssClass="notice red " ValidationGroup="B" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
-                                                                </div>
-                                                                <div class="col-sm-1.5"></div>
-                                                                <%-- <div class="form-group">
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid Mobile Number" ValidationExpression="^([0-9]{10})$" ControlToValidate="txtMobile2" CssClass="notice red " ValidationGroup="B" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                </div>
+                                                <div class="col-sm-1.5"></div>
+                                                <%-- <div class="form-group">
                                        Mobile Number 1  
                         
                                     </div>--%>
+                                            </div>
 
-                                                                <%--   <div class="col-6">
+                                            <%--   <div class="col-6">
                                     <div class="form-group">
                                        Mobile Number 2  <asp:TextBox ID="txtMobile3" runat="server" class="form-control valid" name="name"  type="text" onfocus="this.placeholder = 'Enter Home Mobile 3'" onblur="this.placeholder = 'Enter  Home Mobile 3'" placeholder="Enter  Home Mobile 3" ValidationGroup="B"></asp:TextBox>
                           
                                     </div>
                                 </div>
-                --%>
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Email Address 1 (optional)
+                                            --%><div class="col-md-12">
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Email Address 1 (optional)
                                             <asp:TextBox ID="txtemailaddress1" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Email Address 1'" onblur="this.placeholder = 'Enter Email Address 1'" placeholder="Enter Email Address 1" ValidationGroup="B"></asp:TextBox>
-                                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtemailaddress1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Email Address 1"></asp:RequiredFieldValidator>--%>
-                                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ControlToValidate="txtemailaddress1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Invalid email address"></asp:RegularExpressionValidator>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        Email Address 2 (optional)
-                                            <asp:TextBox ID="txtemailaddress2" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Email Address 2'" onblur="this.placeholder = 'Enter Email Address 2'" placeholder="Enter Email Address 2" ValidationGroup="B"></asp:TextBox>
-                                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ControlToValidate="txtemailaddress2" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Invalid email address"></asp:RegularExpressionValidator>
-                                                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtfamilyaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Email Address 2"></asp:RequiredFieldValidator>--%>
-                                                                    </div>
-                                                                </div>
-                                                                     </div>
-                                                            </div>
-                                                        </ContentTemplate>
-                                                    </asp:UpdatePanel>
-                                                </asp:WizardStep>
-                                                <asp:WizardStep ID="WizardStep6" runat="server" Title="Step 6">
-                                                    <%--  <div class="content">This is Step 5</div>--%>
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <h2 class="contact-title">ADD Photos</h2>
-                                                        </div>
-                                                         <div class="col-md-12">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                Profile Photo
-                                    <asp:FileUpload ID="FileUpload1" runat="server" class="form-control valid" AllowMultiple="false" onchange="showImagePreview(this)" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="FileUpload1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Choose Photo"></asp:RequiredFieldValidator>
-                                                                <asp:RegularExpressionValidator ID="regexValidator" runat="server"
-                                                                    ControlToValidate="FileUpload1" ForeColor="Red" Display="Dynamic"
-                                                                    ErrorMessage="Only JPEG images are allowed"
-                                                                    ValidationExpression="(.*\.([Jj][Pp][Gg])|.*\.([Jj][Pp][Ee][Gg])$)">  
-                                                                </asp:RegularExpressionValidator>
-                                                                <asp:Label ID="ltStatusText" runat="server" CssClass="notice red " Text="" ForeColor="Red"></asp:Label>
-
-                                                                <asp:Image ID="profilephoto" runat="server" Visible="false" ImageUrl="~/Picture/noimage.png" CssClass="img img-thumbnail" Height="100" Width="100" />
-                                                                <br />
-                                                                <asp:Label ID="lblimage" runat="server" Text="" Visible="false"></asp:Label>
-
-                                                            </div>
-                                                        </div>
-                                                             </div>
+                                                        <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtemailaddress1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Email Address 1"></asp:RequiredFieldValidator>--%>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ControlToValidate="txtemailaddress1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Invalid email address"></asp:RegularExpressionValidator>
                                                     </div>
-                                                    <div class="row">
-
-
-                                                        <div class="col-sm-12">
-                                                            <h2 class="contact-title">Preview</h2>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <img id="imgPreview" alt="Preview image" src="Picture/no-preview.png" width="300" height="200" style="object-fit: contain" />
-                                                        </div>
-                                                    </div>
-                                                </asp:WizardStep>
-                                            </WizardSteps>
-                                            <HeaderTemplate>
                                                 </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Email Address 2 (optional)
+                                            <asp:TextBox ID="txtemailaddress2" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Email Address 2'" onblur="this.placeholder = 'Enter Email Address 2'" placeholder="Enter Email Address 2" ValidationGroup="B"></asp:TextBox>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ControlToValidate="txtemailaddress2" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Invalid email address"></asp:RegularExpressionValidator>
+                                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtfamilyaddress" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Enter Email Address 2"></asp:RequiredFieldValidator>--%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </asp:WizardStep>
+                                    <asp:WizardStep ID="WizardStep6" runat="server" Title="Step 6">
+                                        <%--  <div class="content">This is Step 5</div>--%>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h2 class="contact-title">ADD Photos</h2>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        Profile Photo
+                                    <asp:FileUpload ID="FileUpload1" runat="server" class="form-control valid" AllowMultiple="false" onchange="showImagePreview(this)" />
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="FileUpload1" ForeColor="Red" Display="Dynamic" CssClass="notice red " ValidationGroup="B" ErrorMessage="Please Choose Photo"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator ID="regexValidator" runat="server"
+                                                            ControlToValidate="FileUpload1" ForeColor="Red" Display="Dynamic"
+                                                            ErrorMessage="Only JPEG images are allowed"
+                                                            ValidationExpression="(.*\.([Jj][Pp][Gg])|.*\.([Jj][Pp][Ee][Gg])$)">  
+                                                        </asp:RegularExpressionValidator>
+                                                        <asp:Label ID="ltStatusText" runat="server" CssClass="notice red " Text="" ForeColor="Red" Visible="false"></asp:Label>
+
+                                                        <asp:Image ID="profilephoto" runat="server" Visible="false" ImageUrl="~/Picture/noimage.png" CssClass="img img-thumbnail" Height="100" Width="100" />
+                                                        <br />
+                                                        <asp:Label ID="lblimage" runat="server" Text="" Visible="false"></asp:Label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+
+                                            <div class="col-sm-12">
+                                                <h2 class="contact-title">Preview</h2>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <img id="imgPreview" alt="Preview image" src="Picture/no-preview.png" width="300" height="200" style="object-fit: contain" />
+                                            </div>
+                                        </div>
+                                    </asp:WizardStep>
+                                </WizardSteps>
+                                <HeaderTemplate>
+                                    </div>
                                
                                 
                                 <ul id="wizHeader">
@@ -1598,28 +1651,27 @@
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </ul>
-                                            </HeaderTemplate>
-                                        </asp:Wizard>
+                                </HeaderTemplate>
+                            </asp:Wizard>
 
-                                    </div>
-                                </div>
-                            
+
                         </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-    <script src="../App_Themes/Theme1/js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="../App_Themes/Theme1/js/vendor/jquery-1.12.4.min.js"></script>
 
-    <%--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>--%>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
-    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
-        rel="Stylesheet" type="text/css" />
+ 
+    <script src="../App_Themes/jquery-ui.js"></script>
+    <script src="../App_Themes/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
 
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
 
         $(document).ready(function () {
             $("#ContentPlaceHolder1_Wizard1_txtcaste").autocomplete({
@@ -1652,6 +1704,6 @@
                 minLength: 1
             });
         });
-    </script>
+    </script>--%>
 </asp:Content>
 

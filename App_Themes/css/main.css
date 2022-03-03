@@ -4809,6 +4809,7 @@ ul.adv-stats {
     background: #f4f4f8;
     padding: 12px 12px 12px 25px;
     border-left: 4px solid #dedeea;
+    font-weight:600;
 }
 
     .notice:before {

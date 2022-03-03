@@ -538,6 +538,31 @@ namespace Registration
 
         }
 
+
+           [WebMethod]
+        public DataSet getregistrationdetailbygender(string Gender)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from [admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Ranasamaj_Registration] reg,[admin_matrimonyforgujarati].[db_matrimonyforgujarati].[Biodata] bio  where reg.id=bio.id and bio.Gender=@Gender", con);
+            cmd.Parameters.AddWithValue("@Gender", Gender);
+               //,Token_Service ts where reg.id=ts.id
+
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
+
         [WebMethod]
         public DataSet getregistrationdetailbyemail(string email)
         {
@@ -619,7 +644,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='true' and Deactivate_flag='false' and Search_ID!=@Search_ID   ORDER BY CreatedByDateTime desc", con);
+            SqlCommand cmd = new SqlCommand("select * from Biodata where Visibility_Flag='true' and Deactivate_flag='false' and Search_ID!=@Search_ID  ORDER BY CreatedByDateTime desc", con);
             cmd.Parameters.AddWithValue("@Search_ID", Search_ID);
 
             cmd.ExecuteNonQuery();
@@ -1737,7 +1762,6 @@ namespace Registration
         }
 
 
-
         [WebMethod]
         public void ADD_INBOX(int Biodata_id, int id, string Name, string CreatedBy, string ModifyBy, DateTime createdbydatetime, DateTime modifybydatetime)
         {
@@ -1872,6 +1896,28 @@ namespace Registration
         }
 
         [WebMethod]
+        public DataSet Getpasswordbyid(int id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Ranasamaj_Registration  where id=@id", con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            con.Close();
+            // Create an instance of DataSet.
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            // Return the DataSet as an XmlElement.
+            //XmlDataDocument xmldata = new XmlDataDocument(ds);
+            //XmlElement xmlElement = xmldata.DocumentElement;
+            return ds;
+
+        }
+
+        [WebMethod]
         public void deleteprofile(int id)
         {
             string dbconnection = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -1982,13 +2028,13 @@ namespace Registration
         }
 
         [WebMethod]
-        public DataSet getshortlistbyprofileid(int biodata_id)
+        public DataSet getshortlistbyprofileid(int biodata_id,int RegID)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Shortlist_tb np WHERE np.ProfileID=@ProfileID ORDER BY CreatedByDateTime desc;", con);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Shortlist_tb np WHERE np.ProfileID=@ProfileID and np.RegID=@RegID ORDER BY CreatedByDateTime desc;", con);
             cmd.Parameters.AddWithValue("@ProfileID", biodata_id);
-           
+            cmd.Parameters.AddWithValue("@RegID", RegID);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             con.Close();
@@ -2145,7 +2191,7 @@ namespace Registration
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ToString());
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("select Sender FROM [db_matrimonyforgujarati].[chat] WHERE Sender!=@username  GROUP BY Sender", con);
+            SqlCommand cmd = new SqlCommand("select Receiver FROM [db_matrimonyforgujarati].[chat] WHERE Sender=@username  GROUP BY Receiver", con);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.ExecuteNonQuery();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

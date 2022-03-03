@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Askbootstrap" />
     <meta name="author" content="Askbootstrap" />
-    <title>Gujrati Matrimony</title>
+    <title> Matrimony For Gujrati</title>
 
     <link rel="icon" type="image/png" href="https://askbootstrap.com/item/osahan-land-bootstrap-4-light-theme/" />
 
@@ -84,7 +84,7 @@
                                 <a class="btn btn-outline-success btn-sm" href="../Login.aspx">Sign In</a>
                             </li>
                             <li id="lisignup" class="list-inline-item" runat="server">
-                                <a class="btn btn-success btn-sm" href="../Register.aspx">Sign Up</a>
+                                <a class="btn btn-success btn-sm" href="../validregistration.aspx">Sign Up</a>
                             </li>
                         </ul>
                     </div>
@@ -140,17 +140,27 @@
                                     <button class="btn btn-outline-secondary" type="button"><i class="mdi mdi-arrow-right"></i></button>
                                 </div>
                             </div>--%>
-                            <h6 class="mb-4 mt-5">GET IN TOUCH</h6>
+                           <%-- <h6 class="mb-4 mt-5">GET IN TOUCH</h6>
                             <div class="footer-social">
                                 <a href="#"><i class="mdi mdi-facebook"></i></a>
                                 <a href="#"><i class="mdi mdi-twitter"></i></a>
                                 <a href="#"><i class="mdi mdi-instagram"></i></a>
                                 <a href="#"><i class="mdi mdi-google"></i></a>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                 </div>
             </section>
+
+ 
+
+    <section class="pt-4 pb-4 text-center">
+        <p class="mt-0 mb-0">© Copyright 2021 Matrimony For Gujrati. All Rights Reserved</p>
+       <%-- <small class="mt-0 mb-0">
+            Made with <i class="mdi mdi-heart text-danger"></i> by
+            <a class="text-dark" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
+        </small>--%>
+    </section>
         </div>
     </form>
 

@@ -29,7 +29,7 @@
                                
                                
                               
-                         <asp:LinkButton ID="lnksend" runat="server" class="btn btn-success btn-block">SEND</asp:LinkButton>
+                         <asp:LinkButton ID="lnksend" runat="server" class="btn btn-success btn-block" OnClick="lnksend_Click">SEND</asp:LinkButton>
                            <%-- <div class="mt-4 text-center login-with-social">
                                 <button type="button" class="btn btn-facebook btn-block"><i class="mdi mdi-facebook"></i>Login With Facebook</button>
                                 <button type="button" class="btn btn-twitter btn-block"><i class="mdi mdi-twitter"></i>Login With Twitter</button>
@@ -37,6 +37,19 @@
                             </div>--%>
                             
                         </div>
+
+                        <div class="card padding-card">
+
+                        <div class="card-body">
+                           <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false">
+    <Columns>
+       <%-- <asp:BoundField ItemStyle-Width="150px" DataField="CustomerID" HeaderText="CustomerID"/>
+        <asp:BoundField ItemStyle-Width="150px" DataField="ContactName" HeaderText="Contact Name"/>
+        <asp:BoundField ItemStyle-Width="150px" DataField="City" HeaderText="City"/>--%>
+    </Columns>
+</asp:GridView>
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -50,11 +63,11 @@
             var txtName = $("#txtemailid");
             //var txtCountry = $("#txtCountry");
             var _customer = {};
-            _customer.Name = txtName.val();
+            Name = txtName.val();
             //_customer.Country = txtCountry.val();
             $.ajax({
                 type: "POST",
-                url: "https://api.ohmsoftwaresinc.com/api/Matrimonyforgujarati/iNSERTDEMO",
+                url: "https://api.ohmsoftwaresinc.com/api/Matrimonyforgujarati/iNSERTDEMO2",
                 data: JSON.stringify(_customer),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -64,6 +77,30 @@
             });
         });
     </script>
+    <%--<script type="text/javascript">
+        $("#lnksend").click(function () {
+            var PersonalDetails = {
+                "FirstName": $("#FirstName").val(),
+                "LastName": $("#LastName").val(),
+                "Age": $("#Age").val(),
+                "Active": $("#Active").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: 'https://api.ohmsoftwaresinc.com/api/Matrimonyforgujarati/iNSERTDEMO',
+                data: JSON.stringify(PersonalDetails),
+                dataType: "json",
+                processData: true,
+                success: function (data, status, xhr) {
+                    alert(status);
+                },
+                error: function (xhr) {
+                    alert(xhr.responseText);
+                }
+            });
+        });
+</script>--%>
 </asp:Content>
 
 

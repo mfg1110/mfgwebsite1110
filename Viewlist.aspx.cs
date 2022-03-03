@@ -131,10 +131,7 @@ public partial class Viewlist : System.Web.UI.Page
     public void loaddata()
     {
         ds = Registrationobj.getbiodatadetailbyid(Convert.ToInt32(regid));
-        //rptdata.DataSource = ds;
-        //rptdata.DataBind();
-
-
+        
         rptourdata.DataSource = ds;
         rptourdata.DataBind();
     }
@@ -150,7 +147,10 @@ public partial class Viewlist : System.Web.UI.Page
         {
             Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, "", regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
             btn.Text = "Intrested";
+            
             btn.BackColor = Color.Green;
+            btn.BorderColor = Color.Green;
+            
         }
         else
         {
@@ -158,6 +158,7 @@ public partial class Viewlist : System.Web.UI.Page
             Registrationobj.ADD_INBOX(Convert.ToInt32(Biodata_id), regid, name, regid.ToString(), regid.ToString(), DateTime.Now, DateTime.Now);
             btn.Text = "Intrested";
             btn.BackColor = Color.Green;
+            btn.BorderColor = Color.Green;
         }
     }
     protected void LinkButton1_Click(object sender, EventArgs e)
@@ -212,13 +213,14 @@ public partial class Viewlist : System.Web.UI.Page
             else
             {
                 lnkexpressintrest.Visible = true;
-                DataSet dsexpressintrest = Registrationobj.Getinboxbyid(regid);
+                DataSet dsexpressintrest = Registrationobj.Getpasswordbyid(regid);
                 for (int i = 0; i < dsexpressintrest.Tables[0].Rows.Count; i++)
                 {
                     if (dsexpressintrest.Tables[0].Rows[i]["Biodata_id"].ToString() == lblbiodataid.Text)
                     {
                         lnkexpressintrest.Text = "Intrested";
                         lnkexpressintrest.BackColor = Color.Green;
+                        lnkexpressintrest.BorderColor = Color.Green;
                     }
                     else
                     {

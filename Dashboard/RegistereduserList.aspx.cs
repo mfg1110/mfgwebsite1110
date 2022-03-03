@@ -16,14 +16,33 @@ public partial class Dashboard_RegistereduserList : System.Web.UI.Page
     Boolean flag;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (Request.QueryString["gender"] != null)
         {
-            userlist();
+            if (!IsPostBack)
+            {
+                userlistgender(Request.QueryString["gender"].ToString());
+            }
+
         }
+        else
+        {
+            if (!IsPostBack)
+            {
+                userlist();
+            }
+        }
+       
     }
     public void userlist()
     {
         ds = Registrationobj.getregistrationdetail();
+        rptuserlist.DataSource = ds;
+        rptuserlist.DataBind();
+    }
+
+    public void userlistgender(string Gender)
+    {
+        ds = Registrationobj.getregistrationdetailbygender(Gender);
         rptuserlist.DataSource = ds;
         rptuserlist.DataBind();
     }

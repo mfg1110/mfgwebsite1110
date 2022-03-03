@@ -77,7 +77,7 @@ a:focus {
 .badge {
     border-radius: 2px;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 600;
 }
 .dropdown-item.active, .dropdown-item:active {
     background-color: #43EBBC;
@@ -752,6 +752,8 @@ h2 br {
 }
 .padding-card .card-body, .sidebar-card .card-body {
     padding: 18px;
+
+    /*padding: 30px;*/
 }
 .card-list-view .card-body, .card-list-view .card-footer {
     padding: 18px;

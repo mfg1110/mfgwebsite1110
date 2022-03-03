@@ -45,7 +45,7 @@ public partial class UserDashboard_Deactive_Profile : System.Web.UI.Page
             {
                 lblmsg1.Visible = true;
                 lblmsgsucess.Visible = false;
-                lblmsg.Text = "Error";
+                lblmsg.Text = Globalvariable.Error;
             }
 
         }

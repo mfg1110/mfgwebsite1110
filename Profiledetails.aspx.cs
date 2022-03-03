@@ -52,7 +52,7 @@ public partial class Profiledetails : System.Web.UI.Page
         if (Request.QueryString["Search_ID"] != null)
         {
             image.HttpEquiv = "image";
-                image.Name = "image";
+                 image.Name = "image";
             if (!IsPostBack)
             {
                 loaddata();
@@ -142,7 +142,7 @@ public partial class Profiledetails : System.Web.UI.Page
             Repeater rptfeacheredprofile = (Repeater)e.Item.FindControl("rptfeacheredprofile");
             if (Request.QueryString["Search_ID"] != null)
             {
-                if (regid != null)
+                if (Request.QueryString["regid"] != null)
                 {
                     ds = Registrationobj.getbiodatadetailnotbyidSearch_ID(Convert.ToInt32(regid), Request.QueryString["Search_ID"].ToString());
                 }
@@ -161,19 +161,20 @@ public partial class Profiledetails : System.Web.UI.Page
             RepeaterItem item = e.Item;
             //string maritialstatus = (item.FindControl("lblmaritialstatus") as Label).Text;
             //Label noofchild = (item.FindControl("lblnoofchild") as Label);
-            Label lblbiodata = (item.FindControl("lblbiodata") as Label);
+            Label lblbiodata1 = (item.FindControl("lblbiodataid") as Label);
+            Label lblbiodata = (item.FindControl("lblbiodataid") as Label);
             Label lblgender = (item.FindControl("lblgender") as Label);
             Label lblg = (item.FindControl("lblg") as Label);
             Label lblg1 = (item.FindControl("lblg1") as Label);
             if (lblgender.Text == "Male")
             {
                 lblg.Text = "His";
-                lblg1.Text = "His";
+              //  lblg1.Text = "His";
             }
             else if (lblgender.Text == "Female")
             {
                 lblg.Text = "Her";
-                lblg1.Text = "Her";
+               // lblg1.Text = "Her";
             }
             Repeater rptbasicpreference =  (Repeater)e.Item.FindControl("rptbasicpreference");
             HttpCookie nameCookie = Request.Cookies["Name"];
@@ -182,6 +183,22 @@ public partial class Profiledetails : System.Web.UI.Page
             LinkButton lnkshortlist = (item.FindControl("lnkshortlist") as LinkButton);
             HtmlGenericControl lipatner = e.Item.FindControl("lipatner") as HtmlGenericControl;
             HtmlGenericControl lipreference = e.Item.FindControl("lipreference") as HtmlGenericControl;
+            Label lblmobile1 = e.Item.FindControl("lblmobile") as Label;
+            LinkButton lnkexpressintrest = (item.FindControl("lnkexpressintrest") as LinkButton);
+            if (nameCookie != null)
+            {
+                lnkexpressintrest.Visible = true;
+            }
+            else if (Session["id"] != null)
+            {
+                lnkexpressintrest.Visible = true;
+                lblmobile1.Visible = true;
+            }
+            else
+            {
+                lnkexpressintrest.Visible = false;
+                lblmobile1.Visible = false;
+            }
             if (nameCookie != null)
             {
                 
@@ -206,6 +223,8 @@ public partial class Profiledetails : System.Web.UI.Page
                 if (dsbiodata.Tables[0].Rows.Count > 0)
                 {
                     lnkchat.Visible = true;
+                   // lblbiodata.Text = dsbiodata.Tables[0].Rows[0]["Biodata_id"].ToString();
+                    
                 }
                 else
                 {
@@ -219,10 +238,11 @@ public partial class Profiledetails : System.Web.UI.Page
                 lnkchat.Visible = false;
             }
             DataSet dspatnerpreference;
-            dspatnerpreference = Registrationobj.getpatnerpreferencebyid(Convert.ToInt32(lblbiodata.Text));
+            dspatnerpreference = Registrationobj.getpatnerpreferencebyid(regid);
             if (dspatnerpreference.Tables[0].Rows.Count == 0)
             {
                 lipatner.Visible = false;
+                lipreference.Visible = false;
             }
             else
             {
@@ -232,7 +252,7 @@ public partial class Profiledetails : System.Web.UI.Page
                 rptbasicpreference.DataBind();
             }
 
-            DataSet dsshortlisted = Registrationobj.getshortlistbyprofileid(Convert.ToInt32(lblbiodata.Text));
+            DataSet dsshortlisted = Registrationobj.getshortlistbyprofileid(Convert.ToInt32(lblbiodata1.Text), regid);
             if (dsshortlisted.Tables[0].Rows.Count > 0)
             {
                 lnkshortlist.ForeColor = Color.White;
@@ -244,7 +264,50 @@ public partial class Profiledetails : System.Web.UI.Page
             {
                 lnkshortlist.Text = "Shortlist";
             }
-         
+
+
+            bool colorflag = false;
+            Label lblbiodataid = (item.FindControl("lblbiodataid") as Label);
+            DataSet dsname = Registrationobj.getbiodatabyregid(regid);
+
+            if (dsname.Tables[0].Rows.Count == 0)
+            {
+                lnkexpressintrest.Visible = false;
+            }
+            else
+            {
+                lnkexpressintrest.Visible = true;
+                DataSet dsexpressintrest = Registrationobj.getbiodatabyregid(regid);
+                for (int i = 0; i < dsexpressintrest.Tables[0].Rows.Count; i++)
+                {
+                    if (dsexpressintrest.Tables[0].Rows[i]["Biodata_id"].ToString() == lblbiodataid.Text)
+                    {
+                        lnkexpressintrest.ForeColor = Color.White;
+                        lnkexpressintrest.BackColor = Color.Green;
+                        lnkexpressintrest.BorderColor = Color.Green;
+                        lnkexpressintrest.Text = "Intrested";
+                        colorflag = true;
+
+                        //lnkexpressintrest.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        lnkexpressintrest.Text = "Express Intrest";
+                        colorflag = false;
+
+                    }
+                }
+
+
+                if (colorflag == true)
+                {
+                    lnkexpressintrest.CssClass = "btn btn-primary btn-sm";
+                }
+                else
+                {
+                    lnkexpressintrest.CssClass = "btn btn-success btn-sm";
+                }
+            }
         }
     }
 
@@ -256,8 +319,7 @@ public partial class Profiledetails : System.Web.UI.Page
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
 
-        rptprofile.DataSource = ds;
-        rptprofile.DataBind();
+        Response.Redirect("Profiledetails.aspx?Search_ID=" + Search_ID);
     }
     public string ProcessMyDataItem(object myValue)
     {
@@ -331,19 +393,7 @@ public partial class Profiledetails : System.Web.UI.Page
             RepeaterItem item = e.Item;
             HttpCookie nameCookie = Request.Cookies["Name"];
             HttpCookie idCookie = Request.Cookies["id"];
-            LinkButton lnkexpressintrest = (item.FindControl("lnkexpressintrest") as LinkButton);
-            if (nameCookie != null)
-            {
-                lnkexpressintrest.Visible = true;
-            }
-            else if (Session["id"] != null)
-            {
-                lnkexpressintrest.Visible = true;
-            }
-            else
-            {
-                lnkexpressintrest.Visible = false;
-            }
+           
 
         }
     }

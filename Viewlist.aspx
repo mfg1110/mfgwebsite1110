@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel6" runat="server" >
 
         <ContentTemplate>
@@ -13,7 +13,7 @@
                         <div class="col-md-12 text-center">
                             <h1 class="mt-0 mb-3 text-white">View List</h1>
                             <div class="breadcrumbs">
-                                <p class="mb-0 text-white"><a class="text-white" href="#">Home</a> &nbsp;/&nbsp; <span class="text-success">View List</span></p>
+                                <p class="mb-0 text-white"><a class="text-white" href="#">Home</a> &nbsp;/&nbsp; <span class="text-white">View List</span></p>
                             </div>
                         </div>
                     </div>
@@ -317,15 +317,15 @@
                                                 </div>
                                                 <hr />
                                                 <div class="row no-gutters">
-                                                    <div class="col-lg-2">
+                                                   <div class="col-lg-2">
                                                     </div>
                                                     <div class="col-lg-4">
-                                                        <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click" Width="120">Express Intrest</asp:LinkButton>
                                                     </div>
                                                     <div class="col-lg-4">
-                                                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
+                                                        <asp:LinkButton ID="LinkButton1" CssClass="btn btn-facebook btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
                                                     </div>
-                                                    <div class="col-lg-2">
+                                                    <div class="col-lg-4">
                                                     </div>
                                                 </div>
                                                 <br />

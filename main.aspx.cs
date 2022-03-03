@@ -140,7 +140,7 @@ public partial class main : System.Web.UI.Page
             else
             {
                 lnkexpressintrest.Visible = true;
-                DataSet dsexpressintrest = Registrationobj.Getinboxbyid(regid);
+                DataSet dsexpressintrest = Registrationobj.Getpasswordbyid(regid);
                 for (int i = 0; i < dsexpressintrest.Tables[0].Rows.Count; i++)
                 {
                     if (dsexpressintrest.Tables[0].Rows[i]["Biodata_id"].ToString() == lblbiodataid.Text)

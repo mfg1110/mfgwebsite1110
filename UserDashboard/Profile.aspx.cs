@@ -29,6 +29,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
     string Visibility_Flag = "true";
     protected void Page_Load(object sender, EventArgs e)
     {
+        txtname.Focus();
         Wizard1.PreRender += new EventHandler(Wizard1_PreRender);
         HttpCookie nameCookie = Request.Cookies["Name"];
         HttpCookie idCookie = Request.Cookies["id"];
@@ -36,7 +37,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
         {
 
             id = Convert.ToInt32(idCookie.Value);
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 bindzoradic();
                // Bindddl();
@@ -45,7 +46,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             }
             if (Request.QueryString["Biodata_id"] != null)
             {
-                if (!IsPostBack)
+                if (!Page.IsPostBack)
                 {
                     loaddata();
                     //  txtname.Text = Session["Fname"].ToString();
@@ -57,7 +58,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             id = Convert.ToInt32(Session["id"].ToString());
 
             //txtpostedby.Text = Session["Fname"].ToString();
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 bindzoradic();
                 binddropdownlist();
@@ -66,7 +67,7 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
             }
             if (Request.QueryString["Biodata_id"] != null)
             {
-                if (!IsPostBack)
+                if (!Page.IsPostBack)
                 {
                     loaddata();
                     //  txtname.Text = Session["Fname"].ToString();
@@ -1227,13 +1228,24 @@ public partial class UserDashboard_Profile : System.Web.UI.Page
     }
     protected void ddlreligion_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-        bindsubcast(Convert.ToInt32(ddlreligion.SelectedValue.ToString()));
+      
+       // bindsubcast(Convert.ToInt32(ddlreligion.SelectedValue.ToString()));
+        bindsubcastpatner(ddlreligion.SelectedItem.ToString());
+        UpdatePanel5.Update();
     }
 
     public void bindsubcast(int caste_ID)
     {
         DataSet ds = Registrationobj.getsubcatbyCaste_ID(caste_ID);
+        ddlsubcaste.DataSource = ds.Tables[0];
+        ddlsubcaste.DataTextField = "Subcaste_name";
+        ddlsubcaste.DataValueField = "Subcaste_ID";
+        ddlsubcaste.DataBind();
+    }
+
+    public void bindsubcastpatner(string caste_name)
+    {
+        DataSet ds = Registrationobj.getsubcatbyCaste_name(caste_name);
         ddlsubcaste.DataSource = ds.Tables[0];
         ddlsubcaste.DataTextField = "Subcaste_name";
         ddlsubcaste.DataValueField = "Subcaste_ID";

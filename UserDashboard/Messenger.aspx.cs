@@ -117,7 +117,7 @@ public partial class Messenger : System.Web.UI.Page
 
             string date3 = DateTime.Now.ToString("MM-dd-yyyy");
             DataSet dsreceiver = Registrationobj.getregistrationbyid(Convert.ToInt32(profileid));
-            CurrentRecevier.Text = dsreceiver.Tables[0].Rows[0]["name"].ToString() + " " + dsreceiver.Tables[0].Rows[0]["lname"].ToString();
+            CurrentRecevier.Text = dsreceiver.Tables[0].Rows[0]["fname"].ToString() + " " + dsreceiver.Tables[0].Rows[0]["lname"].ToString();
         }
       
 

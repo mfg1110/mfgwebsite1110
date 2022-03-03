@@ -8,7 +8,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
     <style>
         body, html {
-            height: 100%;
+            /*height: 100%;*/
             margin: 0;
             /*background: #7F7FD5;
 	       background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
@@ -319,142 +319,135 @@
             border-color: #c46909 #c46909 transparent transparent;
         }
     </style>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-  
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true"></asp:ScriptManager>
+
     <div class="top-bar clearfix">
         <div class="page-title">
             <h4>Member Chat</h4>
         </div>
-        
+
     </div>
     <div class="main-container">
         <div class="container-fluid">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4">
                 <div class="panel panel-red no-margin">
                     <div class="panel-heading">
-                        <h4> <asp:TextBox ID="txtsearch" runat="server" placeholder="Search..." AutoPostBack="true" CssClass="form-control" OnTextChanged="txtsearch_TextChanged"></asp:TextBox>
-</h4>
+                        <h4>
+                            <asp:TextBox ID="txtsearch" runat="server" placeholder="Search..." AutoPostBack="true" CssClass="form-control" OnTextChanged="txtsearch_TextChanged"></asp:TextBox>
+                        </h4>
                     </div>
                     <div class="panel-body">
                         <ul class="todo-list">
-                        <asp:Label ID="CurrentSender" runat="server" Text="" Visible="false"></asp:Label>
-                                    <asp:Label ID="CurrentRecevier" runat="server" Text="" Visible="false"></asp:Label>
-                           
-                              <asp:Repeater ID="rptusers" runat="server">
-                                        <ItemTemplate>
-                                            <li class="list">
-                                                <img src="../image/user.png" class="rounded-circle user_img">
-                                                        <asp:LinkButton ID="lnksender" runat="server" OnCommand="lnksender_Command" CommandArgument='<%# Eval("Sender") %>'><%# Eval("Sender") %></asp:LinkButton>
+                            <asp:Label ID="CurrentSender" runat="server" Text="" Visible="false"></asp:Label>
+                            <asp:Label ID="CurrentRecevier" runat="server" Text="" Visible="false"></asp:Label>
 
-                                            </li>
-                                        </ItemTemplate>
-                                   <FooterTemplate>
+                            <asp:Repeater ID="rptusers" runat="server">
+                                <ItemTemplate>
+                                    <li class="list">
+                                        <img src="../image/user.png" class="rounded-circle user_img">
+                                        <asp:LinkButton ID="lnksender" runat="server" OnCommand="lnksender_Command" CommandArgument='<%# Eval("Receiver") %>'><%# Eval("Receiver") %></asp:LinkButton>
+
+                                    </li>
+                                </ItemTemplate>
+                                <FooterTemplate>
                                     <div id="trEmpty" runat="server" visible="false" class="alert alert-success">
                                         <td colspan="3" align="center">No records found.
                                         </td>
                                     </div>
 
                                 </FooterTemplate>
-                                    </asp:Repeater>
+                            </asp:Repeater>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 ">
                 <div class="card">
-                        <div class="card-header msg_head">
-                            <div class="d-flex bd-highlight">
-                                <ul class="todo-list">
-                        
-                                            <li class="list">
-                                                <img src="../image/user.png" class="rounded-circle user_img" />
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <ul class="todo-list">
 
-                                                         <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
-                                                 <div style="float:right">
-                                           <asp:LinkButton ID="linkdeleteall" runat="server" CommandArgument='CurrentRecevier.Text' OnCommand="linkdeleteall_Command" ><i class="glyphicon glyphicon-trash"></i>Clear Chat </asp:LinkButton>
-                                         </div>
-                                            </li>
+                                <li class="list">
+                                    <img src="../image/user.png" class="rounded-circle user_img" />
 
-                                    
-                                        
-                                        
-                        </ul>
-                                <%--<div class="img_cont">
-                                  
-                                    <span class="online_icon"></span>
-                                      
-                                </div>
-                                <div class="user_info">
-                                 
-
-                                </div>--%>
-                              
-                            </div>
-                            <hr />
-                            <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-                            <div class="action_menu">
-                                <ul>
-                                    <li><i class="fas fa-user-circle"></i>View profile</li>
-                                    <li><i class="fas fa-users"></i>Add to close friends</li>
-                                    <li><i class="fas fa-plus"></i>Add to group</li>
-                                    <li><i class="fas fa-ban"></i>Block</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body msg_card_body">
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                <ContentTemplate>
-                                    <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
-                                    <div class="d-flex justify-content-start mb-4">
-                                        <asp:DataList ID="DataList2" runat="server" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Center" RepeatLayout="Table">
-                                            <ItemTemplate>
-                                                  <div style="float:right">  </div>
-                                                <div class="<%# GetStyleForMsgList(Eval("Sender").ToString()) %>  MainChatListClass">
-                                                    
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# GetPerfactName(Eval("Sender").ToString()) %>'></asp:Label>
-                                                   
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>'></asp:Label> 
-                                                  
-                                                    <br />
-                                                 
-                                                    <span class="time_date" style="color: white"><%# Eval("Date1") %></span>
-                                                    <div style="float:right">
-                                                       <asp:LinkButton ID="lnkdelete" ForeColor="White" runat="server" CommandArgument='<%#Eval("ID")%>' OnCommand="lnkdelete_Command" ><i class="glyphicon glyphicon-trash"></i> </asp:LinkButton>
-                                                        </div>
-                                                </div>
-                                                
-                                            </ItemTemplate>
-                                        </asp:DataList>
-
-
+                                    <span><%= GetWelcomeBanner(CurrentRecevier.Text)%></span>
+                                    <div style="float: right">
+                                        <asp:LinkButton ID="linkdeleteall" runat="server" CommandArgument='CurrentRecevier.Text' OnCommand="linkdeleteall_Command"><i class="glyphicon glyphicon-trash"></i>Clear Chat </asp:LinkButton>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                                <ContentTemplate>
-                                    <div class="card-footer">
-                                        <br />
-                                        <div>
-                                            <asp:TextBox ID="MSGTextBox" runat="server" placeholder="Type your message..." CssClass="form-control" BackColor="White" TextMode="MultiLine"></asp:TextBox>
+                                </li>
 
-                                            <div class="input-group-append">
-                                                <asp:LinkButton ID="btnRandom"
-                                                    runat="server"
-                                                    CssClass="btn btn-danger"
-                                                    OnClick="btnRandom_Click1">
-    <span aria-hidden="true" class="fas fa-location-arrow"></span>
-                                                </asp:LinkButton>
 
+
+
+                            </ul>
+                         
+                        </div>
+                        <hr />
+                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+                        <div class="action_menu">
+                            <ul>
+                                <li><i class="fas fa-user-circle"></i>View profile</li>
+                                <li><i class="fas fa-users"></i>Add to close friends</li>
+                                <li><i class="fas fa-plus"></i>Add to group</li>
+                                <li><i class="fas fa-ban"></i>Block</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body msg_card_body">
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick" />
+                                <div class="d-flex justify-content-start mb-4">
+                                    <asp:DataList ID="DataList2" runat="server" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Strikeout="False" Font-Underline="False" HorizontalAlign="Center" RepeatLayout="Table">
+                                        <ItemTemplate>
+                                            <div style="float: right"></div>
+                                            <div class="<%# GetStyleForMsgList(Eval("Sender").ToString()) %>  MainChatListClass">
+
+                                                <asp:Label ID="Label1" runat="server" Text='<%# GetPerfactName(Eval("Sender").ToString()) %>'></asp:Label>
+
+                                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("Message") %>'></asp:Label>
+
+                                                <br />
+
+                                                <span class="time_date" style="color: white"><%# Eval("Date1") %></span>
+                                                <div style="float: right">
+                                                    <asp:LinkButton ID="lnkdelete" ForeColor="White" runat="server" CommandArgument='<%#Eval("ID")%>' OnCommand="lnkdelete_Command"><i class="glyphicon glyphicon-trash"></i> </asp:LinkButton>
+                                                </div>
                                             </div>
+
+                                        </ItemTemplate>
+                                    </asp:DataList>
+
+
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <div class="card-footer">
+                                    <br />
+                                    <div>
+                                        <asp:TextBox ID="MSGTextBox" runat="server" placeholder="Type your message..." CssClass="form-control" BackColor="White" TextMode="MultiLine"></asp:TextBox>
+
+                                        <div class="input-group-append">
+                                            <asp:LinkButton ID="btnRandom"
+                                                runat="server"
+                                                CssClass="btn btn-danger"
+                                                OnClick="btnRandom_Click1">
+    <span aria-hidden="true" class="fas fa-location-arrow"></span>
+                                            </asp:LinkButton>
+
                                         </div>
                                     </div>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </div>
-
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
+
                 </div>
+            </div>
         </div>
+
     </div>
 </asp:Content>
 

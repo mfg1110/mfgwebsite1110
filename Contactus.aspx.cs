@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 public partial class Contactus : System.Web.UI.Page
 {
     Registration.Registration Registrationobj = new Registration.Registration();
-    string Videostrname = "", Videoextension, videopath, postimage, filename;
+    string Videostrname = "", Videoextension, videopath, postimage, filename,s;
     int randomdigit;
     public static int Biodata_id, id;
     DataSet ds;
@@ -17,6 +17,7 @@ public partial class Contactus : System.Web.UI.Page
     string searchid, finalString, Images, Photo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        txtemail.Focus();
         HttpCookie nameCookie = Request.Cookies["Name"];
         HttpCookie idCookie = Request.Cookies["id"];
         if (nameCookie != null)
@@ -60,12 +61,14 @@ public partial class Contactus : System.Web.UI.Page
 
     public string email(int id)
     {
-
+      
         ds = Registrationobj.getregistrationbyid(id);
         //rptdata.DataSource = ds;
         //rptdata.DataBind();
-
-        string s = ds.Tables[0].Rows[0]["UserID"].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            s = ds.Tables[0].Rows[0]["UserID"].ToString();
+        }
         return s;
 
     }

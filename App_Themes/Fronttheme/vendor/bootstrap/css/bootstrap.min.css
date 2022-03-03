@@ -581,8 +581,8 @@ pre {
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .col {
@@ -2101,7 +2101,7 @@ pre {
     }
 
 select.form-control:not([size]):not([multiple]) {
-    height: calc(2.25rem + 2px);
+    height: calc(3.20rem + 2px);
 }
 
 select.form-control:focus::-ms-value {
@@ -2317,6 +2317,15 @@ select.form-control:focus::-ms-value {
     box-shadow: 0 0 0 .2rem rgba(40,167,69,.25);
 }
 
+
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled
+{
+ color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
 .invalid-feedback {
     display: none;
     width: 100%;
@@ -2509,6 +2518,27 @@ select.form-control:focus::-ms-value {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.input[type=button][disabled] {
+  display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+      color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 

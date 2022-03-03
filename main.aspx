@@ -18,8 +18,8 @@
                                 <div class="col-lg-12 col-md-8">
                                     <h1 class="mt-5 mb-4 text-white">FINDING LOVE IS BEING OVERLY DIFFICULT IN TODAY’S WORLD. BUT ONCE YOU HAVE FOUND IT, THERE IS NOTHING BETTER</h1>
                                     <h6 class="mb-5 text-white">It is indeed true that everyone wishes to be loved as it makes them feel special and cared for.</h6>
-                                    <button class="btn btn-success" type="button">Register</button>
-                     
+                                 
+                                    <a href="validregistration.aspx" class="btn btn-success">Register</a>
                                 </div>
                               
                             </div>
@@ -35,7 +35,7 @@
                                     <h1 class="mt-5 mb-4 text-white">FINDING LOVE IS BEING OVERLY DIFFICULT IN TODAY’S WORLD. BUT ONCE YOU HAVE FOUND IT, THERE IS NOTHING BETTER</h1>
                                     <h6 class="mb-5 text-white">It is indeed true that everyone wishes to be loved as it makes them feel special and cared for.</h6>
                                    
-                                    <a href="Register.aspx" class="btn btn-success">Register</a>
+                                      <a href="validregistration.aspx" class="btn btn-success">Register</a>
                                 </div>
                                
                             </div>
@@ -93,10 +93,10 @@
                                             <div class="col-lg-2">
                                             </div>
                                             <div class="col-lg-4">
-                                                <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click">Express Intrest</asp:LinkButton>
+                                                <asp:LinkButton ID="lnkexpressintrest" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Biodata_id") + "," + Eval("Name") + "," + Eval("id") %>' runat="server" OnClick="lnkexpressintrest_Click" Width="110">Express Intrest</asp:LinkButton>
                                             </div>
                                             <div class="col-lg-4">
-                                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-success btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
+                                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-facebook btn-sm" ForeColor="White" CommandArgument='<%# Eval("Search_ID") %>' runat="server" OnClick="LinkButton1_Click">View in Detail</asp:LinkButton>
                                             </div>
                                             <div class="col-lg-2">
                                             </div>
@@ -271,20 +271,5 @@ runat="server" Font-Bold="True"><%# Container.DataItem %>
         </div>
     </section>--%>
 
-    <section class="section-padding bg-dark text-center">
-        <h2 class="text-white mt-0">Join With US</h2>
-       
-      <a href="Contactus.aspx" class="btn btn-success">Contact Us</a>
-    </section>
-
-    
-
-    <section class="pt-4 pb-4 text-center">
-        <p class="mt-0 mb-0">© Copyright 2021 Matrimony For Gujrati. All Rights Reserved</p>
-       <%-- <small class="mt-0 mb-0">
-            Made with <i class="mdi mdi-heart text-danger"></i> by
-            <a class="text-dark" target="_blank" href="https://askbootstrap.com/">Ask Bootstrap</a>
-        </small>--%>
-    </section>
 </asp:Content>
 

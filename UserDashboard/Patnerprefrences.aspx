@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true"></asp:ScriptManager>
       <div class="top-bar clearfix">
         <div class="page-title">
             <h4>Patner prefrences<small class="samll"></small></h4>
@@ -63,7 +63,7 @@
 
                                     </asp:DropDownList>
 
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlgender" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Select Gender"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlgender" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Select Gender"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 
@@ -126,7 +126,7 @@
                                             </asp:DropDownList>
 
 
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlage1" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlage1" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -181,7 +181,7 @@
                                                 <asp:ListItem Value="59">59</asp:ListItem>
                                                 <asp:ListItem Value="60">60</asp:ListItem>
                                             </asp:DropDownList>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlage2" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="ddlage2" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
@@ -213,7 +213,7 @@
 
                                                </asp:DropDownList>
 
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlfeet1" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlfeet1" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -236,7 +236,7 @@
                                                    <asp:ListItem Value="12">12</asp:ListItem>
 
                                                </asp:DropDownList>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlinch1" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="ddlinch1" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
                                     </div>
 
@@ -260,7 +260,7 @@
 
                                                </asp:DropDownList>
 
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlfeet2" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlfeet2" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -283,7 +283,7 @@
                                                    <asp:ListItem Value="12">12</asp:ListItem>
 
                                                </asp:DropDownList>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlinch2" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
+                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ddlinch2" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter height"></asp:RequiredFieldValidator>
                                            </div>
                                     </div>
 
@@ -301,7 +301,7 @@
                                         <asp:ListItem Value="Widower">Widower</asp:ListItem>
                                     </asp:DropDownList>
 
-                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlmaritialstatus" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Select Maritial Status"></asp:RequiredFieldValidator>
+                                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlmaritialstatus" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Select Maritial Status"></asp:RequiredFieldValidator>
                                                                     </div>
                             </div>
                             </div>
@@ -314,7 +314,7 @@
                                           </asp:DropDownList>
                                     <asp:HiddenField ID="hfCustomerId" runat="server" />
                                     <%--  <span style="font-size: small; color: #ff6a00">* Ex. 75</span>--%>
-                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
+                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtweight" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter weight"></asp:RequiredFieldValidator>--%>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -327,7 +327,7 @@
                                                               <asp:ListItem Value="0">None</asp:ListItem>
                                                           </asp:DropDownList>
 
-                                            <span style="font-size: small; color: #0d3dd9">* <a href="#">If Your Caste Not Added Then Please Click Here</a> </span>
+                                         <%--   <span style="font-size: small; color: #0d3dd9">* <a href="#">If Your Caste Not Added Then Please Click Here</a> </span>--%>
                                             <asp:TextBox ID="txtsubcaste" runat="server" class="form-control valid" name="name" type="text" Visible="false" onfocus="this.placeholder = 'Enter Sub Caste'" onblur="this.placeholder = 'Enter Sub Caste'" placeholder="Enter Sub Caste" ValidationGroup="B"></asp:TextBox>
                                             <%-- <asp:DropDownList ID="DropDownList1" runat="server" class="form-control valid">
                                                 <asp:ListItem Value="0">None</asp:ListItem>
@@ -351,7 +351,7 @@
                                 <div class="form-group">
                                     Physical Status
                                                                     <asp:RadioButtonList ID="rdphysical" class="form-check" runat="server" AutoPostBack="true">
-                                                                        <asp:ListItem Value="Normal">
+                                                                        <asp:ListItem Value="Normal" Selected="True">
                                                                         Normal
                                                                         </asp:ListItem>
                                                                         <asp:ListItem Value="Physically challenged">
@@ -370,7 +370,7 @@
                                                                         <br />
                                     <asp:CheckBoxList ID="chkzoradic" runat="server" CellPadding="30" RepeatLayout="Flow" AutoPostBack="true"
                                         RepeatDirection="Vertical">
-                                        <asp:ListItem Value="Any"> Any</asp:ListItem>
+                                        <asp:ListItem Value="Any" Selected="True"> Any</asp:ListItem>
                                         <asp:ListItem Value="Aries">Aries</asp:ListItem>
                                         <asp:ListItem Value="Aquarius">Aquarius</asp:ListItem>
                                         <asp:ListItem Value="Pisces">Pisces</asp:ListItem>
@@ -395,7 +395,7 @@
                                                                         <br />
                                     <asp:CheckBoxList ID="chkskincomplection" runat="server" CellPadding="30" RepeatLayout="Flow" AutoPostBack="true"
                                         RepeatDirection="Vertical">
-                                        <asp:ListItem Value="Any"> Any</asp:ListItem>
+                                        <asp:ListItem Value="Any" Selected="True"> Any</asp:ListItem>
                                         <asp:ListItem Value="Very Fair">Very Fair</asp:ListItem>
                                         <asp:ListItem Value="Fair">Fair</asp:ListItem>
                                         <asp:ListItem Value="Medium">Medium</asp:ListItem>
@@ -417,7 +417,7 @@
                                             <asp:TextBox ID="txtHightestEducation" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter  Hightest Education'" onblur="this.placeholder = 'Enter  Hightest Education'" placeholder="Enter  Hightest Education" ValidationGroup="B"></asp:TextBox>
                                     <span style="font-size: small; color: #ff6a00">* Ex. Master Of Computer Application (MCA)</span>
                                     <br />
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtHightestEducation" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter  Hightest Education "></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="txtHightestEducation" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter  Hightest Education "></asp:RequiredFieldValidator>
 
                                 </div>
                             </div>
@@ -425,7 +425,7 @@
                                 <div class="form-group">
                                     Occupation 
                                             <asp:TextBox ID="txtOccupation" runat="server" class="form-control valid" name="name" Text="" type="text" onfocus="this.placeholder = 'Enter Occupation'" onblur="this.placeholder = 'Enter Occupation'" placeholder="Enter Occupation" ValidationGroup="B"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupation" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter Occupation"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupation" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter Occupation"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
 </div>
@@ -460,7 +460,7 @@
 
                                          </asp:DropDownList>
 
-                                    <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
+                                    <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtOccupationindetails" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter Description"></asp:RequiredFieldValidator>
          --%>
                                 </div>
                             </div>
@@ -500,7 +500,7 @@
                                 <div class="form-group">
                                     Country
                                             <asp:TextBox ID="txtcountry" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter Country '" onblur="this.placeholder = 'Enter Country '" placeholder="Enter Country " ValidationGroup="B"></asp:TextBox>
-                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtcountry" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtcountry" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter Country"></asp:RequiredFieldValidator>
          
                                 </div>
                             </div>
@@ -508,7 +508,7 @@
                                 <div class="form-group">
                                   Residing State
                                             <asp:TextBox ID="txtstate" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter State'" onblur="this.placeholder = 'Enter State '" placeholder="Enter State" ValidationGroup="B"></asp:TextBox>
-                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtstate" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtstate" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter State"></asp:RequiredFieldValidator>
          
                                 </div>
                             </div>
@@ -518,7 +518,7 @@
                                 <div class="form-group">
                                   Residing City
                                             <asp:TextBox ID="txtcity" runat="server" class="form-control valid" name="name" type="text" onfocus="this.placeholder = 'Enter City '" onblur="this.placeholder = 'Enter City'" placeholder="Enter City " ValidationGroup="B"></asp:TextBox>
-                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtcity" ForeColor="white" Display="Dynamic" CssClass="label label-danger" ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
+                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtcity" ForeColor="Red" Display="Dynamic" CssClass="notice red" ValidationGroup="B" ErrorMessage="Please Enter City"></asp:RequiredFieldValidator>
          
                                 </div>
                             </div>

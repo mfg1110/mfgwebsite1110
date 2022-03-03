@@ -9,7 +9,7 @@
                 <div class="col-md-12 text-center">
                     <h1 class="mt-0 mb-3 text-white">ABOUT US</h1>
                     <div class="breadcrumbs">
-                        <p class="mb-0 text-white"><a class="text-white" href="#">Home</a> &nbsp;/&nbsp; <span class="text-success">ABOUT US</span></p>
+                        <p class="mb-0 text-white"><a class="text-white" href="#">Home</a> &nbsp;/&nbsp; <span class="text-white">ABOUT US</span></p>
                     </div>
                 </div>
             </div>
