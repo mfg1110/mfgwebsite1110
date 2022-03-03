@@ -37,7 +37,7 @@ public partial class Forgotpassword : System.Web.UI.Page
         {
             lblmsgsucess.Visible = false;
             lblmsg1.Visible = true;
-            lblmsg.Text = "Server Not Connected";
+            lblmsg.Text = Globalvariable.Serer_Not_Connect;
         }
     }
 
@@ -74,9 +74,10 @@ public partial class Forgotpassword : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                lblmsgsucess.Visible = false;
+                lblmsgsucess.Visible = true;
+                lblmsgsucess.Text = "Server Not Connect";
                 lblmsg1.Visible = true;
-                lblmsg.Text = "Server Not Connected";
+                lblmsg.Text = Globalvariable.Serer_Not_Connect;
                 txtemailid.Text = "";
             }
 

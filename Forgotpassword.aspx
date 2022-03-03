@@ -3,13 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableCdn="true"></asp:ScriptManager>
+   
     <section class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 mx-auto">
                      
                     <div class="card padding-card">
-
+                          <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
                         <div class="card-body">
                            
                             <h5 class="card-title mb-4">FORGOT PASSWORD</h5>
@@ -25,6 +28,7 @@
                                     <label>EMAIL ID<span class="text-danger">*</span></label>
                                    <asp:TextBox ID="txtemailid" runat="server" class="form-control" placeholder="EMAIL ID" required=""></asp:TextBox>
                           
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1txtuname" runat="server" ControlToValidate="txtemailid" Display="Dynamic" CssClass="badge badge-danger"  ErrorMessage="Please Enter Email ID"></asp:RequiredFieldValidator>
                                 </div>
                                
                                
@@ -37,6 +41,8 @@
                             </div>--%>
                             
                         </div>
+            </ContentTemplate>
+                              </asp:UpdatePanel>
                     </div>
                 </div>
             </div>
