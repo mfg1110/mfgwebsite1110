@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,9 +17,12 @@ public partial class Login : System.Web.UI.Page
     string flaguserexist = "", status;
     public string theVerificationCode;
     Boolean flag = false, flagdelete = false;
+    public static String Invalid_email_Pwd = "Invalid Email or Password";
+
+    public static String Account_Deleted = "Your Account Deleted";
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        txtuname.Focus();
     }
     protected void lnklogin_Click(object sender, EventArgs e)
     {
@@ -35,7 +41,7 @@ public partial class Login : System.Web.UI.Page
                     //string Token = ds.Tables[0].Rows[i]["Token"].ToString();
 
 
-                    if (txtuname.Text == email && txtpassword.Text == passwordvar)
+                    if (txtuname.Text == email && txtpassword.Text == Decrypt(passwordvar))
                     {
                         dsuseractivation = Registrationobj.Getuserverifyornot(User_ID);
                         if (dsuseractivation.Tables[0].Rows.Count > 0)
@@ -46,7 +52,7 @@ public partial class Login : System.Web.UI.Page
                         if (status == "delete")
                         {
                             flagdelete = true;
-                            
+
                         }
                         else if (status == "Active")
                         {
@@ -161,21 +167,21 @@ public partial class Login : System.Web.UI.Page
                             Session.Timeout = 525600;
                         }
 
-                        Response.Redirect("Dashboard/CMS.aspx", true);
+                        Response.Redirect("Dashboard/Default.aspx", true);
                     }
-                    else if (txtuname.Text != email && txtpassword.Text != passwordvar)
+                    else if (txtuname.Text != email && txtpassword.Text != passwordvar && txtuname.Text != "" && txtpassword.Text != "")
                     {
 
                         lblmsg.Visible = true;
-                        lblmsg.Text = "Invalid Email or Password";
+                        lblmsg.Text = Invalid_email_Pwd;
                     }
                 }
-                if(flagdelete==true)
+                if (flagdelete == true)
                 {
                     lblmsg.Visible = true;
-                    lblmsg.Text = "Your Account Deleted";
+                    lblmsg.Text = Account_Deleted;
                 }
-                
+
 
             }
 
@@ -187,5 +193,28 @@ public partial class Login : System.Web.UI.Page
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Server Error : Connection Timeout.');", true);
         }
 
+    }
+
+
+    private string Decrypt(string cipherText)
+    {
+        string EncryptionKey = "MAKV2SPBNI99212";
+        byte[] cipherBytes = Convert.FromBase64String(cipherText);
+        using (Aes encryptor = Aes.Create())
+        {
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            encryptor.Key = pdb.GetBytes(32);
+            encryptor.IV = pdb.GetBytes(16);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(cipherBytes, 0, cipherBytes.Length);
+                    cs.Close();
+                }
+                cipherText = Encoding.Unicode.GetString(ms.ToArray());
+            }
+        }
+        return cipherText;
     }
 }
